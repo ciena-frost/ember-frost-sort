@@ -22,7 +22,6 @@ export default Ember.Component.extend({
     }
     return selectList
   }),
-  singleSelected: 1,
   actions: {
     select (attrs) {
       this.set('selectedItem', attrs.value)
