@@ -1,2 +1,21 @@
-ember-frost-sort component
-{{yield}}
+<div class="title">Sort by: </div>
+{{#each filterArray as |object|}}
+	{{frost-sort-item sortId=object.id
+		availableOptions=unselected
+		allOptions=sortableProperties
+		sort-change=(action 'sortArrayChange')
+		initVal=object.value
+		initDirection=object.direction}}
+{{/each}}
+
+<div class="{{hideClass}}">
+	{{#frost-button on-click=(action "addFilter") class="icon small tertiary"}}
+		{{frost-icon icon='frost/round-add'}}
+	{{/frost-button}}
+</div>
+
+<div>
+	{{#frost-button on-click=(action "removeFilter") class="icon small tertiary"}}
+		{{frost-icon icon='frost/round-remove'}}
+	{{/frost-button}}
+</div>
