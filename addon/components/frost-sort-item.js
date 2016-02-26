@@ -24,11 +24,11 @@ export default Ember.Component.extend({
   }),
   actions: {
     select (attrs) {
-      this.set('selectedItem', attrs.value)
+      this.set('selectedItem', attrs[0])
       this.get('sort-change')({
-        id: attrs.id,
+        id: this.get('sortId'),
         direction: `:${this.get('direction')}`,
-        value: attrs.value
+        value: attrs[0]
       })
     },
     rotate (sortId) {
