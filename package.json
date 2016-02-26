@@ -16,7 +16,13 @@
   "engines": {
     "node": ">= 5.0.0"
   },
-  "author": "",
+  "author": "Olufemi Adeojo (https://github.com/oadeojo)",
+  "contributors": [
+    "Steven Glanzer (https://github.com/sglanzer)",
+    "Roxanne Panthaky https://github.com/rox163)",
+    "Quincy Le (https://github.com/quincyle)"
+    "Gosia Hyndman (https://github.com/vesper2000)",
+  ],
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
