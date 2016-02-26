@@ -1,1 +1,37 @@
 @import 'node_modules/ember-frost-theme/scss/frost-theme';
+
+.frost-sort {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  min-height: 50px;
+
+  .title {
+	margin: 0 5px;
+	padding: 0 10px;
+	font-size: $frost-font-xs;
+	font-weight: 500;
+	color: $frost-color-grey-5;
+  }
+  .button-hide {
+	display: none;
+  }
+}
+
+.frost-sort-item {
+  display: flex;
+  flex-direction: row;
+  padding:0 10px;
+  border-right: 1px solid  $frost-color-grey-6;
+  .desc {
+    transform: rotate(180deg);
+  }
+  .animate {
+    transition: transform 0.2s ease;
+  }
+  .svg-icon {
+    height: 20px;
+    width: 20px;
+  }
+}

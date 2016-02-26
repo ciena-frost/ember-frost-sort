@@ -19,7 +19,7 @@ describeComponent(
       //   {{/frost-sort}}
       // `)
 
-      this.render(hbs`{{frost-sort}}`)
+      this.render(hbs`{{frost-sort sortableProperties=''}}`)
       expect(this.$()).to.have.length(1)
     })
   }

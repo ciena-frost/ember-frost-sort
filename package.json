@@ -16,7 +16,13 @@
   "engines": {
     "node": ">= 5.0.0"
   },
-  "author": "",
+  "author": "Olufemi Adeojo (https://github.com/oadeojo)",
+  "contributors": [
+    "Steven Glanzer (https://github.com/sglanzer)",
+    "Roxanne Panthaky https://github.com/rox163)",
+    "Quincy Le (https://github.com/quincyle)",
+    "Gosia Hyndman (https://github.com/vesper2000)"
+  ],
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
@@ -39,6 +45,9 @@
     "ember-cli-mirage": "~0.1.11",
     "ember-cli-mocha": "^0.10.0",
     "ember-cli-notifications": "^3.2.0",
+    "ember-frost-button": "^1.1.0",
+    "ember-frost-icons": "^1.0.2",
+    "ember-frost-select": "^1.1.0",
     "ember-lodash": "~0.0.6",
     "ember-truth-helpers": "^1.2.0",
     "eslint": "^2.1.0",
@@ -55,7 +64,8 @@
     "ember-computed-decorators": "^0.2.2",
     "ember-frost-css-core": "^1.0.0",
     "ember-frost-theme": "^1.0.1",
-    "liquid-fire": "^0.22.0"
+    "liquid-fire": "^0.22.0",
+    "ember-lodash": "^0.0.6"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
