@@ -2,6 +2,7 @@
   "name": "ember-frost-sort",
   "version": "0.0.2",
   "description": "The default blueprint for ember-cli addons.",
+  "frostGuideDirectory": "ui-components/content-views/sort",
   "directories": {
     "doc": "doc",
     "test": "tests"
