@@ -4,18 +4,18 @@
 [cov-img]: https://img.shields.io/coveralls/ciena-frost/ember-frost-sort.svg "Coveralls Code Coverage"
 [cov-url]: https://coveralls.io/github/ciena-frost/ember-frost-sort
 
-[npm-img]: https://img.shields.io/npm/v/ember-frost-sort.svg "NPM Version"
+[npm-img]: https://img.shields.io/npm/v/ember-frost-sort.svg "Version"
 [npm-url]: https://www.npmjs.com/package/ember-frost-sort
 
 [![Travis][ci-img]][ci-url] [![Coveralls][cov-img]][cov-url] [![NPM][npm-img]][npm-url]
 
 # ember-frost-sort
-the drop-down select widget to rule them all
+The drop-down select widget to rule them all
 
- * [Installation](#Installation)
- * [API](#API)
- * [Examples](#Examples)
- * [Contributing](#Contributing)
+ * [Installation](#installation)
+ * [API](#api)
+ * [Examples](#examples)
+ * [Contributing](#development)
 
 ## Installation
 ```

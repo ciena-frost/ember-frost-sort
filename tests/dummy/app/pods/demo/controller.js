@@ -33,18 +33,20 @@ export default Ember.Controller.extend({
         })
       })
       this.set('sortOrder', temp)
-      let message = sortItems.reduce(function (message, sortItem) {
-        if (message === '') {
-          return sortItem.get('value') + sortItem.get('direction')
-        }
-        return message + ', ' + sortItem.get('value') + sortItem.get('direction')
-      }, '')
-      this.notifications.addNotification({
-        message: message,
-        type: 'success',
-        autoClear: true,
-        clearDuration: 2000
-      })
+      if (sortItems.length > 0) {
+        let message = sortItems.reduce(function (message, sortItem) {
+          if (message === '') {
+            return sortItem.get('value') + sortItem.get('direction')
+          }
+          return message + ', ' + sortItem.get('value') + sortItem.get('direction')
+        }, '')
+        this.notifications.addNotification({
+          message: message,
+          type: 'success',
+          autoClear: true,
+          clearDuration: 2000
+        })
+      }
     }
   }
 })

@@ -1,27 +1,14 @@
 import Ember from 'ember'
+import computed from 'ember-computed-decorators'
 import layout from '../templates/components/frost-sort'
 import _ from 'lodash/lodash'
 
 export default Ember.Component.extend({
   layout: layout,
   classNames: ['frost-sort'],
-  isRemoveVisible: Ember.computed('filterArray.[]', function () {
-    return this.get('filterArray').length !== 0
-  }),
-  initialValue: Ember.computed(function () {
 
-  }),
-  unselected: Ember.computed('filterArray.@each.value', function () {
-    if (Ember.isEmpty(this.get('filterArray'))) {
-      return this.get('sortableProperties')
-    }
-
-    let selectedProperties = this.get('filterArray').mapBy('value')
-    return this.get('sortableProperties').filter(function (sortListItem) {
-      return !_.includes(selectedProperties, sortListItem.value)
-    })
-  }),
-  filterArray: Ember.computed(function () {
+  @computed
+  filterArray () {
     if (_.isEmpty(this.get('sortParams'))) {
       return Ember.A()
     } else {
@@ -35,11 +22,31 @@ export default Ember.Component.extend({
       })
       return tempFilterArray
     }
-  }),
-  hideClass: Ember.computed(function () {
-    return _.isEqual(this.get('filterArray').length,
+  },
+
+  @computed
+  hideClass () {
+     return _.isEqual(this.get('filterArray').length,
       this.get('sortableProperties').length) ? 'button-hide' : ''
-  }),
+  },
+
+  @computed('filterArray.[]')
+  isRemoveVisible (filterArray) {
+    return filterArray.length !== 0
+  },
+
+  @computed('filterArray.@each.value')
+  unselected (filterArray) {
+    if (Ember.isEmpty(filterArray)) {
+      return this.get('sortableProperties')
+    }
+
+    let selectedProperties = filterArray.mapBy('value')
+    return this.get('sortableProperties').filter(function (sortListItem) {
+      return !_.includes(selectedProperties, sortListItem.value)
+    })
+  },
+
   actions: {
     addFilter () {
       if (this.get('filterArray').length >= (this.get('sortableProperties').length) - 1) {
@@ -50,21 +57,22 @@ export default Ember.Component.extend({
         value: '',
         direction: ':asc'
       }))
-      this.get('on-change')(filter)
     },
-    sortArrayChange (attrs) {
-      this.get('filterArray').findBy('id', attrs.id).setProperties({
-        value: attrs.value,
-        direction: attrs.direction
-      })
-      this.get('on-change')(this.get('filterArray'))
-    },
+
     removeFilter () {
       this.get('filterArray').popObject()
       this.get('on-change')(this.get('filterArray'))
       if (this.get('filterArray').length < this.get('sortableProperties').length) {
         this.set('hideClass', '')
       }
+    },
+
+    sortArrayChange (attrs) {
+      this.get('filterArray').findBy('id', attrs.id).setProperties({
+        value: attrs.value,
+        direction: attrs.direction
+      })
+      this.get('on-change')(this.get('filterArray'))
     }
   }
 })

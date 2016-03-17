@@ -1,6 +1,20 @@
-<div class="row container">Frost sort demo</div>
-{{frost-sort
-  sortableProperties=tableSortList
-  on-change=(action 'sortRecords')
-  sortParams=sortOrder}}
+<div class="title">Frost sort demo</div>
 
+<div class="example">
+  <div class="title"></div>
+  <div class="snippet">
+    {{format-markdown "```handlebars
+{{frost-sort
+sortableProperties=tableSortList
+on-change=(action 'sortRecords')
+sortParams=sortOrder}}
+```"
+    }}
+  </div>
+  <div class="demo">
+    {{frost-sort
+      sortableProperties=tableSortList
+      on-change=(action 'sortRecords')
+      sortParams=sortOrder}}
+  </div>
+</div>
