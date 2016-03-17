@@ -5,6 +5,12 @@ import _ from 'lodash/lodash'
 export default Ember.Component.extend({
   layout: layout,
   classNames: ['frost-sort'],
+  isRemoveVisible: Ember.computed('filterArray.[]', function () {
+    return this.get('filterArray').length !== 0
+  }),
+  initialValue: Ember.computed(function () {
+
+  }),
   unselected: Ember.computed('filterArray.@each.value', function () {
     if (Ember.isEmpty(this.get('filterArray'))) {
       return this.get('sortableProperties')

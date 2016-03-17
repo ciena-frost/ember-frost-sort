@@ -1,21 +1,31 @@
 <div class="title">Sort by: </div>
 {{#each filterArray as |object|}}
-	{{frost-sort-item sortId=object.id
-		availableOptions=unselected
-		allOptions=sortableProperties
-		sort-change=(action 'sortArrayChange')
-		initVal=object.value
-		initDirection=object.direction}}
+  {{frost-sort-item sortId=object.id
+    availableOptions=unselected
+    allOptions=sortableProperties
+    sort-change=(action 'sortArrayChange')
+    initVal=object.value
+    initDirection=object.direction}}
 {{/each}}
 
+{{#if isRemoveVisible}}
+  <div>
+    {{#frost-button
+      class='remove-button'
+      on-click=(action "removeFilter")
+      priority="none"
+      size='none'}}
+      {{frost-icon icon='frost/close'}}
+    {{/frost-button}}
+  </div>
+{{/if}}
+
 <div class="{{hideClass}}">
-	{{#frost-button on-click=(action "addFilter") class="icon small tertiary"}}
-		{{frost-icon icon='frost/round-add'}}
-	{{/frost-button}}
+  {{frost-button
+  icon='frost/round-add'
+  on-click=(action "addFilter")
+  size='small'
+  priority='tertiary' text='Add'}}
 </div>
 
-<div>
-	{{#frost-button on-click=(action "removeFilter") class="icon small tertiary"}}
-		{{frost-icon icon='frost/round-remove'}}
-	{{/frost-button}}
-</div>
+

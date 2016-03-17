@@ -8,22 +8,30 @@
   min-height: 50px;
 
   .title {
-	margin: 0 5px;
-	padding: 0 10px;
-	font-size: $frost-font-xs;
-	font-weight: 500;
-	color: $frost-color-grey-5;
+    margin: 0 5px;
+    padding: 0 10px;
+    font-size: $frost-font-s;
+    color: $frost-color-grey-4;
   }
   .button-hide {
-	display: none;
+    display: none;
+  }
+
+  .remove-button {
+    fill: $frost-color-lgrey-1;
+    stroke: $frost-color-lgrey-1;
+    svg {
+      height: 25px;
+      width: 25px;
+    }
   }
 }
 
 .frost-sort-item {
   display: flex;
   flex-direction: row;
-  padding:0 10px;
-  border-right: 1px solid  $frost-color-grey-6;
+  padding: 0 10px;
+  border-right: 1px solid $frost-color-lgrey-1;
   .desc {
     transform: rotate(180deg);
   }

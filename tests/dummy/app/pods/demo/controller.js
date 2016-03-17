@@ -33,7 +33,6 @@ export default Ember.Controller.extend({
         })
       })
       this.set('sortOrder', temp)
-      console.log(this.get('sortOrder'))
       let message = sortItems.reduce(function (message, sortItem) {
         if (message === '') {
           return sortItem.get('value') + sortItem.get('direction')
