@@ -1,5 +1,9 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
 
+.dummy-body{
+  margin-left: 20px;
+}
+
 .dummy-notification-container {
   position: fixed;
   top: 60px;
