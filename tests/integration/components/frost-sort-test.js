@@ -1,26 +1,48 @@
 import {expect} from 'chai'
 import {describeComponent, it} from 'ember-mocha'
 import hbs from 'htmlbars-inline-precompile'
+import { beforeEach } from 'mocha'
+import sinon from 'sinon'
+
+const testTemplate = hbs`{{frost-sort
+  sortableProperties=data
+  sortParams=sortOrder
+  onChange=onChange}}`
 
 describeComponent(
   'frost-sort',
-  'Integration: EmberFrostSortComponent',
+  'Integration: FrostSortComponent',
   {
     integration: true
   },
-  function () {
-    it('renders', function () {
-      // Set any properties with this.set('myProperty', 'value')
-      // Handle any actions with this.on('myAction', function (val) { ... })
-      // Template block usage:
-      // this.render(hbs`
-      //   {{#frost-sort}}
-      //     template content
-      //   {{/frost-sort}}
-      // `)
 
-      this.render(hbs`{{frost-sort sortableProperties=''}}`)
-      expect(this.$()).to.have.length(1)
+  function () {
+    let props
+    beforeEach(function () {
+      props = {
+        onChange: sinon.spy(),
+        sortOrder: [],
+        data: [
+          {
+            value: 'name',
+            label: 'Name'
+          },
+          {
+            value: 'startTime',
+            label: 'Time'
+          },
+          {
+            value: 'version',
+            label: 'Version'
+          }
+        ]
+      }
+      this.setProperties(props)
+      this.render(testTemplate)
+    })
+
+    it('renders', function () {
+      expect(this.$('.frost-sort')).to.have.length(1)
     })
   }
 )

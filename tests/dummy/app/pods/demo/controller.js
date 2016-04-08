@@ -1,6 +1,8 @@
 import Ember from 'ember'
 
-export default Ember.Controller.extend({
+const {Controller} = Ember
+
+export default Controller.extend({
 
   tableSortList: [
     {
@@ -16,8 +18,8 @@ export default Ember.Controller.extend({
       label: 'Version'
     },
     {
-      value: 'Checkbox',
-      label: 'Checkbox'
+      value: 'Time',
+      label: 'Time'
     }
   ],
   queryParams: ['sortOrder'],

@@ -3,16 +3,18 @@ import computed from 'ember-computed-decorators'
 import layout from '../templates/components/frost-sort'
 import _ from 'lodash/lodash'
 
-export default Ember.Component.extend({
+const {Component, A, isEmpty} = Ember
+
+export default Component.extend({
   layout: layout,
   classNames: ['frost-sort'],
 
   @computed
   filterArray () {
     if (_.isEmpty(this.get('sortParams'))) {
-      return Ember.A()
+      return A()
     } else {
-      let tempFilterArray = Ember.A()
+      let tempFilterArray = A()
       this.get('sortParams').map(function (param) {
         tempFilterArray.addObject(Ember.Object.create({
           id: tempFilterArray.length + 1,
@@ -26,7 +28,7 @@ export default Ember.Component.extend({
 
   @computed
   hideClass () {
-     return _.isEqual(this.get('filterArray').length,
+    return _.isEqual(this.get('filterArray').length,
       this.get('sortableProperties').length) ? 'button-hide' : ''
   },
 
@@ -37,7 +39,7 @@ export default Ember.Component.extend({
 
   @computed('filterArray.@each.value')
   unselected (filterArray) {
-    if (Ember.isEmpty(filterArray)) {
+    if (isEmpty(filterArray)) {
       return this.get('sortableProperties')
     }
 
@@ -52,7 +54,7 @@ export default Ember.Component.extend({
       if (this.get('filterArray').length >= (this.get('sortableProperties').length) - 1) {
         this.set('hideClass', 'button-hide')
       }
-      let filter = this.get('filterArray').addObject(Ember.Object.create({
+      this.get('filterArray').addObject(Ember.Object.create({
         id: this.get('filterArray').length + 1,
         value: '',
         direction: ':asc'
@@ -61,7 +63,7 @@ export default Ember.Component.extend({
 
     removeFilter () {
       this.get('filterArray').popObject()
-      this.get('on-change')(this.get('filterArray'))
+      this.get('onChange')(this.get('filterArray'))
       if (this.get('filterArray').length < this.get('sortableProperties').length) {
         this.set('hideClass', '')
       }
@@ -72,7 +74,7 @@ export default Ember.Component.extend({
         value: attrs.value,
         direction: attrs.direction
       })
-      this.get('on-change')(this.get('filterArray'))
+      this.get('onChange')(this.get('filterArray'))
     }
   }
 })

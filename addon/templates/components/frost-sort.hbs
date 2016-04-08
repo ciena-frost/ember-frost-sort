@@ -3,27 +3,25 @@
   {{frost-sort-item sortId=object.id
     availableOptions=unselected
     allOptions=sortableProperties
-    sort-change=(action 'sortArrayChange')
+    sortChange=(action 'sortArrayChange')
     initVal=object.value
     initDirection=object.direction}}
 {{/each}}
 
 {{#if isRemoveVisible}}
-  <div>
-    {{#frost-button
-      class='remove-button'
-      on-click=(action "removeFilter")
-      priority="none"
-      size='none'}}
-      {{frost-icon icon='frost/close'}}
-    {{/frost-button}}
-  </div>
+  {{#frost-button
+    class='remove-button'
+    onClick=(action "removeFilter")
+    priority=''
+    size='small'}}
+    {{frost-icon icon='frost/close-circle'}}
+  {{/frost-button}}
 {{/if}}
 
 <div class="{{hideClass}}">
   {{frost-button
   icon='frost/round-add'
-  on-click=(action "addFilter")
+  onClick=(action "addFilter")
   size='small'
   priority='tertiary'
   text='Add'}}
