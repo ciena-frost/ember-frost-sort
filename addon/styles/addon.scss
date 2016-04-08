@@ -1,37 +1,48 @@
-@import 'node_modules/ember-frost-theme/scss/frost-theme';
+@import 'node_modules/ember-frost-core/addon/styles/frost-theme';
+@import 'node_modules/ember-frost-core/addon/styles/frost-app';
 
 .frost-sort {
   display: flex;
   flex-direction: row;
   align-items: center;
-
   min-height: 50px;
 
+  .frost-button.small .frost-icon {
+    width: 15px;
+    height: 15px;
+  }
+
   .title {
-	margin: 0 5px;
-	padding: 0 10px;
-	font-size: $frost-font-xs;
-	font-weight: 500;
-	color: $frost-color-grey-5;
+    margin: 0 5px;
+    padding: 0 10px;
+    font-size: $frost-font-s;
+    color: $frost-color-grey-4;
   }
   .button-hide {
-	display: none;
+    display: none;
+  }
+
+  .remove-button {
+    fill: $frost-color-lgrey-1;
+    stroke: $frost-color-lgrey-1;
   }
 }
 
 .frost-sort-item {
   display: flex;
   flex-direction: row;
-  padding:0 10px;
-  border-right: 1px solid  $frost-color-grey-6;
+  align-items: center;
+  border-right: 1px solid $frost-color-lgrey-1;
+
+  .frost-select {
+    width: 30px;
+  }
+
   .desc {
     transform: rotate(180deg);
   }
   .animate {
     transition: transform 0.2s ease;
   }
-  .svg-icon {
-    height: 20px;
-    width: 20px;
-  }
+
 }

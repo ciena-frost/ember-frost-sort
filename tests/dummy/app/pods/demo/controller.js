@@ -1,6 +1,8 @@
 import Ember from 'ember'
 
-export default Ember.Controller.extend({
+const {Controller} = Ember
+
+export default Controller.extend({
 
   tableSortList: [
     {
@@ -16,8 +18,8 @@ export default Ember.Controller.extend({
       label: 'Version'
     },
     {
-      value: 'Checkbox',
-      label: 'Checkbox'
+      value: 'Time',
+      label: 'Time'
     }
   ],
   queryParams: ['sortOrder'],
@@ -33,19 +35,20 @@ export default Ember.Controller.extend({
         })
       })
       this.set('sortOrder', temp)
-      console.log(this.get('sortOrder'))
-      let message = sortItems.reduce(function (message, sortItem) {
-        if (message === '') {
-          return sortItem.get('value') + sortItem.get('direction')
-        }
-        return message + ', ' + sortItem.get('value') + sortItem.get('direction')
-      }, '')
-      this.notifications.addNotification({
-        message: message,
-        type: 'success',
-        autoClear: true,
-        clearDuration: 2000
-      })
+      if (sortItems.length > 0) {
+        let message = sortItems.reduce(function (message, sortItem) {
+          if (message === '') {
+            return sortItem.get('value') + sortItem.get('direction')
+          }
+          return message + ', ' + sortItem.get('value') + sortItem.get('direction')
+        }, '')
+        this.notifications.addNotification({
+          message: message,
+          type: 'success',
+          autoClear: true,
+          clearDuration: 2000
+        })
+      }
     }
   }
 })

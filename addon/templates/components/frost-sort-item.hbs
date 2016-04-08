@@ -1,7 +1,15 @@
-{{frost-select id=sortId data=sortItemList on-change=(action 'select') selectedValue=selectedItem}}
-
-{{#frost-button on-click=(action 'rotate' sortId) class='icon small tertiary' }}
-	<div class='svg-icon animate {{if (eq direction 'desc') 'desc'}}'>
-		{{frost-icon icon='frost/sort-direction'}}
-	</div>
+{{frost-select
+  id=sortId
+  data=sortItemList
+  onChange=(action 'select')
+  selectedValue=selectedItem}}
+{{#frost-button
+  class='direction-button'
+  onClick=(action 'rotate' sortId)
+  size='small'
+  priority='tertiary'
+  }}
+  <div class="animate {{if (eq direction 'desc') 'desc'}}">
+    {{frost-icon icon='frost/sort-direction'}}
+  </div>
 {{/frost-button}}

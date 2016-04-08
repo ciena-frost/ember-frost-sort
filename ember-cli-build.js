@@ -8,17 +8,11 @@ module.exports = function (defaults) {
     },
     'ember-cli-mocha': {
       useLintTree: false
-    },
-    sassOptions: {
-      includePaths: [
-        'node_modules/ember-frost-css-core/scss',
-        'node_modules/ember-frost-theme/scss'
-      ]
     }
   })
 
   app.import('bower_components/sinonjs/sinon.js')
-
+  app.import('bower_components/highlightjs/styles/github.css')
   /*
     This build file specifes the options for the dummy test app of this
     addon, located in `/tests/dummy`

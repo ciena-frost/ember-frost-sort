@@ -4,18 +4,18 @@
 [cov-img]: https://img.shields.io/coveralls/ciena-frost/ember-frost-sort.svg "Coveralls Code Coverage"
 [cov-url]: https://coveralls.io/github/ciena-frost/ember-frost-sort
 
-[npm-img]: https://img.shields.io/npm/v/ember-frost-sort.svg "NPM Version"
+[npm-img]: https://img.shields.io/npm/v/ember-frost-sort.svg "Version"
 [npm-url]: https://www.npmjs.com/package/ember-frost-sort
 
 [![Travis][ci-img]][ci-url] [![Coveralls][cov-img]][cov-url] [![NPM][npm-img]][npm-url]
 
 # ember-frost-sort
-the drop-down select widget to rule them all
+A sorting component to sort collections
 
- * [Installation](#Installation)
- * [API](#API)
- * [Examples](#Examples)
- * [Contributing](#Contributing)
+ * [Installation](#installation)
+ * [API](#api)
+ * [Examples](#examples)
+ * [Contributing](#development)
 
 ## Installation
 ```
@@ -27,11 +27,11 @@ ember install ember-frost-sort
 | --------- | ---- | ----- | ----------- |
 | `sortableProperties` | `array` | `[{"label: "foo", "value": "bar"}]` | Array of sortable attributes. |
 | `sortParams` | `array` | `[{"direction: "asc/desc", "value": <attr-name>}]` |  Array that specifies the sort order. |
-| `on-change` | `string` | `<action-name>` | The action to call when the value of the select item changes. |
+| `onChange` | `string` | `<action-name>` | The action to call when the value of the select item changes. |
 
 ## Examples
 ```handlebars
-{{frost-sort sortableProperties=sortAttributes on-change=(action 'sort') sortParams=sortOrder}}
+{{frost-sort sortableProperties=sortAttributes onChange=(action 'sort') sortParams=sortOrder}}
 ```
 
 ## Development
