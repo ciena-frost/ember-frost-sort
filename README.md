@@ -10,7 +10,7 @@
 [![Travis][ci-img]][ci-url] [![Coveralls][cov-img]][cov-url] [![NPM][npm-img]][npm-url]
 
 # ember-frost-sort
-The drop-down select widget to rule them all
+A sorting component to sort collections
 
  * [Installation](#installation)
  * [API](#api)
