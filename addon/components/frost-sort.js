@@ -15,9 +15,9 @@ export default Component.extend({
       return A()
     } else {
       let tempFilterArray = A()
-      this.get('sortParams').map(function (param) {
+      this.get('sortParams').map((param) => {
         tempFilterArray.addObject(Ember.Object.create({
-          id: tempFilterArray.length + 1,
+          id: `${this.get('elementId')}_${tempFilterArray.length + 1}`,
           value: param.value,
           direction: param.direction
         }))
