@@ -22,12 +22,14 @@
     "Steven Glanzer (https://github.com/sglanzer)",
     "Roxanne Panthaky https://github.com/rox163)",
     "Quincy Le (https://github.com/quincyle)",
-    "Gosia Hyndman (https://github.com/vesper2000)"
+    "Gosia Hyndman (https://github.com/vesper2000)",
+    "Matthew Dahl (https://github.com/sandersky)"
   ],
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
     "ember-ajax": "0.7.1",
+    "ember-browserify": "^1.1.9",
     "ember-cli": "~2.3.0",
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-blanket": "0.9.1",
@@ -45,9 +47,10 @@
     "ember-data": "~2.3.0",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
-    "ember-frost-core": ">=0.0.14 <2.0.0",
+    "ember-frost-core": ">=0.8.0 <2.0.0",
     "ember-load-initializers": "^0.5.0",
-    "ember-lodash": "~0.0.6",
+    "ember-lodash": "0.0.7",
+    "ember-one-way-controls": "^0.8.2",
     "ember-resolver": "^2.0.3",
     "ember-sinon": "0.5.0",
     "ember-truth-helpers": "^1.2.0",
@@ -55,7 +58,8 @@
     "eslint": "^2.10.2",
     "eslint-config-frost-standard": "^2.0.0",
     "loader.js": "^4.0.0",
-    "markdown-code-highlighting": "0.0.6"
+    "markdown-code-highlighting": "0.0.6",
+    "svg4everybody": "^2.0.3"
   },
   "keywords": [
     "ember-addon",
