@@ -1,10 +1,10 @@
 import Ember from 'ember'
 
-const {A, Controller} = Ember
+const {Controller} = Ember
 
 export default Controller.extend({
 
-  tableSortList: A([
+  tableSortList: [
     {
       value: 'Name',
       label: 'Name'
@@ -21,7 +21,7 @@ export default Controller.extend({
       value: 'Time',
       label: 'Time'
     }
-  ]),
+  ],
   queryParams: ['sortOrder'],
   sortOrder: [],
 
