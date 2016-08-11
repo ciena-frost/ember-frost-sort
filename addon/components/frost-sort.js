@@ -11,6 +11,7 @@ export default Component.extend(PropTypeMixin, {
   classNames: ['frost-sort'],
 
   propTypes: {
+    hook: PropTypes.string,
     sortParams: PropTypes.array,
     sortableProperties: PropTypes.array
   },

@@ -4,6 +4,7 @@
     <div class="example">
       <div class="demo">
         {{frost-sort
+          hook='my-sort'
           sortableProperties=tableSortList
           onChange=(action 'sortRecords')
           sortParams=sortOrder
@@ -12,6 +13,7 @@
       <div class="snippet">
         {{format-markdown "```handlebars
 {{frost-sort
+hook='my-sort'
 sortableProperties=tableSortList
 onChange=(action 'sortRecords')
 sortParams=sortOrder}}

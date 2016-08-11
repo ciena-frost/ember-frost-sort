@@ -1,10 +1,12 @@
 {{frost-select
   id=sortId
   data=sortItemList
+  hook=(concat hook '-select')
   onChange=(action 'select')
   selectedValue=selectedItem}}
 {{#frost-button
   class='direction-button'
+  hook=(concat hook '-direction')
   onClick=(action 'rotate' sortId)
   size='small'
   priority='tertiary'
