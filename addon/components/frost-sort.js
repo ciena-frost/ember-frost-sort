@@ -1,13 +1,23 @@
 import Ember from 'ember'
 import computed from 'ember-computed-decorators'
+import PropTypeMixin, {PropTypes} from 'ember-prop-types'
 import layout from '../templates/components/frost-sort'
 import _ from 'lodash/lodash'
 
 const {Component, A, isEmpty} = Ember
 
-export default Component.extend({
+export default Component.extend(PropTypeMixin, {
   layout: layout,
   classNames: ['frost-sort'],
+
+  propTypes: {
+    sortParams: PropTypes.array,
+    sortableProperties: PropTypes.array
+  },
+
+  getDefaultProps () {
+    return {}
+  },
 
   @computed
   filterArray () {
