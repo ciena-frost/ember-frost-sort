@@ -25,7 +25,7 @@ describeComponent(
     beforeEach(function () {
       initialize()
       props = {
-        hook: 'my-sort',
+        hook: 'my-component-sort',
         onChange: sinon.spy(),
         sortOrder: [],
         data: [
@@ -52,23 +52,37 @@ describeComponent(
     })
 
     it('has hooks for the sort and adding filters', function () {
-      expect($hook('my-sort').hasClass('frost-sort')).to.be.true
+      expect($hook('my-component-sort').hasClass('frost-sort')).to.be.true
 
-      expect($hook('my-sort-add-filter')).to.have.length(1)
+      expect($hook('my-component-sort-add')).to.have.length(1)
     })
 
     it('has hooks for add/remove filters and sort direction', function () {
       run(() => {
-        $hook('my-sort-add-filter').click()
+        $hook('my-component-sort-add').click()
       })
 
-      expect($hook('my-sort-filter-0')).to.have.length(1)
+      expect($hook('my-component-sort-0')).to.have.length(1)
 
-      expect($hook('my-sort-remove-filter')).to.have.length(1)
+      expect($hook('my-component-sort-remove')).to.have.length(1)
 
-      expect($hook('my-sort-filter-0-select')).to.have.length(1)
+      expect($hook('my-component-sort-0-select')).to.have.length(1)
 
-      expect($hook('my-sort-filter-0-direction')).to.have.length(1)
+      expect($hook('my-component-sort-0-direction')).to.have.length(1)
+    })
+
+    it('has a default hook name', function () {
+      this.render(hbs`
+        {{frost-sort
+          sortableProperties=data
+          sortParams=sortOrder
+          onChange=onChange
+        }}`
+      )
+
+      expect($hook('sort').hasClass('frost-sort')).to.be.true
+
+      expect($hook('sort-add')).to.have.length(1)
     })
   }
 )

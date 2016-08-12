@@ -17,7 +17,9 @@ export default Component.extend(PropTypeMixin, {
   },
 
   getDefaultProps () {
-    return {}
+    return {
+      hook: 'sort'
+    }
   },
 
   @computed
