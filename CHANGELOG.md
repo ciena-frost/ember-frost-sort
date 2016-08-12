@@ -1,3 +1,17 @@
+# 2.3.1
+
+* **Added** a default hook name for the sort component
+* **Added** a test to validate the new default hook name in the sort component
+* **Updated** the hook names by removing the word filter
+* **Updated** the tests to reflect the modified hook names
+* **Updated** README to explain usage of the hooks for the sort component
+
+<!-- Reviewable:start -->
+---
+This change is [<img src="https://reviewable.io/review_button.svg" height="34" align="absmiddle" alt="Reviewable"/>](https://reviewable.io/reviews/ciena-frost/ember-frost-sort/23)
+<!-- Reviewable:end -->
+
+
 # 2.3.0
 
 * **Added** `ember-hook` and implemented hooks in sort component
