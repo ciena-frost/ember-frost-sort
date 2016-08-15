@@ -1,3 +1,14 @@
+# 2.3.2
+
+* **Updated** `ember-hook` dependency and blueprint to latest version
+* **Removed** unneeded configuration object for `ember-hook` since it will now work correctly in the development environment.
+
+<!-- Reviewable:start -->
+---
+This change is [<img src="https://reviewable.io/review_button.svg" height="34" align="absmiddle" alt="Reviewable"/>](https://reviewable.io/reviews/ciena-frost/ember-frost-sort/25)
+<!-- Reviewable:end -->
+
+
 # 2.3.1
 
 * **Added** a default hook name for the sort component
