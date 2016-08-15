@@ -12,7 +12,7 @@ module.exports = {
     return this.addAddonsToProject({
       packages: [
         {name: 'ember-frost-core', target: '>=0.8.0 <2.0.0'},
-        {name: 'ember-hook', target: '1.2.1'}
+        {name: 'ember-hook', target: '1.3.1'}
       ]
     })
   }
