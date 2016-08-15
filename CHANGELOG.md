@@ -6,30 +6,17 @@
 * **Updated** the tests to reflect the modified hook names
 * **Updated** README to explain usage of the hooks for the sort component
 
-<!-- Reviewable:start -->
----
-This change is [<img src="https://reviewable.io/review_button.svg" height="34" align="absmiddle" alt="Reviewable"/>](https://reviewable.io/reviews/ciena-frost/ember-frost-sort/23)
-<!-- Reviewable:end -->
-
-
 # 2.3.0
 
 * **Added** `ember-hook` and implemented hooks in sort component
 * **Added** tests to validate the new hooks in the sort component
 * **Updated** README to explain usage of the new hooks for the sort component
 
-<!-- Reviewable:start -->
----
-This change is [<img src="https://reviewable.io/review_button.svg" height="34" align="absmiddle" alt="Reviewable"/>](https://reviewable.io/reviews/ciena-frost/ember-frost-sort/22)
-<!-- Reviewable:end -->
-
-
 # 2.2.0
 
 * **Added** `ember-prop-types`.
 * Upgraded to 2.6.0 Ember, Ember CLI, and Ember Data.
 * Upgrade dependencies.
-
 
 # 2.1.2
 No CHANGELOG section found in Pull Request description.
