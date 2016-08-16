@@ -1,3 +1,7 @@
+# 2.3.3
+
+* Updated to latest version of `liquid-fire`.
+
 # 2.3.2
 
 * **Updated** `ember-hook` dependency and blueprint to latest version
