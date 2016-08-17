@@ -10,6 +10,7 @@
   .frost-button.small .frost-icon {
     width: 15px;
     height: 15px;
+    color: $frost-color-grey-5;
   }
 
   .title {
@@ -33,6 +34,7 @@
   flex-direction: row;
   align-items: center;
   border-right: 1px solid $frost-color-lgrey-1;
+  padding: 0 5px 0 15px;
 
   .frost-select {
     width: 30px;

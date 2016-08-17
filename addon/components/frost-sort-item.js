@@ -7,7 +7,6 @@ const {Component, isEmpty} = Ember
 
 export default Component.extend({
   layout: layout,
-  classNames: ['frost-sort-item'],
 
   @computed
   direction () {
