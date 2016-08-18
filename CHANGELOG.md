@@ -1,3 +1,12 @@
+# 2.4.0
+
+* Added a remove button for each sort item
+* Minor style changes to match [UX guidelines](https://confluence.ciena.com/pages/viewpage.action?pageId=175019564)
+
+![sort](https://cloud.githubusercontent.com/assets/8530858/17753369/6799d558-6484-11e6-900f-b22635a39461.png)
+
+
+
 # 2.3.3
 
 * Updated to latest version of `liquid-fire`.
