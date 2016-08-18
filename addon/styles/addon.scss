@@ -18,6 +18,8 @@
     padding: 0 10px;
     font-size: $frost-font-s;
     color: $frost-color-grey-4;
+    height: 100%;
+    white-space: nowrap;
   }
   .button-hide {
     display: none;
@@ -35,6 +37,7 @@
   align-items: center;
   border-right: 1px solid $frost-color-lgrey-1;
   padding: 0 5px 0 15px;
+  flex-shrink: 0;
 
   .frost-select {
     width: 30px;
@@ -46,5 +49,10 @@
   .animate {
     transition: transform 0.2s ease;
   }
+}
 
+.frost-sort-items {
+  display:flex;
+  flex-direction:row;
+  flex-wrap: wrap;
 }
