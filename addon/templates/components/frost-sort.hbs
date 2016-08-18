@@ -2,7 +2,7 @@
 {{#each filterArray as |object index|}}
   {{frost-sort-item sortId=object.id
     availableOptions=unselected
-    allOptions=sortableProperties
+    allOptions=properties
     hook=(concat hook '-' index)
     sortChange=(action 'sortArrayChange')
     initVal=object.value
