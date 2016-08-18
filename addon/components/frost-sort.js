@@ -34,6 +34,16 @@ export default Component.extend(PropTypeMixin, {
         }
       )
     }
+    Ember.run.schedule('afterRender', this, function () {
+      if (_.isEmpty(this.get('sortOrder'))) {
+        this.send('addFilter')
+        this.send('sortArrayChange', {
+          id: 1,
+          direction: ':asc',
+          value: this.get('properties')[0].value
+        })
+      }
+    })
   },
 
   propTypes: {
