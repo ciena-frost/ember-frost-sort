@@ -114,8 +114,9 @@ export default Component.extend(PropTypeMixin, {
       }))
     },
 
-    removeFilter () {
-      this.get('filterArray').popObject()
+    removeFilter (sortItemId) {
+      const newFilter = this.get('filterArray').filter(object => object.id !== sortItemId)
+      this.set('filterArray', newFilter)
       this.get('onChange')(this.get('filterArray'))
       if (this.get('filterArray').length < this.get('properties').length) {
         this.set('hideClass', '')

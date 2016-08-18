@@ -1,5 +1,6 @@
 <div class="title">Sort by: </div>
 {{#each filterArray as |object index|}}
+  <div class="frost-sort-item">
   {{frost-sort-item sortId=object.id
     availableOptions=unselected
     allOptions=properties
@@ -7,18 +8,16 @@
     sortChange=(action 'sortArrayChange')
     initVal=object.value
     initDirection=object.direction}}
-{{/each}}
-
-{{#if isRemoveVisible}}
   {{#frost-button
     class='remove-button'
-    hook=(concat hook '-remove')
-    onClick=(action "removeFilter")
+    hook=(concat hook '-remove' '-' index)
+    onClick=(action "removeFilter" object.id)
     priority=''
     size='small'}}
     {{frost-icon icon='close-circle'}}
   {{/frost-button}}
-{{/if}}
+  </div>
+{{/each}}
 
 <div class="{{hideClass}}">
   {{frost-button
