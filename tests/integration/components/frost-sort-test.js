@@ -4,8 +4,16 @@ import {expect} from 'chai'
 import {$hook, initialize} from 'ember-hook'
 import {describeComponent, it} from 'ember-mocha'
 import hbs from 'htmlbars-inline-precompile'
-import { beforeEach } from 'mocha'
+import {describe, beforeEach} from 'mocha'
 import sinon from 'sinon'
+
+/* Fill in sort item given index and value
+* @param {Number} index - the index of the sort field
+* @param {String} value - the name of the field
+*/
+function fillInSortItem (index, value) {
+  $hook(`my-component-sort-${index}-select`).val(value)
+}
 
 const testTemplate = hbs`{{frost-sort
   hook=hook
@@ -64,7 +72,7 @@ describeComponent(
 
       expect($hook('my-component-sort-0')).to.have.length(1)
 
-      expect($hook('my-component-sort-remove')).to.have.length(1)
+      expect($hook('my-component-sort-remove-0')).to.have.length(1)
 
       expect($hook('my-component-sort-0-select')).to.have.length(1)
 
@@ -83,6 +91,53 @@ describeComponent(
       expect($hook('sort').hasClass('frost-sort')).to.be.true
 
       expect($hook('sort-add')).to.have.length(1)
+    })
+
+    describe('When clicking remove button for third field', function () {
+      beforeEach(function () {
+        run(() => {
+          $hook('my-component-sort-add').click()
+          $hook('my-component-sort-add').click()
+          $hook('my-component-sort-add').click()
+          $hook('my-component-sort-add').click()
+        })
+        fillInSortItem(0, 'Name')
+        fillInSortItem(1, 'Time')
+        fillInSortItem(2, 'Version')
+        fillInSortItem(3, 'Severity')
+        run(() => {
+          $hook('my-component-sort-remove-2').click()
+        })
+      })
+
+      it('should remove only that field', function () {
+        expect(($hook('my-component-sort-0-select').val())).to.eql('Name')
+        expect(($hook('my-component-sort-1-select').val())).to.eql('Time')
+        expect(($hook('my-component-sort-2-select').val())).to.eql('Severity')
+      })
+
+      describe('When clicking remove button for last field', function () {
+        beforeEach(function () {
+          run(() => {
+            $hook('my-component-sort-remove-2').click()
+          })
+        })
+        it('should remove only that field', function () {
+          expect(($hook('my-component-sort-0-select').val())).to.eql('Name')
+          expect(($hook('my-component-sort-1-select').val())).to.eql('Time')
+        })
+
+        describe('When clicking remove button for first field', function () {
+          beforeEach(function () {
+            run(() => {
+              $hook('my-component-sort-remove-0').click()
+            })
+          })
+          it('should remove only that field', function () {
+            expect(($hook('my-component-sort-0-select').val())).to.eql('Time')
+          })
+        })
+      })
     })
   }
 )

@@ -33,7 +33,7 @@ ember install ember-frost-sort
 The sort component is accessible using ember-hook with the top level hook name or you can access the internal components as well -
 * Default top level hook - `$hook('sort')`
 * Add sort button hook - `$hook('<hook-name>-add')`
-* Remove sort button hook - `$hook('<hook-name>-remove')`
+* Remove sort button hook - `$hook('<hook-name>-remove-<index>')`
 * For each sort - `$hook('<hook-name>-<index>')'`
 * Sort direction for each filter - `$hook('<hook-name>-<index>-direction')'`
 * Each sort's select element - `$hook('<hook-name>-<index>-select')'`
