@@ -72,7 +72,7 @@ describeComponent(
       run(() => {
         $hook('my-component-sort-add').click()
       })
-      expect($hook('my-component-sort-remove-0')).to.have.length(1)
+      expect($hook('my-component-sort-0-remove')).to.have.length(1)
     })
 
     it('has a default hook name', function () {
@@ -102,7 +102,7 @@ describeComponent(
         fillInSortItem(2, 'Version')
         fillInSortItem(3, 'Severity')
         run(() => {
-          $hook('my-component-sort-remove-2').click()
+          $hook('my-component-sort-2-remove').click()
         })
       })
 
@@ -115,7 +115,7 @@ describeComponent(
       describe('When clicking remove button for last field', function () {
         beforeEach(function () {
           run(() => {
-            $hook('my-component-sort-remove-2').click()
+            $hook('my-component-sort-2-remove').click()
           })
         })
         it('should remove only that field', function () {
@@ -126,7 +126,7 @@ describeComponent(
         describe('When clicking remove button for first field', function () {
           beforeEach(function () {
             run(() => {
-              $hook('my-component-sort-remove-0').click()
+              $hook('my-component-sort-0-remove').click()
             })
           })
           it('should remove only that field', function () {

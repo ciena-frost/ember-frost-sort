@@ -52,6 +52,9 @@ export default Component.extend({
       }
       attrs['direction'] = ':' + this.get('direction')
       this.get('sortChange')(attrs)
+    },
+    removeItem (id) {
+      this.get('remove')(id)
     }
   }
 })
