@@ -54,11 +54,11 @@
   .animate {
     transition: transform 0.2s ease;
   }
-}
 
-.frost-sort-container {
-  display:flex;
-  flex-direction:row;
-  flex-wrap: wrap;
-  align-items: center;
+  .frost-sort-container {
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 }
