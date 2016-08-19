@@ -116,6 +116,24 @@ describeComponent(
         expect(($hook('my-component-sort-2-select').val())).to.eql('Severity')
       })
 
+      describe('When adding a fourth field back and then clicking its remove button', function () {
+        beforeEach(function () {
+          run(() => {
+            $hook('my-component-sort-add').click()
+          })
+          fillInSortItem(3, 'Version')
+          run(() => {
+            $hook('my-component-sort-remove-3').click()
+          })
+        })
+
+        it('should remove only that field', function () {
+          expect(($hook('my-component-sort-0-select').val())).to.eql('Name')
+          expect(($hook('my-component-sort-1-select').val())).to.eql('Time')
+          expect(($hook('my-component-sort-2-select').val())).to.eql('Severity')
+        })
+      })
+
       describe('When clicking remove button for last field', function () {
         beforeEach(function () {
           run(() => {

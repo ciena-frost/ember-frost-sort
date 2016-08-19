@@ -1,10 +1,10 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
 @import 'node_modules/ember-frost-core/addon/styles/frost-app';
-
 .frost-sort {
   display: flex;
   flex-direction: row;
   align-items: center;
+  align-content:flex-start;
   min-height: 50px;
 
   .frost-button.small .frost-icon {
@@ -39,6 +39,11 @@
   padding: 0 5px 0 15px;
   flex-shrink: 0;
 
+  > div {
+    display: inline-flex;
+    flex-shrink: 0;
+  }
+
   .frost-select {
     width: 30px;
   }
@@ -51,8 +56,9 @@
   }
 }
 
-.frost-sort-items {
+.frost-sort-container {
   display:flex;
   flex-direction:row;
   flex-wrap: wrap;
+  align-items: center;
 }
