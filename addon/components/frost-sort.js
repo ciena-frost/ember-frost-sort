@@ -9,6 +9,7 @@ const {Component, A, isEmpty} = Ember
 export default Component.extend(PropTypeMixin, {
   layout: layout,
   classNames: ['frost-sort'],
+  nextId: 0,
 
   propTypes: {
     hook: PropTypes.string,
@@ -64,14 +65,16 @@ export default Component.extend(PropTypeMixin, {
 
   actions: {
     addFilter () {
+      const id = this.get('nextId')
       if (this.get('filterArray').length >= (this.get('sortableProperties').length) - 1) {
         this.set('hideClass', 'button-hide')
       }
       this.get('filterArray').addObject(Ember.Object.create({
-        id: this.get('filterArray').length + 1,
+        id: id,
         value: '',
         direction: ':asc'
       }))
+      this.set('nextId', id + 1)
     },
 
     removeFilter (sortItemId) {

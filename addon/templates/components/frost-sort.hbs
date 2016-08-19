@@ -1,4 +1,5 @@
 <div class="title">Sort by: </div>
+<div class="frost-sort-container">
 {{#each filterArray as |object index|}}
   <div class="frost-sort-item">
   {{frost-sort-item sortId=object.id
@@ -18,6 +19,7 @@
   {{/frost-button}}
   </div>
 {{/each}}
+</div>
 
 <div class="{{hideClass}}">
   {{frost-button
