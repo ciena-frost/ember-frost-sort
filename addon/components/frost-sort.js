@@ -62,6 +62,16 @@ export default Component.extend(PropTypeMixin, {
 
   @oneWay('sortableProperties') properties,
 
+  @computed('filterArray.@each.value')
+  hideRemoveButton (filterArray) {
+    return (filterArray.length > 1)
+  },
+  @computed('filterArray.@each.value')
+  hideAddButton (filterArray) {
+    return !_.isEqual(this.get('filterArray').length,
+    this.get('properties').length)
+  },
+
   @computed
   filterArray () {
     if (_.isEmpty(this.get('sortOrder'))) {
@@ -77,12 +87,6 @@ export default Component.extend(PropTypeMixin, {
       })
       return tempFilterArray
     }
-  },
-
-  @computed
-  hideClass () {
-    return _.isEqual(this.get('filterArray').length,
-      this.get('properties').length) ? 'button-hide' : ''
   },
 
   @computed('filterArray.[]')
@@ -115,11 +119,17 @@ export default Component.extend(PropTypeMixin, {
     },
 
     removeFilter (sortItemId) {
-      const newFilter = this.get('filterArray').filter(object => object.id !== sortItemId)
-      this.set('filterArray', newFilter)
-      this.get('onChange')(this.get('filterArray'))
-      if (this.get('filterArray').length < this.get('properties').length) {
-        this.set('hideClass', '')
+      if (this.get('filterArray').length > 1) {
+        const newFilter = this.get('filterArray').filter(object => object.id !== sortItemId)
+        newFilter.map((item, index) => {
+          Ember.set(item, 'id', index)
+          return item
+        })
+        this.set('filterArray', newFilter)
+        this.get('onChange')(this.get('filterArray'))
+        if (this.get('filterArray').length < this.get('properties').length) {
+          this.set('hideClass', '')
+        }
       }
     },
 

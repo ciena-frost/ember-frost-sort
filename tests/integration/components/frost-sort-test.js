@@ -17,8 +17,8 @@ function fillInSortItem (index, value) {
 
 const testTemplate = hbs`{{frost-sort
   hook=hook
-  sortableProperties=data
-  sortParams=sortOrder
+  properties=data
+  sortOrder=sortOrder
   onChange=onChange}}`
 
 describeComponent(
@@ -57,6 +57,7 @@ describeComponent(
 
     it('renders', function () {
       expect(this.$('.frost-sort')).to.have.length(1)
+      expect(this.$('.frost-sort-item')).to.have.length(1)
     })
 
     it('has hooks for the sort and adding filters', function () {
@@ -66,13 +67,9 @@ describeComponent(
     })
 
     it('has hooks for add/remove filters and sort direction', function () {
-      run(() => {
-        $hook('my-component-sort-add').click()
-      })
-
       expect($hook('my-component-sort-0')).to.have.length(1)
 
-      expect($hook('my-component-sort-remove-0')).to.have.length(1)
+      expect($hook('my-component-sort-remove-0')).to.have.length(0)
 
       expect($hook('my-component-sort-0-select')).to.have.length(1)
 
@@ -82,8 +79,8 @@ describeComponent(
     it('has a default hook name', function () {
       this.render(hbs`
         {{frost-sort
-          sortableProperties=data
-          sortParams=sortOrder
+          properties=data
+          sortOrder=sortOrder
           onChange=onChange
         }}`
       )

@@ -1,5 +1,4 @@
 {{frost-select
-  id=sortId
   data=sortItemList
   hook=(concat hook '-select')
   onChange=(action 'select')
@@ -12,6 +11,6 @@
   priority='tertiary'
   }}
   <div class="animate {{if (eq direction 'desc') 'desc'}}">
-    {{frost-icon icon='sort-direction'}}
+    {{frost-icon pack='frost-sort' icon='direction'}}
   </div>
 {{/frost-button}}

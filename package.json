@@ -72,6 +72,9 @@
     "ember-addon",
     "frost"
   ],
+  "ember-frost-icon-pack": {
+    "name": "frost-sort"
+  },
   "dependencies": {
     "ember-cli-babel": "^5.1.6",
     "ember-cli-htmlbars": "^1.0.3",

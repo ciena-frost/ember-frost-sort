@@ -8,23 +8,26 @@
     sortChange=(action 'sortArrayChange')
     initVal=object.value
     initDirection=object.direction}}
-  {{#frost-button
-    class='remove-button'
-    hook=(concat hook '-remove' '-' index)
-    onClick=(action "removeFilter" object.id)
-    priority=''
-    size='small'}}
-    {{frost-icon icon='close-circle'}}
-  {{/frost-button}}
+  {{#if hideRemoveButton}}
+    {{#frost-button
+      class='remove-button'
+      hook=(concat hook '-remove' '-' index)
+      onClick=(action "removeFilter" object.id)
+      priority=''
+      size='small'}}
+      {{frost-icon pack='frost-sort' icon='close' }}
+    {{/frost-button}}
+  {{/if}}
   </div>
 {{/each}}
 
-<div class="{{hideClass}}">
+{{#if hideAddButton}}
   {{frost-button
   hook=(concat hook '-add')
-  icon='round-add'
+  pack='frost-sort'
+  icon='add'
   onClick=(action "addFilter")
   size='small'
   priority='tertiary'
   text='Add'}}
-</div>
+{{/if}}
