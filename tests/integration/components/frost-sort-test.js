@@ -60,20 +60,19 @@ describeComponent(
       expect(this.$('.frost-sort-item')).to.have.length(1)
     })
 
-    it('has hooks for the sort and adding filters', function () {
+    it('has hooks for the sort, select, direction and adding filters', function () {
       expect($hook('my-component-sort').hasClass('frost-sort')).to.be.true
-
+      expect($hook('my-component-sort-0')).to.have.length(1)
+      expect($hook('my-component-sort-0-select')).to.have.length(1)
+      expect($hook('my-component-sort-0-direction')).to.have.length(1)
       expect($hook('my-component-sort-add')).to.have.length(1)
     })
 
-    it('has hooks for add/remove filters and sort direction', function () {
-      expect($hook('my-component-sort-0')).to.have.length(1)
-
-      expect($hook('my-component-sort-remove-0')).to.have.length(0)
-
-      expect($hook('my-component-sort-0-select')).to.have.length(1)
-
-      expect($hook('my-component-sort-0-direction')).to.have.length(1)
+    it('has hooks for remove filter', function () {
+      run(() => {
+        $hook('my-component-sort-add').click()
+      })
+      expect($hook('my-component-sort-remove-0')).to.have.length(1)
     })
 
     it('has a default hook name', function () {

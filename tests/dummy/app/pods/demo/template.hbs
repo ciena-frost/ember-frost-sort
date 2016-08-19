@@ -4,17 +4,17 @@
     <div class="example">
       <div class="demo">
         {{frost-sort
-          sortableProperties=tableSortList
+          properties=tableSortList
           onChange=(action 'sortRecords')
-          sortParams=sortOrder
+          sortOrder=sortOrder
         }}
       </div>
       <div class="snippet">
         {{format-markdown "```handlebars
 {{frost-sort
-sortableProperties=tableSortList
+properties=tableSortList
 onChange=(action 'sortRecords')
-sortParams=sortOrder}}
+sortOrder=sortOrder}}
 ```"
     }}
       </div>

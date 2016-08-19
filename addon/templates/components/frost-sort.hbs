@@ -1,6 +1,5 @@
 <div class="title">Sort by: </div>
 {{#each filterArray as |object index|}}
-  <div class="frost-sort-item">
   {{frost-sort-item sortId=object.id
     availableOptions=unselected
     allOptions=properties
@@ -18,7 +17,6 @@
       {{frost-icon pack='frost-sort' icon='close' }}
     {{/frost-button}}
   {{/if}}
-  </div>
 {{/each}}
 
 {{#if hideAddButton}}
