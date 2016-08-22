@@ -25,8 +25,8 @@ ember install ember-frost-sort
 ## API
 | Attribute | Type | Value | Description |
 | --------- | ---- | ----- | ----------- |
-| `sortableProperties` | `array` | `[{"label: "foo", "value": "bar"}]` | Array of sortable attributes. |
-| `sortParams` | `array` | `[{"direction: "asc/desc", "value": <attr-name>}]` |  Array that specifies the sort order. |
+| `sortableProperties` (Deprecated) | `array` | `[{"label: "foo", "value": "bar"}]` | Array of sortable attributes. **`sortableProperties` has been deprecated in favor of `properties`**|
+| `sortParams` (Deprecated) | `array` | `[{"direction: "asc/desc", "value": <attr-name>}]` |  Array that specifies the sort order. **`sortParams` has been deprecated in favor of `sortOrder`** |
 | `onChange` | `string` | `<action-name>` | The action to call when the value of the select item changes. |
 
 ## Testing with ember-hook

@@ -17,8 +17,8 @@ function fillInSortItem (index, value) {
 
 const testTemplate = hbs`{{frost-sort
   hook=hook
-  sortableProperties=data
-  sortParams=sortOrder
+  properties=data
+  sortOrder=sortOrder
   onChange=onChange}}`
 
 describeComponent(
@@ -57,33 +57,29 @@ describeComponent(
 
     it('renders', function () {
       expect(this.$('.frost-sort')).to.have.length(1)
+      expect(this.$('.frost-sort-item')).to.have.length(1)
     })
 
-    it('has hooks for the sort and adding filters', function () {
+    it('has hooks for the sort, select, direction and adding filters', function () {
       expect($hook('my-component-sort').hasClass('frost-sort')).to.be.true
-
+      expect($hook('my-component-sort-0')).to.have.length(1)
+      expect($hook('my-component-sort-0-select')).to.have.length(1)
+      expect($hook('my-component-sort-0-direction')).to.have.length(1)
       expect($hook('my-component-sort-add')).to.have.length(1)
     })
 
-    it('has hooks for add/remove filters and sort direction', function () {
+    it('has hooks for remove filter', function () {
       run(() => {
         $hook('my-component-sort-add').click()
       })
-
-      expect($hook('my-component-sort-0')).to.have.length(1)
-
-      expect($hook('my-component-sort-remove-0')).to.have.length(1)
-
-      expect($hook('my-component-sort-0-select')).to.have.length(1)
-
-      expect($hook('my-component-sort-0-direction')).to.have.length(1)
+      expect($hook('my-component-sort-0-remove')).to.have.length(1)
     })
 
     it('has a default hook name', function () {
       this.render(hbs`
         {{frost-sort
-          sortableProperties=data
-          sortParams=sortOrder
+          properties=data
+          sortOrder=sortOrder
           onChange=onChange
         }}`
       )
@@ -106,7 +102,7 @@ describeComponent(
         fillInSortItem(2, 'Version')
         fillInSortItem(3, 'Severity')
         run(() => {
-          $hook('my-component-sort-remove-2').click()
+          $hook('my-component-sort-2-remove').click()
         })
       })
 
@@ -119,7 +115,7 @@ describeComponent(
       describe('When clicking remove button for last field', function () {
         beforeEach(function () {
           run(() => {
-            $hook('my-component-sort-remove-2').click()
+            $hook('my-component-sort-2-remove').click()
           })
         })
         it('should remove only that field', function () {
@@ -130,7 +126,7 @@ describeComponent(
         describe('When clicking remove button for first field', function () {
           beforeEach(function () {
             run(() => {
-              $hook('my-component-sort-remove-0').click()
+              $hook('my-component-sort-0-remove').click()
             })
           })
           it('should remove only that field', function () {

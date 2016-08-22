@@ -7,6 +7,7 @@ const {Component, isEmpty} = Ember
 
 export default Component.extend({
   layout: layout,
+  classNames: ['frost-sort-item'],
 
   @computed
   direction () {
@@ -51,6 +52,9 @@ export default Component.extend({
       }
       attrs['direction'] = ':' + this.get('direction')
       this.get('sortChange')(attrs)
+    },
+    removeItem (id) {
+      this.get('remove')(id)
     }
   }
 })

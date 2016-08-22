@@ -1,17 +1,25 @@
 {{frost-select
-  id=sortId
   data=sortItemList
   hook=(concat hook '-select')
-  onChange=(action 'select')
-  selectedValue=selectedItem}}
+  selectedValue=selectedItem
+  onChange=(action 'select')}}
 {{#frost-button
   class='direction-button'
   hook=(concat hook '-direction')
-  onClick=(action 'rotate' sortId)
   size='small'
   priority='tertiary'
-  }}
+  onClick=(action 'rotate' sortId)}}
   <div class="animate {{if (eq direction 'desc') 'desc'}}">
-    {{frost-icon icon='sort-direction'}}
+    {{frost-icon pack='frost-sort' icon='direction'}}
   </div>
 {{/frost-button}}
+{{#if hideRemoveButton}}
+  {{#frost-button
+    class='remove-button'
+    hook=(concat hook '-remove')
+    priority=''
+    size='small'
+    onClick=(action "removeItem" sortId)}}
+    {{frost-icon pack='frost-sort' icon='close' }}
+  {{/frost-button}}
+{{/if}}
