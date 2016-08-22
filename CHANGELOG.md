@@ -1,3 +1,10 @@
+# 2.5.0
+- Deprecated `sortParams` in favor of `sortOrder` and `sortableProperties` in favor of `properties`
+- Fixed: https://github.com/ciena-frost/ember-frost-sort/issues/15
+https://github.com/ciena-frost/ember-frost-sort/issues/13
+https://github.com/ciena-frost/ember-frost-sort/issues/17
+- Fixed bug introduced from the ability to remove frost-sort-items in any order
+
 # 2.4.0
 
 * Added a remove button for each sort item
