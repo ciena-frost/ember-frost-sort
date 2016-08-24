@@ -9,9 +9,14 @@
   size='small'
   priority='tertiary'
   onClick=(action 'rotate' sortId)}}
-  <div class="animate {{if (eq direction 'desc') 'desc'}}">
-    {{frost-icon pack='frost-sort' icon='direction'}}
-  </div>
+{{frost-icon
+  class=(concat
+    'animate'
+    ' '
+    (if (eq direction 'desc') 'desc')
+  )
+  pack='frost-sort'
+  icon='direction'}}
 {{/frost-button}}
 {{#if hideRemoveButton}}
   {{#frost-button

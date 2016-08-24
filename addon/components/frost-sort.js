@@ -1,19 +1,33 @@
-/* globals sortOrder properties */
-
 import Ember from 'ember'
-import computed, {oneWay} from 'ember-computed-decorators'
-import PropTypeMixin, {PropTypes} from 'ember-prop-types'
+import PropTypesMixin, { PropTypes } from 'ember-prop-types'
 import layout from '../templates/components/frost-sort'
-import _ from 'lodash/lodash'
 
-const {Component, A, isEmpty} = Ember
+const {
+  Component,
+  A,
+  isEmpty,
+  computed,
+  run
+} = Ember
 
-export default Component.extend(PropTypeMixin, {
+const {
+  oneWay
+} = computed
+
+const {
+  scheduleOnce
+} = run
+
+export default Component.extend(PropTypesMixin, {
   layout: layout,
   classNames: ['frost-sort'],
-
+  propTypes: {
+    hook: PropTypes.string,
+    sortOrder: PropTypes.array,
+    properties: PropTypes.array
+  },
   init () {
-    this._super()
+    this._super(...arguments)
     if (this.get('sortParams')) {
       Ember.deprecate(
         'sortParams has been deprecated in favor of sortOrder',
@@ -34,8 +48,8 @@ export default Component.extend(PropTypeMixin, {
         }
       )
     }
-    Ember.run.schedule('afterRender', this, function () {
-      if (_.isEmpty(this.get('sortOrder'))) {
+    scheduleOnce('afterRender', this, function () {
+      if (isEmpty(this.get('sortOrder'))) {
         this.send('addFilter')
         this.send('sortArrayChange', {
           id: 1,
@@ -45,71 +59,53 @@ export default Component.extend(PropTypeMixin, {
       }
     })
   },
-
-  propTypes: {
-    hook: PropTypes.string,
-    sortOrder: PropTypes.array,
-    properties: PropTypes.array
-  },
-
   getDefaultProps () {
     return {
       hook: 'sort'
     }
   },
+  sortOrder: oneWay('sortParams'),
 
-  @oneWay('sortParams') sortOrder,
+  properties: oneWay('sortableProperties'),
 
-  @oneWay('sortableProperties') properties,
-
-  @computed('filterArray.@each.value')
-  hideRemoveButton (filterArray) {
-    return (filterArray.length > 1)
-  },
-  @computed('filterArray.@each.value')
-  hideAddButton (filterArray) {
-    return !_.isEqual(this.get('filterArray').length,
-    this.get('properties').length)
-  },
-
-  @computed
-  filterArray () {
-    if (_.isEmpty(this.get('sortOrder'))) {
+  hideRemoveButton: computed('filterArray.@each.value', function () {
+    return this.get('filterArray').length > 1
+  }),
+  hideAddButton: computed('filterArray.@each.value', function () {
+    return !(this.get('filterArray').length === this.get('properties').length)
+  }),
+  filterArray: computed(function () {
+    if (isEmpty(this.get('sortOrder'))) {
       return A()
     } else {
-      let tempFilterArray = A()
-      this.get('sortOrder').map((param) => {
-        tempFilterArray.addObject(Ember.Object.create({
-          id: `${this.get('elementId')}_${tempFilterArray.length + 1}`,
+      return this.get('sortOrder').map((param, i) => {
+        return Ember.Object.create({
+          id: `${this.get('elementId')}_${i+1}`,
           value: param.value,
           direction: param.direction
-        }))
+        })
       })
-      return tempFilterArray
     }
-  },
+  }),
+  isRemoveVisible: computed('filterArray.[]', function () {
+    return this.get('filterArray').length !== 0
+  }),
 
-  @computed('filterArray.[]')
-  isRemoveVisible (filterArray) {
-    return filterArray.length !== 0
-  },
-
-  @computed('filterArray.@each.value')
-  unselected (filterArray) {
-    if (isEmpty(filterArray)) {
+  unselected: computed('filterArray.@each.value', function () {
+    if (isEmpty(this.get('filterArray'))) {
       return this.get('properties')
     }
 
-    let selectedProperties = filterArray.mapBy('value')
-    return this.get('properties').filter(function (sortListItem) {
-      return !_.includes(selectedProperties, sortListItem.value)
+    let selectedProperties = this.get('filterArray').mapBy('value')
+    return this.get('properties').filter((sortListItem) => {
+      return !selectedProperties.includes(sortListItem.value)
     })
-  },
+  }),
 
   actions: {
     addFilter () {
-      if (this.get('filterArray').length >= (this.get('properties').length) - 1) {
-        this.set('hideClass', 'button-hide')
+      if (this.get('filterArray').length > this.get('properties').length) {
+        return
       }
       this.get('filterArray').addObject(Ember.Object.create({
         id: this.get('filterArray').length + 1,
@@ -127,9 +123,6 @@ export default Component.extend(PropTypeMixin, {
         })
         this.set('filterArray', newFilter)
         this.get('onChange')(this.get('filterArray'))
-        if (this.get('filterArray').length < this.get('properties').length) {
-          this.set('hideClass', '')
-        }
       }
     },
 
