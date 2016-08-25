@@ -3,10 +3,11 @@ import PropTypesMixin, { PropTypes } from 'ember-prop-types'
 import layout from '../templates/components/frost-sort'
 
 const {
-  Component,
   A,
-  isEmpty,
+  Component,
   computed,
+  deprecate,
+  isEmpty,
   run
 } = Ember
 
@@ -28,40 +29,40 @@ export default Component.extend(PropTypesMixin, {
   },
   init () {
     this._super(...arguments)
-    if (this.get('sortParams')) {
-      Ember.deprecate(
-        'sortParams has been deprecated in favor of sortOrder',
-        false,
-        {
-          id: 'frost-sort.deprecate-sort-params',
-          until: '3.0.0'
-        }
-      )
-    }
-    if (this.get('sortableProperties')) {
-      Ember.deprecate(
-        'sortableProperties has been deprecated in favor of properties.',
-        false,
-        {
-          id: 'frost-sort.deprecate-sortable-properties',
-          until: '3.0.0'
-        }
-      )
-    }
+    deprecate(
+      'sortParams has been deprecated in favor of sortOrder',
+      !this.get('sortParams'),
+      {
+        id: 'frost-sort.deprecate-sort-params',
+        until: '3.0.0'
+      }
+    )
+    deprecate(
+      'sortableProperties has been deprecated in favor of properties.',
+      !this.get('sortableProperties'),
+      {
+        id: 'frost-sort.deprecate-sortable-properties',
+        until: '3.0.0'
+      }
+    )
     scheduleOnce('afterRender', this, function () {
-      if (isEmpty(this.get('sortOrder'))) {
+      let props = this.get('properties')
+      let order = this.get('sortOrder')
+      if (isEmpty(order) && props.get('firstObject')) {
         this.send('addFilter')
         this.send('sortArrayChange', {
           id: 1,
           direction: ':asc',
-          value: this.get('properties')[0].value
+          value: props.get('firstObject.value')
         })
       }
     })
   },
   getDefaultProps () {
     return {
-      hook: 'sort'
+      hook: 'sort',
+      properties: A(),
+      sortOrder: A()
     }
   },
   sortOrder: oneWay('sortParams'),
@@ -75,22 +76,20 @@ export default Component.extend(PropTypesMixin, {
     return !(this.get('filterArray').length === this.get('properties').length)
   }),
   filterArray: computed(function () {
-    if (isEmpty(this.get('sortOrder'))) {
-      return A()
+    let sortOrder = this.get('sortOrder')
+    if (isEmpty(sortOrder)) {
+      return sortOrder
     } else {
-      return this.get('sortOrder').map((param, i) => {
+      return sortOrder.map((param, i) => {
+        let id = this.get('elementId')
         return Ember.Object.create({
-          id: `${this.get('elementId')}_${i+1}`,
+          id: `${id}_${i + 1}`,
           value: param.value,
           direction: param.direction
         })
       })
     }
   }),
-  isRemoveVisible: computed('filterArray.[]', function () {
-    return this.get('filterArray').length !== 0
-  }),
-
   unselected: computed('filterArray.@each.value', function () {
     if (isEmpty(this.get('filterArray'))) {
       return this.get('properties')
@@ -115,23 +114,26 @@ export default Component.extend(PropTypesMixin, {
     },
 
     removeFilter (sortItemId) {
-      if (this.get('filterArray').length > 1) {
-        const newFilter = this.get('filterArray').filter(object => object.id !== sortItemId)
-        newFilter.map((item, index) => {
-          Ember.set(item, 'id', index)
-          return item
-        })
+      let filterArray = this.get('filterArray')
+      if (filterArray.length > 1) {
+        let newFilter = filterArray
+          .filter(obj => obj.id !== sortItemId)
+          .map((item, index) => {
+            item.set('id', index)
+            return item
+          })
         this.set('filterArray', newFilter)
         this.get('onChange')(this.get('filterArray'))
       }
     },
 
     sortArrayChange (attrs) {
-      this.get('filterArray').findBy('id', attrs.id).setProperties({
+      let filterArray = this.get('filterArray')
+      filterArray.findBy('id', attrs.id).setProperties({
         value: attrs.value,
         direction: attrs.direction
       })
-      this.get('onChange')(this.get('filterArray'))
+      this.get('onChange')(filterArray)
     }
   }
 })
