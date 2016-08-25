@@ -1,10 +1,10 @@
 import Ember from 'ember'
-import layout from '../templates/components/frost-sort-item'
 import PropTypesMixin, { PropTypes } from 'ember-prop-types'
+import computed from 'ember-computed-decorators'
+import layout from '../templates/components/frost-sort-item'
 
 const {
   A,
-  computed,
   Component,
   isEmpty
 } = Ember
@@ -20,32 +20,28 @@ export default Component.extend(PropTypesMixin, {
     availableOptions: PropTypes.array,
     allOptions: PropTypes.array
   },
-  direction: computed(function () {
+  @computed
+  direction () {
     return isEmpty(this.get('initDirection'))
     ? 'asc'
     : this.get('initDirection').replace(':', '')
-  }),
-
-  selectedItem: computed(function () {
+  },
+  @computed
+  selectedItem () {
     return isEmpty(this.get('initVal')) ? '' : this.get('initVal')
-  }),
+  },
+  @computed('selectedItem', 'availableOptions', 'allOptions')
+  sortItemList () {
+    let selectedItem = this.get('selectedItem')
+    let availableOptions = this.get('availableOptions')
+    let allOptions = this.get('allOptions')
 
-  sortItemList: computed(
-    'selectedItem',
-    'availableOptions',
-    'allOptions',
-    function () {
-      let selectedItem = this.get('selectedItem')
-      let availableOptions = this.get('availableOptions')
-      let allOptions = this.get('allOptions')
-
-      let selectList = availableOptions.slice(0)
-      if (!isEmpty(selectedItem)) {
-        selectList.pushObject(allOptions.findBy('value', selectedItem))
-      }
-      return selectList.filter(e => e)
+    let selectList = availableOptions.slice(0)
+    if (!isEmpty(selectedItem)) {
+      selectList.pushObject(allOptions.findBy('value', selectedItem))
     }
-  ),
+    return selectList.filter(e => e)
+  },
   getDefaultProps () {
     return {
       direction: 'asc',

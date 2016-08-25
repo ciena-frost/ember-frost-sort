@@ -1,19 +1,16 @@
+/* globals sortOrder properties */
 import Ember from 'ember'
 import PropTypesMixin, { PropTypes } from 'ember-prop-types'
+import computed, { oneWay } from 'ember-computed-decorators'
 import layout from '../templates/components/frost-sort'
 
 const {
   A,
   Component,
-  computed,
   deprecate,
   isEmpty,
   run
 } = Ember
-
-const {
-  oneWay
-} = computed
 
 const {
   scheduleOnce
@@ -65,17 +62,20 @@ export default Component.extend(PropTypesMixin, {
       sortOrder: A()
     }
   },
-  sortOrder: oneWay('sortParams'),
 
-  properties: oneWay('sortableProperties'),
+  @oneWay('sortParams') sortOrder,
+  @oneWay('sortableProperties') properties,
 
-  hideRemoveButton: computed('filterArray.@each.value', function () {
+  @computed('filterArray.@each.value')
+  hideRemoveButton () {
     return this.get('filterArray').length > 1
-  }),
-  hideAddButton: computed('filterArray.@each.value', function () {
+  },
+  @computed('filterArray.@each.value')
+  hideAddButton () {
     return !(this.get('filterArray').length === this.get('properties').length)
-  }),
-  filterArray: computed(function () {
+  },
+  @computed
+  filterArray () {
     let sortOrder = this.get('sortOrder')
     if (isEmpty(sortOrder)) {
       return sortOrder
@@ -89,8 +89,9 @@ export default Component.extend(PropTypesMixin, {
         })
       })
     }
-  }),
-  unselected: computed('filterArray.@each.value', function () {
+  },
+  @computed('filterArray.@each.value')
+  unselected () {
     if (isEmpty(this.get('filterArray'))) {
       return this.get('properties')
     }
@@ -99,7 +100,7 @@ export default Component.extend(PropTypesMixin, {
     return this.get('properties').filter((sortListItem) => {
       return !selectedProperties.includes(sortListItem.value)
     })
-  }),
+  },
 
   actions: {
     addFilter () {
