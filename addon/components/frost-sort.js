@@ -96,9 +96,9 @@ export default Component.extend(PropTypesMixin, {
       return this.get('properties')
     }
 
-    let selectedProperties = this.get('filterArray').mapBy('value')
-    return this.get('properties').filter((sortListItem) => {
-      return !selectedProperties.includes(sortListItem.value)
+    let props = this.get('filterArray').mapBy('value')
+    return this.get('properties').filter(item => {
+      return props.indexOf(item.value) < 0
     })
   },
 
