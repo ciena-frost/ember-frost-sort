@@ -1,36 +1,54 @@
 import Ember from 'ember'
+import PropTypesMixin, { PropTypes } from 'ember-prop-types'
 import computed from 'ember-computed-decorators'
 import layout from '../templates/components/frost-sort-item'
-import _ from 'lodash/lodash'
 
-const {Component, isEmpty} = Ember
+const {
+  A,
+  Component,
+  isEmpty
+} = Ember
 
-export default Component.extend({
+export default Component.extend(PropTypesMixin, {
   layout: layout,
   classNames: ['frost-sort-item'],
 
+  propTypes: {
+    selectedItem: PropTypes.string,
+    direction: PropTypes.string,
+    initVal: PropTypes.string,
+    availableOptions: PropTypes.array,
+    allOptions: PropTypes.array
+  },
   @computed
   direction () {
-    return _.isEmpty(this.get('initDirection')) ? 'asc' : this.get('initDirection').replace(':', '')
+    return isEmpty(this.get('initDirection'))
+    ? 'asc'
+    : this.get('initDirection').replace(':', '')
   },
-
   @computed
   selectedItem () {
-    return _.isEmpty(this.get('initVal')) ? '' : this.get('initVal')
+    return isEmpty(this.get('initVal')) ? '' : this.get('initVal')
   },
-
   @computed('selectedItem', 'availableOptions', 'allOptions')
-  sortItemList (selectedItem, availableOptions, allOptions) {
-    let selectList = []
-    availableOptions.forEach(function (item) {
-      selectList.push(item)
-    })
-    if (!isEmpty(selectedItem)) {
-      selectList.push(allOptions.findBy('value', selectedItem))
-    }
-    return selectList
-  },
+  sortItemList () {
+    let selectedItem = this.get('selectedItem')
+    let availableOptions = this.get('availableOptions')
+    let allOptions = this.get('allOptions')
 
+    let selectList = availableOptions.slice(0)
+    if (!isEmpty(selectedItem)) {
+      selectList.pushObject(allOptions.findBy('value', selectedItem))
+    }
+    return selectList.filter(e => e)
+  },
+  getDefaultProps () {
+    return {
+      direction: 'asc',
+      availableOptions: A(),
+      allOptions: A()
+    }
+  },
   actions: {
     select (attrs) {
       this.set('selectedItem', attrs[0])
@@ -45,12 +63,12 @@ export default Component.extend({
         id: sortId,
         value: this.get('selectedItem')
       }
-      if (this.get('direction') === 'desc') {
-        this.set('direction', 'asc')
-      } else {
-        this.set('direction', 'desc')
-      }
-      attrs['direction'] = ':' + this.get('direction')
+
+      let direction = this.get('direction') === 'desc'
+      ? 'asc'
+      : 'desc'
+      attrs['direction'] = `:${direction}`
+      this.set('direction', direction)
       this.get('sortChange')(attrs)
     },
     removeItem (id) {

@@ -30,6 +30,9 @@
 }
 
 .frost-sort-item {
+  &:last-of-type {
+    border-right: initial;
+  }
   display: flex;
   flex-direction: row;
   align-items: center;
