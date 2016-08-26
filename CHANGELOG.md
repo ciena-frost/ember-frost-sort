@@ -1,3 +1,14 @@
+# 2.5.1
+- Removed computed decorators to increase test coverage
+    - it would inject code that couldn't be covered.
+- Default PropTypes to both `item` and `sort`
+- Styling of button
+    - Transition rotate would happen on div, not the svg. Causing the padding along with the svg to rotate. Not too noticeable of difference, but went ahead and fixed anyways
+    - `:last-of-type` on frost-sort-item so extra line won't show up.
+- Fixed bug where if user edits url, more filters can be added pass the point. 
+    - Prevented add from adding in this situation.
+- Upped test coverage to 💯 
+
 # 2.5.0
 - Deprecated `sortParams` in favor of `sortOrder` and `sortableProperties` in favor of `properties`
 - Fixed: https://github.com/ciena-frost/ember-frost-sort/issues/15
