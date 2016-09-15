@@ -4,7 +4,7 @@ const {Controller} = Ember
 
 export default Controller.extend({
 
-  tableSortList: [
+  sortProperties: [
     {
       value: 'name',
       label: 'Name'
@@ -24,9 +24,10 @@ export default Controller.extend({
   ],
   queryParams: ['querySortOrder'],
   sortOrder: ['name:asc'],
-  querySortOrder: [{value:'name', direction:'asc'}],
+  querySortOrder: [{value: 'name', direction: 'asc'}],
 
   actions: {
+    // BEGIN-SNIPPET sort-action
     sortRecords: function (sortItems) {
       let temp = []
 
@@ -38,7 +39,7 @@ export default Controller.extend({
       })
       this.set('querySortOrder', temp)
       this.set('sortOrder', sortItems.map((object) => {
-        return object.value + object.direction;
+        return object.value + object.direction
       }))
       this.notifications.addNotification({
         message: this.get('sortOrder'),
@@ -47,5 +48,6 @@ export default Controller.extend({
         clearDuration: 2000
       })
     }
+    // END-SNIPPET
   }
 })

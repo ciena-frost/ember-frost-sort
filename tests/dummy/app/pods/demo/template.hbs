@@ -3,28 +3,24 @@
  <div class="section">
     <div class="example">
       <div class="demo">
+        {{! BEGIN-SNIPPET sort-template }}
         {{frost-sort
-          properties=tableSortList
+          properties=sortProperties
           onChange=(action 'sortRecords')
-<<<<<<< Updated upstream
-          sortOrder=sortOrder
-=======
-          sortParams=querySortOrder
->>>>>>> Stashed changes
+          sortOrder=querySortOrder
         }}
+        {{! END-SNIPPET }}
       </div>
-      <div class="snippet">
-        {{format-markdown "```handlebars
-{{frost-sort
-properties=tableSortList
-onChange=(action 'sortRecords')
-<<<<<<< Updated upstream
-sortOrder=sortOrder}}
-=======
-sortParams=querySortOrder}}
->>>>>>> Stashed changes
-```"
-    }}
+      <br>
+      <div class='snippets'>
+        <div>
+          Template
+          {{code-snippet name="sort-template.hbs"}}
+        </div>
+        <div>
+          Example controller action
+          {{code-snippet name="sort-action.js"}}
+        </div>
       </div>
     </div>
   </div>

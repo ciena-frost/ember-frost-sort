@@ -1,6 +1,6 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
 
-.dummy-body{
+.dummy-body {
   margin-left: 20px;
 }
 
@@ -8,48 +8,19 @@
   position: fixed;
   top: 60px;
   right: 10px;
-  z-index: 999;
   width: 80%;
   max-width: 400px;
   margin: auto;
+  z-index: 999;
 }
 
-.dummy-body .section {
+.snippets {
   display: flex;
   flex-direction: row;
-  flex-flow: wrap;
-  width: calc(100vw - 250px);
-  padding-left: 10px;
+  justify-content: space-around;
+}
 
-  > .title {
-    font-size: $frost-font-xl;
-    padding-bottom: 20px;
-  }
-
-  .example {
-    padding-right: 25px;
-    padding-bottom: 10px;
-
-    > .title {
-      font-size: $frost-font-l;
-      padding-bottom: 15px;
-    }
-
-    .snippet {
-      display: inline-block;
-      font-size: $frost-font-s;
-      margin-right: 20px;
-      vertical-align: top;
-    }
-
-    .demo {
-      display: block;
-      vertical-align: top;
-      > .frost-icon {
-        width: 40px;
-        height: 40px;
-        margin-bottom: 20px;
-      }
-    }
-  }
+.title {
+  padding-bottom: 20px;
+  font-size: $frost-font-xl;
 }
