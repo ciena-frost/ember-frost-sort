@@ -7,15 +7,33 @@
 [npm-img]: https://img.shields.io/npm/v/ember-frost-sort.svg "Version"
 [npm-url]: https://www.npmjs.com/package/ember-frost-sort
 
-[![Travis][ci-img]][ci-url] [![Coveralls][cov-img]][cov-url] [![NPM][npm-img]][npm-url]
+[ember-observer-badge]: http://emberobserver.com/badges/ember-frost-sort.svg "Ember Observer score"
+[ember-observer-badge-url]: http://emberobserver.com/addons/ember-frost-sort
+
+[bithound-img]: https://www.bithound.io/github/ciena-blueplanet/ember-frost-sort/badges/score.svg "bitHound"
+[bithound-url]: https://www.bithound.io/github/ciena-blueplanet/ember-frost-sort
+
+[ember-img]: https://img.shields.io/badge/ember-1.12.2+-orange.svg "Ember 1.12.2+"
 
 # ember-frost-sort
-A sorting component to sort collections
 
- * [Installation](#installation)
- * [API](#api)
- * [Examples](#examples)
- * [Contributing](#development)
+###### Dependencies
+![Ember][ember-img]
+[![NPM][npm-img]][npm-url]
+
+###### Health
+
+[![Travis][ci-img]][ci-url]
+[![Coveralls][cov-img]][cov-url]
+
+###### Security
+
+[![bitHound][bithound-img]][bithound-url]
+
+###### Ember Observer score
+[![EmberObserver][ember-observer-badge]][ember-observer-badge-url]
+
+A sorting component to sort collections
 
 ## Installation
 ```
