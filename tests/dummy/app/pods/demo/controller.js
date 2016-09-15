@@ -3,7 +3,7 @@ import Ember from 'ember'
 const {Controller} = Ember
 
 export default Controller.extend({
-
+  notifications: Ember.inject.service('notification-messages'),
   sortProperties: [
     {
       value: 'name',
@@ -41,7 +41,7 @@ export default Controller.extend({
       this.set('sortOrder', sortItems.map((object) => {
         return object.value + object.direction
       }))
-      this.notifications.addNotification({
+      this.get('notifications').addNotification({
         message: this.get('sortOrder'),
         type: 'success',
         autoClear: true,
