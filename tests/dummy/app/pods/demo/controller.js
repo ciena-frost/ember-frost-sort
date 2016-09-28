@@ -3,52 +3,51 @@ import Ember from 'ember'
 const {Controller} = Ember
 
 export default Controller.extend({
-
-  tableSortList: [
+  notifications: Ember.inject.service('notification-messages'),
+  sortProperties: [
     {
-      value: 'Name',
+      value: 'name',
       label: 'Name'
     },
     {
-      value: 'Severity',
+      value: 'severity',
       label: 'Severity'
     },
     {
-      value: 'Version',
+      value: 'version',
       label: 'Version'
     },
     {
-      value: 'Time',
+      value: 'time',
       label: 'Time'
     }
   ],
-  queryParams: ['sortOrder'],
-  sortOrder: [],
+  queryParams: ['querySortOrder'],
+  sortOrder: ['name:asc'],
+  querySortOrder: [{value: 'name', direction: 'asc'}],
 
   actions: {
+    // BEGIN-SNIPPET sort-action
     sortRecords: function (sortItems) {
       let temp = []
+
       sortItems.map(function (item) {
         temp.push({
           value: item.value,
           direction: item.direction
         })
       })
-      this.set('sortOrder', temp)
-      if (sortItems.length > 0) {
-        let message = sortItems.reduce(function (message, sortItem) {
-          if (message === '') {
-            return sortItem.get('value') + sortItem.get('direction')
-          }
-          return message + ', ' + sortItem.get('value') + sortItem.get('direction')
-        }, '')
-        this.notifications.addNotification({
-          message: message,
-          type: 'success',
-          autoClear: true,
-          clearDuration: 2000
-        })
-      }
+      this.set('querySortOrder', temp)
+      this.set('sortOrder', sortItems.map((object) => {
+        return object.value + object.direction
+      }))
+      this.get('notifications').addNotification({
+        message: this.get('sortOrder'),
+        type: 'success',
+        autoClear: true,
+        clearDuration: 2000
+      })
     }
+    // END-SNIPPET
   }
 })

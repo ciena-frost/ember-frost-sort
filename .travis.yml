@@ -25,6 +25,7 @@ matrix:
   fast_finish: true
   allow_failures:
   - env: EMBER_TRY_SCENARIO=ember-canary
+  - env: EMBER_TRY_SCENARIO=ember-beta
 before_install:
 - npm config set spin false
 - npm install -g coveralls pr-bumper
@@ -37,7 +38,7 @@ install:
 - npm install
 - bower install
 script:
-- npm run lint
+- npm run sass-lint
 - ember try:one $EMBER_TRY_SCENARIO --- ember test
 after_success:
 - .travis/publish-coverage.sh

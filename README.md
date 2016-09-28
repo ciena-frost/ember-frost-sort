@@ -7,15 +7,33 @@
 [npm-img]: https://img.shields.io/npm/v/ember-frost-sort.svg "Version"
 [npm-url]: https://www.npmjs.com/package/ember-frost-sort
 
-[![Travis][ci-img]][ci-url] [![Coveralls][cov-img]][cov-url] [![NPM][npm-img]][npm-url]
+[ember-observer-badge]: http://emberobserver.com/badges/ember-frost-sort.svg "Ember Observer score"
+[ember-observer-badge-url]: http://emberobserver.com/addons/ember-frost-sort
+
+[bithound-img]: https://www.bithound.io/github/ciena-blueplanet/ember-frost-sort/badges/score.svg "bitHound"
+[bithound-url]: https://www.bithound.io/github/ciena-blueplanet/ember-frost-sort
+
+[ember-img]: https://img.shields.io/badge/ember-1.12.2+-orange.svg "Ember 1.12.2+"
 
 # ember-frost-sort
-A sorting component to sort collections
 
- * [Installation](#installation)
- * [API](#api)
- * [Examples](#examples)
- * [Contributing](#development)
+###### Dependencies
+![Ember][ember-img]
+[![NPM][npm-img]][npm-url]
+
+###### Health
+
+[![Travis][ci-img]][ci-url]
+[![Coveralls][cov-img]][cov-url]
+
+###### Security
+
+[![bitHound][bithound-img]][bithound-url]
+
+###### Ember Observer score
+[![EmberObserver][ember-observer-badge]][ember-observer-badge-url]
+
+A sorting component to sort collections
 
 ## Installation
 ```
@@ -25,8 +43,8 @@ ember install ember-frost-sort
 ## API
 | Attribute | Type | Value | Description |
 | --------- | ---- | ----- | ----------- |
-| `sortableProperties` (Deprecated) | `array` | `[{"label: "foo", "value": "bar"}]` | Array of sortable attributes. **`sortableProperties` has been deprecated in favor of `properties`**|
-| `sortParams` (Deprecated) | `array` | `[{"direction: "asc/desc", "value": <attr-name>}]` |  Array that specifies the sort order. **`sortParams` has been deprecated in favor of `sortOrder`** |
+| `properties` | `array` | `[{"label: "foo", "value": "bar"}]` | Array of sortable attributes. |
+| `sortOrder` | `array` | `[{"direction: "asc/desc", "value": <attr-name>}]` |  Array that specifies the sort order. |
 | `onChange` | `string` | `<action-name>` | The action to call when the value of the select item changes. |
 
 ## Testing with ember-hook
@@ -40,7 +58,11 @@ The sort component is accessible using ember-hook with the top level hook name o
 
 ## Examples
 ```handlebars
-{{frost-sort sortableProperties=sortAttributes onChange=(action 'sort') sortParams=sortOrder}}
+{{frost-sort
+  properties=sortAttributes
+  onChange=(action 'sort')
+  sortOrder=sortOrder
+  }}
 ```
 
 ## Development
