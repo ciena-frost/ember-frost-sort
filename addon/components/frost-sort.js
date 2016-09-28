@@ -75,10 +75,9 @@ export default Component.extend(PropTypesMixin, {
     return this.get('filterArray').length > 1
   },
 
-  @computed('filterArray.@each.value')
-  hideAddButton () {
+  @computed('maxActiveSortRules', 'filterArray.@each.value')
+  hideAddButton (maxActiveSortRules) {
     const filterLength = this.get('filterArray').length
-    const maxActiveSortRules = this.get('maxActiveSortRules')
     const propsLength = this.get('properties').length
     const noMorePropsToSortBy = filterLength === propsLength
 
