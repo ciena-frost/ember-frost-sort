@@ -1,3 +1,10 @@
+# 3.1.0
+
+* **Added** property `maxActiveSortRules` for limiting how many sort rules can be added.
+* **Updated** dependencies to latest versions.
+
+
+
 # 3.0.0
 - Upgraded ember-cli and Ember to v2.8.0
 - Added contributing guide, pr template, sass-lint and code-snippets
