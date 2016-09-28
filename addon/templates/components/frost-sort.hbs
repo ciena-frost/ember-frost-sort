@@ -10,7 +10,7 @@
       sortChange=(action 'sortArrayChange')
       remove=(action 'removeFilter')}}
 {{/each}}
-{{#if hideAddButton}}
+{{#unless hideAddButton}}
   {{frost-button
   hook=(concat hook '-add')
   pack='frost-sort'
@@ -19,4 +19,4 @@
   priority='tertiary'
   text='Add'
   onClick=(action "addFilter")}}
-{{/if}}
+{{/unless}}

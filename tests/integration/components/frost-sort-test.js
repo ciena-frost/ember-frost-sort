@@ -17,6 +17,7 @@ function fillInSortItem (index, value) {
 
 const testTemplate = hbs`{{frost-sort
   hook=hook
+  mxActiveSortRules=maxActiveSortRules
   properties=data
   sortOrder=sortOrder
   onChange=onChange}}`
@@ -30,8 +31,10 @@ describeComponent(
 
   function () {
     let props
+
     beforeEach(function () {
       initialize()
+
       props = {
         hook: 'my-component-sort',
         onChange: sinon.spy(),
@@ -51,6 +54,7 @@ describeComponent(
           }
         ]
       }
+
       this.setProperties(props)
       this.render(testTemplate)
     })
@@ -133,6 +137,16 @@ describeComponent(
             expect(($hook('my-component-sort-0-select').val())).to.eql('Time')
           })
         })
+      })
+    })
+
+    describe('when maxActiveSortRules is one', function () {
+      beforeEach(function () {
+        this.set('maxActiveSortRules', 1)
+      })
+
+      it('does not show add button', function () {
+        expect($hook('my-component-sort-add')).to.have.length(1)
       })
     })
   }
