@@ -19,11 +19,22 @@ const {
 export default Component.extend(PropTypesMixin, {
   layout: layout,
   classNames: ['frost-sort'],
+
   propTypes: {
     hook: PropTypes.string,
+    maxActiveSortRules: PropTypes.number,
     sortOrder: PropTypes.array,
     properties: PropTypes.array
   },
+
+  getDefaultProps () {
+    return {
+      hook: 'sort',
+      properties: A(),
+      sortOrder: A()
+    }
+  },
+
   init () {
     this._super(...arguments)
     deprecate(
@@ -55,13 +66,6 @@ export default Component.extend(PropTypesMixin, {
       }
     })
   },
-  getDefaultProps () {
-    return {
-      hook: 'sort',
-      properties: A(),
-      sortOrder: A()
-    }
-  },
 
   @oneWay('sortParams') sortOrder,
   @oneWay('sortableProperties') properties,
@@ -70,11 +74,17 @@ export default Component.extend(PropTypesMixin, {
   hideRemoveButton () {
     return this.get('filterArray').length > 1
   },
-  @computed('filterArray.@each.value')
-  hideAddButton () {
-    return !(this.get('filterArray').length === this.get('properties').length)
+
+  @computed('maxActiveSortRules', 'filterArray.@each.value')
+  hideAddButton (maxActiveSortRules) {
+    const filterLength = this.get('filterArray').length
+    const propsLength = this.get('properties').length
+    const noMorePropsToSortBy = filterLength === propsLength
+
+    return noMorePropsToSortBy || maxActiveSortRules <= filterLength
   },
-  @computed
+
+  @computed()
   filterArray () {
     let sortOrder = this.get('sortOrder')
     if (isEmpty(sortOrder)) {
@@ -90,6 +100,7 @@ export default Component.extend(PropTypesMixin, {
       })
     }
   },
+
   @computed('filterArray.@each.value')
   unselected () {
     if (isEmpty(this.get('filterArray'))) {

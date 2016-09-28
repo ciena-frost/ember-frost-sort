@@ -38,7 +38,7 @@ install:
 - npm install
 - bower install
 script:
-- npm run sass-lint
+- npm run lint
 - ember try:one $EMBER_TRY_SCENARIO --- ember test
 after_success:
 - .travis/publish-coverage.sh
