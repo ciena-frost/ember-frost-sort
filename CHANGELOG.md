@@ -1,3 +1,7 @@
+# 3.0.0
+- Upgraded ember-cli and Ember to v2.8.0
+- Added contributing guide, pr template, sass-lint and code-snippets
+
 # 2.5.1
 - Removed computed decorators to increase test coverage
     - it would inject code that couldn't be covered.
