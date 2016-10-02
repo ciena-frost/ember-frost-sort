@@ -1,3 +1,9 @@
+# 3.1.1
+
+* Removed unused liquid-fire dependency
+
+
+
 # 3.1.0
 
 * **Added** property `maxActiveSortRules` for limiting how many sort rules can be added.
