@@ -1,10 +1,19 @@
 import Ember from 'ember'
 const {run} = Ember
 import {expect} from 'chai'
-import {$hook, initialize} from 'ember-hook'
-import {describeComponent, it} from 'ember-mocha'
+import {
+  $hook,
+  initialize as initializeHook
+} from 'ember-hook'
+import {
+  describeComponent,
+  it
+} from 'ember-mocha'
 import hbs from 'htmlbars-inline-precompile'
-import {describe, beforeEach} from 'mocha'
+import {
+  describe,
+  beforeEach
+} from 'mocha'
 import sinon from 'sinon'
 
 /* Fill in sort item given index and value
@@ -34,7 +43,7 @@ describeComponent(
 
     describe('when maxActiveSortRules is not set', function () {
       beforeEach(function () {
-        initialize()
+        initializeHook()
 
         props = {
           hook: 'my-component-sort',
@@ -90,7 +99,6 @@ describeComponent(
         )
 
         expect($hook('sort').hasClass('frost-sort')).to.be.true
-
         expect($hook('sort-add')).to.have.length(1)
       })
 
@@ -144,7 +152,7 @@ describeComponent(
 
     describe('when maxActiveSortRules is one', function () {
       beforeEach(function () {
-        initialize()
+        initializeHook()
 
         props = {
           hook: 'my-component-sort',
@@ -197,7 +205,6 @@ describeComponent(
         )
 
         expect($hook('sort').hasClass('frost-sort')).to.be.true
-
         expect($hook('sort-add')).to.have.length(1)
       })
     })

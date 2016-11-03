@@ -1,17 +1,19 @@
 import Ember from 'ember'
-import PropTypesMixin, { PropTypes } from 'ember-prop-types'
-import computed from 'ember-computed-decorators'
-import layout from '../templates/components/frost-sort-item'
-
 const {
   A,
   Component,
   isEmpty
 } = Ember
+import PropTypesMixin, { PropTypes } from 'ember-prop-types'
+import computed from 'ember-computed-decorators'
+import layout from '../templates/components/frost-sort-item'
 
 export default Component.extend(PropTypesMixin, {
+  // == Properties ============================================================
   layout: layout,
   classNames: ['frost-sort-item'],
+
+  // == State Properties ======================================================
 
   propTypes: {
     selectedItem: PropTypes.string,
@@ -20,6 +22,17 @@ export default Component.extend(PropTypesMixin, {
     availableOptions: PropTypes.array,
     allOptions: PropTypes.array
   },
+
+  getDefaultProps () {
+    return {
+      direction: 'asc',
+      availableOptions: A(),
+      allOptions: A()
+    }
+  },
+
+  // == Computed properties ===================================================
+
   @computed
   direction () {
     return isEmpty(this.get('initDirection'))
@@ -42,13 +55,9 @@ export default Component.extend(PropTypesMixin, {
     }
     return selectList.filter(e => e)
   },
-  getDefaultProps () {
-    return {
-      direction: 'asc',
-      availableOptions: A(),
-      allOptions: A()
-    }
-  },
+
+  // == Actions== =============================================================
+
   actions: {
     select (attrs) {
       this.set('selectedItem', attrs[0])
