@@ -13,7 +13,8 @@ module.exports = {
       packages: [
         {name: 'ember-computed-decorators', target: '0.2.2'},
         {name: 'ember-frost-core', target: '~0.29.0'},
-        {name: 'ember-hook', target: '~1.3.1'},
+        {name: 'ember-elsewhere', target: '~0.4.1'},
+        {name: 'ember-hook', target: '^1.3.1'},
         {name: 'ember-prop-types', target: '^3.0.0'}
       ]
     })
