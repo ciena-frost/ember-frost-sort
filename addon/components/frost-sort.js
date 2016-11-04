@@ -1,9 +1,5 @@
 /* globals sortOrder properties */
 import Ember from 'ember'
-import PropTypesMixin, { PropTypes } from 'ember-prop-types'
-import computed, { oneWay } from 'ember-computed-decorators'
-import layout from '../templates/components/frost-sort'
-
 const {
   A,
   Component,
@@ -11,14 +7,21 @@ const {
   isEmpty,
   run
 } = Ember
+import PropTypesMixin, { PropTypes } from 'ember-prop-types'
+import computed, { oneWay } from 'ember-computed-decorators'
+import layout from '../templates/components/frost-sort'
 
 const {
   scheduleOnce
 } = run
 
 export default Component.extend(PropTypesMixin, {
+  // == Properties ======================================================
+
   layout: layout,
   classNames: ['frost-sort'],
+
+  // == State properties ======================================================
 
   propTypes: {
     hook: PropTypes.string,
@@ -34,6 +37,8 @@ export default Component.extend(PropTypesMixin, {
       sortOrder: A()
     }
   },
+
+  // == Events =============================================================
 
   init () {
     this._super(...arguments)
@@ -112,6 +117,8 @@ export default Component.extend(PropTypesMixin, {
       return props.indexOf(item.value) < 0
     })
   },
+
+  // == Actions ===============================================================
 
   actions: {
     addFilter () {
