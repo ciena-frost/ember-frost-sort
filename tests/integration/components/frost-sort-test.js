@@ -102,6 +102,15 @@ describeComponent(
         expect($hook('sort-add')).to.have.length(1)
       })
 
+      it('renders the select dropdown  on click', function () {
+        $hook('my-component-sort-0-select').find('.down-arrow').click()
+
+        run(() => {
+          expect($hook('my-component-sort-0-select').hasClass('open')).to.be.true
+          expect($hook('my-component-sort-0-select-list').find('li')).to.have.length(3)
+        })
+      })
+
       describe('When clicking remove button for third field', function () {
         beforeEach(function () {
           run(() => {
