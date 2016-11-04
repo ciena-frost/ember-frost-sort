@@ -7,11 +7,13 @@ const {
 import PropTypesMixin, { PropTypes } from 'ember-prop-types'
 import computed from 'ember-computed-decorators'
 import layout from '../templates/components/frost-sort-item'
+import uuid from 'ember-simple-uuid'
 
 export default Component.extend(PropTypesMixin, {
   // == Properties ============================================================
   layout: layout,
   classNames: ['frost-sort-item'],
+  targetOutlet: `frost-sort-${uuid()}`,
 
   // == State Properties ======================================================
 
@@ -39,10 +41,12 @@ export default Component.extend(PropTypesMixin, {
     ? 'asc'
     : this.get('initDirection').replace(':', '')
   },
+
   @computed
   selectedItem () {
     return isEmpty(this.get('initVal')) ? '' : this.get('initVal')
   },
+
   @computed('selectedItem', 'availableOptions', 'allOptions')
   sortItemList () {
     let selectedItem = this.get('selectedItem')
@@ -56,7 +60,7 @@ export default Component.extend(PropTypesMixin, {
     return selectList.filter(e => e)
   },
 
-  // == Actions== =============================================================
+  // == Actions================================================================
 
   actions: {
     select (attrs) {

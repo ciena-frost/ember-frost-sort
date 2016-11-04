@@ -20,6 +20,8 @@ describeComponent(
       'component:frost-sort-item',
       'component:frost-select',
       'component:frost-select-li',
+      'component:frost-select-outlet',
+      'component:from-elsewhere',
       'component:frost-button',
       'component:frost-icon',
       'helper:eq',
