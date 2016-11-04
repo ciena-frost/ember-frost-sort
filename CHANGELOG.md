@@ -1,3 +1,7 @@
+# 5.0.1
+**updated** frost-sort to use a named outlet for the select.
+**updated** unit tests to work with ember-elsewhere
+
 # 5.0.0
 **add** ember-elsewhere to blueprint.
 **update** tests
