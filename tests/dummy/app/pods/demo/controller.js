@@ -22,10 +22,12 @@ export default Controller.extend({
       label: 'Time'
     }
   ],
+  // BEGIN-SNIPPET sort-order
   queryParams: ['querySortOrder'],
-  sortOrder: ['name:asc'],
-  querySortOrder: [{value: 'name', direction: 'asc'}],
-
+  sortOrder: ['name:desc'],
+  querySortOrder: [{value: 'name', direction: 'desc'}],
+  //END-SNIPPET
+  
   actions: {
     // BEGIN-SNIPPET sort-action
     sortRecords: function (sortItems) {
@@ -41,6 +43,7 @@ export default Controller.extend({
       this.set('sortOrder', sortItems.map((object) => {
         return object.value + object.direction
       }))
+      console.log(this.get('sortOrder'))
       this.get('notifications').success(this.get('sortOrder'), {
         autoClear: true,
         clearDuration: 2000

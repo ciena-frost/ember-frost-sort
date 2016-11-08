@@ -72,6 +72,8 @@ export default Component.extend(PropTypesMixin, {
     })
   },
 
+  // == Compouted properties ==================================================
+
   @oneWay('sortParams') sortOrder,
   @oneWay('sortableProperties') properties,
 
