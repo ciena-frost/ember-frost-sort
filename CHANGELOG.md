@@ -1,3 +1,9 @@
+# 5.0.2
+**Fixed** issue #41. 
+**Cleaned** up coverage, demo and deprecation notices.
+
+
+
 # 5.0.1
 **updated** frost-sort to use a named outlet for the select.
 **updated** unit tests to work with ember-elsewhere
