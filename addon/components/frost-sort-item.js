@@ -27,7 +27,6 @@ export default Component.extend(PropTypesMixin, {
 
   getDefaultProps () {
     return {
-      direction: 'asc',
       availableOptions: A(),
       allOptions: A()
     }
@@ -77,9 +76,7 @@ export default Component.extend(PropTypesMixin, {
         value: this.get('selectedItem')
       }
 
-      let direction = this.get('direction') === 'desc'
-      ? 'asc'
-      : 'desc'
+      let direction = this.get('direction') === 'desc' ? 'asc' : 'desc'
       attrs['direction'] = `:${direction}`
       this.set('direction', direction)
       this.get('sortChange')(attrs)
