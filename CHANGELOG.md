@@ -1,3 +1,8 @@
+# 5.1.0
+* Clean up icons
+
+
+
 # 5.0.2
 **Fixed** issue #41. 
 **Cleaned** up coverage, demo and deprecation notices.
