@@ -6,19 +6,20 @@
   selectedValue=selectedItem
   onChange=(action 'select')}}
 {{#frost-button
-  class='direction-button'
-  hook=(concat hook '-direction')
-  size='small'
-  priority='tertiary'
-  onClick=(action 'rotate' sortId)}}
-{{frost-icon
-  class=(concat
-    'animate'
-    ' '
-    (if (eq direction 'desc') 'desc')
-  )
-  pack='frost-sort'
-  icon='direction'}}
+    class='direction-button'
+    hook=(concat hook '-direction')
+    size='small'
+    priority='tertiary'
+    onClick=(action 'rotate' sortId)}}
+  {{frost-icon
+    class=(concat
+      'animate'
+      ' '
+      (if (eq direction 'desc') 'desc')
+    )
+    pack='frost-sort'
+    icon='direction'
+  }}
 {{/frost-button}}
 {{#if hideRemoveButton}}
   {{#frost-button
