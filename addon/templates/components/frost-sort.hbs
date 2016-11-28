@@ -12,10 +12,11 @@
 {{/each}}
 {{#unless hideAddButton}}
   {{frost-button
-  hook=(concat hook '-add')
-  icon='round-add'
-  size='small'
-  priority='tertiary'
-  text='Add'
-  onClick=(action "addFilter")}}
+    hook=(concat hook '-add')
+    icon='round-add'
+    size='small'
+    priority='tertiary'
+    text='Add'
+    onClick=(action "addFilter")
+  }}
 {{/unless}}

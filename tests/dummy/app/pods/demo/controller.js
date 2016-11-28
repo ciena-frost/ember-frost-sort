@@ -26,8 +26,8 @@ export default Controller.extend({
   queryParams: ['querySortOrder'],
   sortOrder: ['name:desc'],
   querySortOrder: [{value: 'name', direction: 'desc'}],
-  //END-SNIPPET
-  
+  // END-SNIPPET
+
   actions: {
     // BEGIN-SNIPPET sort-action
     sortRecords: function (sortItems) {
