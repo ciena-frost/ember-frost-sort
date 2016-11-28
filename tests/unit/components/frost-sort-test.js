@@ -24,8 +24,9 @@ describeComponent(
       'component:from-elsewhere',
       'component:frost-button',
       'component:frost-icon',
+      'helper:hook',
       'helper:eq',
-      'helper:hook'
+      'helper:or'
     ],
     unit: true
   },

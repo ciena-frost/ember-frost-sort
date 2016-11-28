@@ -103,10 +103,10 @@ describeComponent(
       })
 
       it('renders the select dropdown  on click', function () {
-        $hook('my-component-sort-0-select').find('.down-arrow').click()
+        $hook('my-component-sort-0-select').find('svg').click()
 
         run(() => {
-          expect($hook('my-component-sort-0-select').hasClass('open')).to.be.true
+          expect($hook('my-component-sort-0-select').hasClass('frost-select-opened')).to.be.true
           expect($hook('my-component-sort-0-select-list').find('li')).to.have.length(3)
         })
       })

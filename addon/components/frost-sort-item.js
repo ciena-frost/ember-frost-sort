@@ -13,7 +13,6 @@ export default Component.extend(PropTypesMixin, {
   // == Properties ============================================================
   layout: layout,
   classNames: ['frost-sort-item'],
-  targetOutlet: `frost-sort-${uuid()}`,
 
   // == State Properties ======================================================
 
@@ -33,6 +32,10 @@ export default Component.extend(PropTypesMixin, {
   },
 
   // == Computed properties ===================================================
+  @computed
+  targetOutlet (sortId) {
+    return `frost-sort-${uuid()}-${sortId}`
+  },
 
   @computed
   direction () {
