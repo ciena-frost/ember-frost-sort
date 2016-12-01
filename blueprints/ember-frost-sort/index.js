@@ -14,7 +14,7 @@ module.exports = {
         {name: 'ember-computed-decorators', target: '~0.2.2'},
         {name: 'ember-frost-core', target: '^1.0.0'},
         {name: 'ember-elsewhere', target: '~0.4.1'},
-        {name: 'ember-hook', target: '^1.3.1'},
+        {name: 'ember-hook', target: '^1.3.5'},
         {name: 'ember-prop-types', target: '^3.0.0'}
       ]
     })
