@@ -71,30 +71,30 @@ describe(test.label, function () {
   })
 
   // FIXME isRequired isn't erroring out, so the component explodes due to lack of true protection
-  describe.skip('when no sorting properties are provided', function () {
-    const warningMessages = []
+  // describe('when no sorting properties are provided', function () {
+  //   const warningMessages = []
 
-    beforeEach(function () {
-      sandbox.stub(Logger, 'warn', (message) => {
-        warningMessages.push(message)
-      })
+  //   beforeEach(function () {
+  //     sandbox.stub(Logger, 'warn', (message) => {
+  //       warningMessages.push(message)
+  //     })
 
-      this.setProperties({
-        sortOrder: ['name']
-      })
+  //     this.setProperties({
+  //       sortOrder: ['name']
+  //     })
 
-      this.render(hbs`
-        {{frost-sort
-          sortOrder=sortOrder
-        }}
-      `)
-    })
+  //     this.render(hbs`
+  //       {{frost-sort
+  //         sortOrder=sortOrder
+  //       }}
+  //     `)
+  //   })
 
-    it('should warn that sorting properties are required', function () {
-      expect(warningMessages).to.have.length(1)
-      expect(warningMessages[0]).to.equal('foo')
-    })
-  })
+  //   it('should warn that sorting properties are required', function () {
+  //     expect(warningMessages).to.have.length(1)
+  //     expect(warningMessages[0]).to.equal('foo')
+  //   })
+  // })
 
   // FIXME should be an error from prop-types (isRequired)
   describe('when no change action is provided', function () {
@@ -128,40 +128,40 @@ describe(test.label, function () {
     })
   })
 
-  // FIXME invalide format doesn't error out, so the component explodes due to lack of true protection
-  describe.skip('when the sortOrder is an invalid format', function () {
-    const warningMessages = []
+  // FIXME invalid format doesn't error out, so the component explodes due to lack of true protection
+  // describe('when the sortOrder is an invalid format', function () {
+  //   const warningMessages = []
 
-    beforeEach(function () {
-      sandbox.stub(Logger, 'warn', (message) => {
-        warningMessages.push(message)
-      })
+  //   beforeEach(function () {
+  //     sandbox.stub(Logger, 'warn', (message) => {
+  //       warningMessages.push(message)
+  //     })
 
-      this.setProperties({
-        sortOrder: [1],
-        sortingProperties: [
-          { label: 'Name', value: 'name' },
-          { label: 'Value', value: 'value' }
-        ]
-      })
+  //     this.setProperties({
+  //       sortOrder: [1],
+  //       sortingProperties: [
+  //         { label: 'Name', value: 'name' },
+  //         { label: 'Value', value: 'value' }
+  //       ]
+  //     })
 
-      this.render(hbs`
-        {{frost-sort
-          sortOrder=sortOrder
-          sortingProperties=sortingProperties
-        }}
-      `)
-    })
+  //     this.render(hbs`
+  //       {{frost-sort
+  //         sortOrder=sortOrder
+  //         sortingProperties=sortingProperties
+  //       }}
+  //     `)
+  //   })
 
-    it('should warn that sortOrder entries must be strings', function () {
-      expect(warningMessages.find((message) => {
-        return message.includes('foo') // TODO message should come from a prop-types utility
-      })).to.not.equal(undefined, 'No warning when sortOrder is an invalid format')
-    })
-  })
+  //   it('should warn that sortOrder entries must be strings', function () {
+  //     expect(warningMessages.find((message) => {
+  //       return message.includes('foo') // TODO message should come from a prop-types utility
+  //     })).to.not.equal(undefined, 'No warning when sortOrder is an invalid format')
+  //   })
+  // })
 
   // FIXME invalid format doesn't error out, so the component explodes due to lack of true protection
-  describe.skip('when the sort properties are an invalid format', function () {})
+  // describe('when the sort properties are an invalid format', function () {})
 
   describe('when a single sort order and sorting property are provided', function () {
     let onChange
