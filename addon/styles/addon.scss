@@ -1,5 +1,4 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
-@import 'node_modules/ember-frost-core/addon/styles/frost-app';
 
 .frost-sort {
   display: flex;
@@ -7,50 +6,28 @@
   align-items: center;
   min-height: 50px;
 
-  .frost-button {
-    .frost-icon {
-      width: 15px;
-      height: 15px;
-      color: $frost-color-grey-5;
-    }
-  }
-
-  .title {
-    margin: 0 5px;
-    padding: 0 10px;
-    color: $frost-color-grey-4;
+  &-title {
+    color: $frost-color-grey-2;
     font-size: $frost-font-s;
   }
 
-  .button-hide {
-    display: none;
-  }
+  &-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 5px 0 15px;
+    border-right: 1px solid $frost-color-lgrey-1;
 
-  .remove-button {
-    fill: $frost-color-lgrey-1;
-    stroke: $frost-color-lgrey-1;
-  }
-}
+    & .frost-icon-frost-sort-direction {
+      transition: transform .2s ease;
 
-.frost-sort-item {
-  &:last-of-type {
-    border-right: initial;
-  }
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0 5px 0 15px;
-  border-right: 1px solid $frost-color-lgrey-1;
+      &.descending {
+        transform: rotate(180deg);
+      }
+    }
 
-  .frost-select {
-    width: 30px;
-  }
-
-  .desc {
-    transform: rotate(180deg);
-  }
-
-  .animate {
-    transition: transform .2s ease;
+    &:last-of-type {
+      border-right: 0;
+    }
   }
 }

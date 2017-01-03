@@ -1,49 +1,45 @@
 import Ember from 'ember'
-
 const {Controller, inject} = Ember
+// BEGIN-SNIPPET sort-import
+import {sort} from 'ember-frost-sort'
+// END-SNIPPET
+import computed, {readOnly} from 'ember-computed-decorators'
 
 export default Controller.extend({
+  // == Dependencies ==========================================================
+
   notifications: inject.service('notification-messages'),
-  sortProperties: [
-    {
-      value: 'name',
-      label: 'Name'
-    },
-    {
-      value: 'severity',
-      label: 'Severity'
-    },
-    {
-      value: 'version',
-      label: 'Version'
-    },
-    {
-      value: 'time',
-      label: 'Time'
-    }
-  ],
+
+  // == Keyword Properties ====================================================
+
+  queryParams: ['sortOrder'],
+
+  // == Properties ============================================================
+
   // BEGIN-SNIPPET sort-order
-  queryParams: ['querySortOrder'],
-  sortOrder: ['name:desc'],
-  querySortOrder: [{value: 'name', direction: 'desc'}],
+  sortOrder: ['-name'],
+  sortingProperties: [
+    { label: 'Name', value: 'name' },
+    { label: 'Value', value: 'value' }
+  ],
   // END-SNIPPET
+
+  // == Computed Properties ===================================================
+
+  // BEGIN-SNIPPET computed-sort
+  @readOnly
+  @computed('model.[]', 'sortOrder.[]')
+  sortedItems (model, sortOrder) {
+    return sort(model, sortOrder)
+  },
+  // END-SNIPPET
+
+  // == Actions ===============================================================
 
   actions: {
     // BEGIN-SNIPPET sort-action
-    sortRecords: function (sortItems) {
-      let temp = []
-
-      sortItems.map(function (item) {
-        temp.push({
-          value: item.value,
-          direction: item.direction
-        })
-      })
-      this.set('querySortOrder', temp)
-      this.set('sortOrder', sortItems.map((object) => {
-        return object.value + object.direction
-      }))
-      console.log(this.get('sortOrder'))
+    sort: function (sortOrder) {
+      this.set('sortOrder', sortOrder)
       this.get('notifications').success(this.get('sortOrder'), {
         autoClear: true,
         clearDuration: 2000

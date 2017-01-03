@@ -20,7 +20,12 @@
   justify-content: space-around;
 }
 
-.title {
-  padding-bottom: 20px;
-  font-size: $frost-font-xl;
+.result {
+  margin: 15px 0;
+
+  &-title {
+    padding-right: 15px;
+    color: $frost-color-grey-2;
+    font-size: $frost-font-s;
+  }
 }
