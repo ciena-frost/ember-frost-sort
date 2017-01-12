@@ -1,3 +1,31 @@
+# 7.0.0
+- onChange event sort order property format changed to align with JSONAPI spec http://jsonapi.org/format/#fetching-sorting
+  - **6.x:** `[{ direction: ':asc', value: 'foo' }, { direction: ':desc', value: 'bar' }]`
+  - **7.x:** `['foo', '-bar']`
+- component `sortOrder` property also has the above format
+- component `maxActiveSortRules` renamed to `sortOrderMax`
+- component `properties` renamed to `sortingProperties`
+- added a default `sort` utility `import {sort} from 'ember-frost-sort'` that handles multiple sort orders for object properties that support `compare` (JS primitives at a minimum)
+- spread support https://github.com/ciena-blueplanet/ember-spread
+- updated hooks that use hook qualifiers
+  - `{hook}-title`
+  - `{hook}-item` & `{ index: ___ }`
+  - `{hook}-item-select` & `{ index: ___ }`
+  - `{hook}-item-direction` & `{ index: ___ }`
+  - `{hook}-item-remove` & `{ index: ___ }`
+  - `{hook}-add`
+- updated class names
+  - `frost-sort-title`
+  - `frost-sort-item`
+  - `frost-sort-item-select`
+  - `frost-sort-item-direction`
+  - `frost-sort-item-remove`
+  - `frost-icon-frost-sort-direction` & `descending`
+  - `frost-sort-add`
+- updated demo
+- bunches of internal cleanup
+- bunches of additional tests
+
 # 6.0.0
 * **Updated** `ember-frost-core` to `^1.0.0`
 * **Updated** dependencies
