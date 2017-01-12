@@ -1,91 +1,97 @@
-import Ember from 'ember'
-const {
-  A,
-  Component,
-  isEmpty
-} = Ember
-import PropTypesMixin, { PropTypes } from 'ember-prop-types'
 import computed from 'ember-computed-decorators'
+import {Component} from 'ember-frost-core'
+import {PropTypes} from 'ember-prop-types'
+
 import layout from '../templates/components/frost-sort-item'
-import uuid from 'ember-simple-uuid'
 
-export default Component.extend(PropTypesMixin, {
+export default Component.extend({
+
+  // == Dependencies ==========================================================
+
   // == Properties ============================================================
-  layout: layout,
-  classNames: ['frost-sort-item'],
-
-  // == State Properties ======================================================
 
   propTypes: {
-    selectedItem: PropTypes.string,
-    direction: PropTypes.string,
-    initVal: PropTypes.string,
-    availableOptions: PropTypes.array,
-    allOptions: PropTypes.array
+    hideRemove: PropTypes.bool.isRequired,
+    index: PropTypes.number.isRequired,
+    selectOutlet: PropTypes.string.isRequired,
+    sortOrder: PropTypes.arrayOf(PropTypes.string).isRequired,
+    sortingProperties: PropTypes.arrayOf(PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired
+    })).isRequired
   },
 
   getDefaultProps () {
     return {
-      availableOptions: A(),
-      allOptions: A()
+      // Keywords
+      layout
+
+      // Options
     }
   },
 
   // == Computed properties ===================================================
-  @computed
-  targetOutlet (sortId) {
-    return `frost-sort-${uuid()}-${sortId}`
+
+  @computed('_sortOrderValues.@each', '_localProperty', 'sortingProperties')
+  _availableProperties (_sortOrderValues, _localProperty, sortingProperties) {
+    const remainingProperties = sortingProperties.filter(property => {
+      return !_sortOrderValues.includes(property.value)
+    })
+
+    return [_localProperty].concat(remainingProperties)
   },
 
-  @computed
-  direction () {
-    return isEmpty(this.get('initDirection'))
-    ? 'asc'
-    : this.get('initDirection').replace(':', '')
+  @computed('sortOrder.@each', 'index')
+  _descending (sortOrder, index) {
+    return sortOrder[index].startsWith('-')
   },
 
-  @computed
-  selectedItem () {
-    return isEmpty(this.get('initVal')) ? '' : this.get('initVal')
+  @computed('_descending')
+  _directionChar (_descending) {
+    return _descending ? '-' : ''
   },
 
-  @computed('selectedItem', 'availableOptions', 'allOptions')
-  sortItemList () {
-    let selectedItem = this.get('selectedItem')
-    let availableOptions = this.get('availableOptions')
-    let allOptions = this.get('allOptions')
-
-    let selectList = availableOptions.slice(0)
-    if (!isEmpty(selectedItem)) {
-      selectList.pushObject(allOptions.findBy('value', selectedItem))
-    }
-    return selectList.filter(e => e)
+  @computed('_sortOrderValues.@each', 'index', 'sortingProperties')
+  _localProperty (_sortOrderValues, index, sortingProperties) {
+    return sortingProperties.find(property => {
+      return property.value === _sortOrderValues[index]
+    })
   },
 
-  // == Actions================================================================
+  @computed('_localProperty')
+  _localValue (_localProperty) {
+    return _localProperty.value
+  },
+
+  @computed('sortOrder.@each')
+  _sortOrderValues (sortOrder) {
+    return sortOrder.map(entry => {
+      return entry.startsWith('-') ? entry.slice(1) : entry
+    })
+  },
+
+  // == Functions =============================================================
+
+  // == Ember Lifecycle Hooks =================================================
+
+  // == DOM Events ============================================================
+
+  // == Actions ===============================================================
 
   actions: {
-    select (attrs) {
-      this.set('selectedItem', attrs[0])
-      this.get('sortChange')({
-        id: this.get('sortId'),
-        direction: `:${this.get('direction')}`,
-        value: attrs[0]
-      })
+    changeProperty ([value]) {
+      // Reset the direction to ascending and change the sort entry value
+      this.onChange(this.get('index'), `${value}`)
     },
-    rotate (sortId) {
-      let attrs = {
-        id: sortId,
-        value: this.get('selectedItem')
-      }
 
-      let direction = this.get('direction') === 'desc' ? 'asc' : 'desc'
-      attrs['direction'] = `:${direction}`
-      this.set('direction', direction)
-      this.get('sortChange')(attrs)
+    changeDirection () {
+      // Keep the sort entry value and flip the direction char
+      const direction = this.get('_descending') ? '' : '-'
+      this.onChange(this.get('index'), `${direction}${this.get('_localValue')}`)
     },
-    removeItem (id) {
-      this.get('remove')(id)
+
+    remove () {
+      this.onRemove(this.get('index'))
     }
   }
 })

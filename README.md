@@ -40,44 +40,59 @@ A sorting component to sort collections
 ember install ember-frost-sort
 ```
 
-## API
-| Attribute | Type | Value | Description |
-| --------- | ---- | ----- | ----------- |
-| `properties` | `array` | `[{"label: "foo", "value": "bar"}]` | Array of sortable attributes. |
-| `sortOrder` | `array` | `[{"direction: "asc/desc", "value": <attr-name>}]` |  Array that specifies the sort order. |
-| `onChange` | `string` | `<action-name>` | The action to call when the value of the select item changes. |
+## Usage
+### Controller
+```js
+sortOrder: ['name', '-value'],
+sortingProperties: [{ label: Name, value: name }, { label: Value, value: value }],
 
-## Testing with ember-hook
-The sort component is accessible using ember-hook with the top level hook name or you can access the internal components as well -
-* Default top level hook - `$hook('sort')`
-* Add sort button hook - `$hook('<hook-name>-add')`
-* Remove sort button hook - `$hook('<hook-name>-remove-<index>')`
-* For each sort - `$hook('<hook-name>-<index>')'`
-* Sort direction for each filter - `$hook('<hook-name>-<index>-direction')'`
-* Each sort's select element - `$hook('<hook-name>-<index>-select')'`
+actions: {
+  onChange (sortOrder) {
+    this.set('sortOrder', sortOrder)
+  }
+}
+```
 
-## Examples
-```handlebars
+### Component
+```hbs
 {{frost-sort
-  properties=sortAttributes
-  onChange=(action 'sort')
+  hook='myHook'
   sortOrder=sortOrder
-  }}
+  sortOrderMax=2
+  sortingProperties=sortingProperties
+  onChange=(action 'sort')
+}}
+```
+Also supports [spread](https://github.com/ciena-blueplanet/ember-spread) format 
+
+### Sort utility (optional)
+```js
+import {sort} from 'ember-frost-sort'
+
+@readOnly
+@computed('model.[]', 'sortOrder.[]')
+sortedItems (model, sortOrder) {
+  return sort(model, sortOrder)
+}
 ```
 
-## Development
-### Setup
-```
-git clone git@github.com:ciena-frost/ember-frost-sort.git
-cd ember-frost-sort
-npm install && bower install
-```
+## Event formats
+- onChange : {string[]} sortOrder - the sort order in [JSONAPI](http://jsonapi.org/format/#fetching-sorting) format
+  - e.g. ['name', '-value'] would sort by name ascending first, value descending second
 
-### Development Server
-A dummy application for development is available under `ember-frost-sort/tests/dummy`.
-To run the server run `ember server` (or `npm start`) from the root of the repository and
-visit the app at http://localhost:4200.
+## Hooks
+- `{hook}-title`
+- `{hook}-item` & `{ index: ___ }`
+- `{hook}-item-select` & `{ index: ___ }`
+- `{hook}-item-direction` & `{ index: ___ }`
+- `{hook}-item-remove` & `{ index: ___ }`
+- `{hook}-add`
 
-### Testing
-Run `npm test` from the root of the project to run linting checks as well as execute the test suite
-and output code coverage.
+## Class names
+- `frost-sort-title`
+- `frost-sort-item`
+- `frost-sort-item-select`
+- `frost-sort-item-direction`
+- `frost-sort-item-remove`
+- `frost-icon-frost-sort-direction` & `descending`
+- `frost-sort-add`

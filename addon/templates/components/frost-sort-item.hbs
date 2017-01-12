@@ -1,33 +1,39 @@
-{{frost-select-outlet name=targetOutlet}}
 {{frost-select
-  renderTarget=targetOutlet
-  data=sortItemList
-  hook=(concat hook '-select')
-  selectedValue=selectedItem
-  onChange=(action 'select')}}
+  class=(concat css '-select')
+  data=_availableProperties
+  hook=(concat hookPrefix '-select')
+  hookQualifiers=hookQualifiers
+  renderTarget=selectOutlet
+  selectedValue=_localValue
+  onChange=(action 'changeProperty')
+}}
+
 {{#frost-button
-    class='direction-button'
-    hook=(concat hook '-direction')
-    size='small'
-    priority='tertiary'
-    onClick=(action 'rotate' sortId)}}
+  class=(concat css '-direction')
+  hook=(concat hookPrefix '-direction')
+  hookQualifiers=hookQualifiers
+  size='small'
+  priority='tertiary'
+  onClick=(action 'changeDirection')
+}}
   {{frost-icon
-    class=(concat
-      'animate'
-      ' '
-      (if (eq direction 'desc') 'desc')
-    )
-    pack='frost-sort'
+    class=(if _descending 'descending')
+    hook=(concat hookPrefix '-direction-icon')
+    hookQualifiers=hookQualifiers
     icon='direction'
+    pack='frost-sort'
   }}
 {{/frost-button}}
-{{#if hideRemoveButton}}
-  {{#frost-button
-    class='remove-button'
-    hook=(concat hook '-remove')
-    priority=''
+
+{{#unless hideRemove}}
+  {{frost-button
+    class=(concat css '-remove')
+    hook=(concat hookPrefix '-remove')
+    hookQualifiers=hookQualifiers
+    icon='remove'
+    pack='frost-sort'
+    priority='tertiary'
     size='small'
-    onClick=(action 'removeItem' sortId)}}
-    {{frost-icon icon='round-close' }}
-  {{/frost-button}}
-{{/if}}
+    onClick=(action 'remove')
+  }}
+{{/unless}}

@@ -4,7 +4,7 @@ module.exports = function (environment) {
     podModulePrefix: 'dummy/pods',
     environment: environment,
     rootURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -41,9 +41,6 @@ module.exports = function (environment) {
   if (environment === 'production') {
     ENV.rootURL = '/ember-frost-sort'
     ENV.isDemo = true
-    ENV['ember-cli-mirage'] = {
-      enabled: true
-    }
   }
 
   return ENV

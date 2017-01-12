@@ -1,22 +1,31 @@
-<div class="title">Sort by: </div>
-{{#each filterArray as |object index|}}
-    {{frost-sort-item sortId=object.id
-      availableOptions=unselected
-      allOptions=properties
-      hook=(concat hook '-' index)
-      initVal=object.value
-      initDirection=object.direction
-      hideRemoveButton=hideRemoveButton
-      sortChange=(action 'sortArrayChange')
-      remove=(action 'removeFilter')}}
+{{frost-select-outlet name=_selectOutlet}}
+
+<div class='{{css}}-title' data-test={{hook (concat hookPrefix '-title')}}>
+  Sort by:
+</div>
+
+{{#each sortOrder as |sortOrderEntry index|}}
+  {{frost-sort-item
+    hideRemove=_hideRemove
+    hook=(concat hookPrefix '-item')
+    hookQualifiers=(hash index=index)
+    index=index
+    selectOutlet=_selectOutlet
+    sortOrder=sortOrder
+    sortingProperties=sortingProperties
+    onChange=(action 'change')
+    onRemove=(action 'remove')
+  }}
 {{/each}}
-{{#unless hideAddButton}}
+
+{{#unless _hideAdd}}
   {{frost-button
-    hook=(concat hook '-add')
+    class=(concat css '-add')
+    hook=(concat hookPrefix '-add')
     icon='round-add'
-    size='small'
     priority='tertiary'
+    size='small'
     text='Add'
-    onClick=(action "addFilter")
+    onClick=(action 'add')
   }}
 {{/unless}}
