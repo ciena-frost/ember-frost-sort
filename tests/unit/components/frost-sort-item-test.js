@@ -28,7 +28,8 @@ describeComponent(
       'component:frost-button',
       'component:frost-icon',
       'helper:hook',
-      'helper:eq'
+      'helper:eq',
+      'helper:or'
     ],
     unit: true
   },
