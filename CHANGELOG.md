@@ -1,3 +1,10 @@
+# 7.1.0
+
+* **Added** additional builds to CI to make sure addon works with latest versions of Ember.
+* **Removed** files from npm package that aren't necessary (all of the various config files).
+* **Updated** dependencies to latest versions.
+
+
 # 7.0.0
 - onChange event sort order property format changed to align with JSONAPI spec http://jsonapi.org/format/#fetching-sorting
   - **6.x:** `[{ direction: ':asc', value: 'foo' }, { direction: ':desc', value: 'bar' }]`
