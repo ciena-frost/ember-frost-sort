@@ -1,9 +1,9 @@
 import Ember from 'ember'
 const {Controller, inject} = Ember
 // BEGIN-SNIPPET sort-import
-import {sort} from 'ember-frost-sort'
-// END-SNIPPET
 import computed, {readOnly} from 'ember-computed-decorators'
+// END-SNIPPET
+import {sort} from 'ember-frost-sort'
 
 export default Controller.extend({
   // == Dependencies ==========================================================
@@ -19,8 +19,8 @@ export default Controller.extend({
   // BEGIN-SNIPPET sort-order
   sortOrder: ['-name'],
   sortingProperties: [
-    { label: 'Name', value: 'name' },
-    { label: 'Value', value: 'value' }
+    {label: 'Name', value: 'name'},
+    {label: 'Value', value: 'value'}
   ],
   // END-SNIPPET
 

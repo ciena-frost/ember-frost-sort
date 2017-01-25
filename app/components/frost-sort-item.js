@@ -1,1 +1,1 @@
-export { default } from 'ember-frost-sort/components/frost-sort-item'
+export {default} from 'ember-frost-sort/components/frost-sort-item'

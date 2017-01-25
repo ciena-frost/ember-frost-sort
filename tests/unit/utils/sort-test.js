@@ -1,11 +1,11 @@
 import {expect} from 'chai'
-import {beforeEach, describe, it} from 'mocha'
 import {sort} from 'ember-frost-sort'
+import {beforeEach, describe, it} from 'mocha'
 
 const items = [
-  { name: 'c', value: 1 },
-  { name: 'a', value: 1 },
-  { name: 'b', value: 2 }
+  {name: 'c', value: 1},
+  {name: 'a', value: 1},
+  {name: 'b', value: 2}
 ]
 
 describe('Unit / Utility / sort /', function () {
@@ -51,9 +51,9 @@ describe('Unit / Utility / sort /', function () {
 
     it('should return the items unsorted', function () {
       expect(sortedItems).to.eql([
-        { name: 'c', value: 1 },
-        { name: 'a', value: 1 },
-        { name: 'b', value: 2 }
+        {name: 'c', value: 1},
+        {name: 'a', value: 1},
+        {name: 'b', value: 2}
       ])
     })
   })
@@ -67,9 +67,9 @@ describe('Unit / Utility / sort /', function () {
 
     it('should return the items sorted', function () {
       expect(sortedItems).to.eql([
-        { name: 'a', value: 1 },
-        { name: 'b', value: 2 },
-        { name: 'c', value: 1 }
+        {name: 'a', value: 1},
+        {name: 'b', value: 2},
+        {name: 'c', value: 1}
       ])
     })
   })
@@ -83,9 +83,9 @@ describe('Unit / Utility / sort /', function () {
 
     it('should return the items sorted in descending order', function () {
       expect(sortedItems).to.eql([
-        { name: 'c', value: 1 },
-        { name: 'b', value: 2 },
-        { name: 'a', value: 1 }
+        {name: 'c', value: 1},
+        {name: 'b', value: 2},
+        {name: 'a', value: 1}
       ])
     })
   })
@@ -99,9 +99,9 @@ describe('Unit / Utility / sort /', function () {
 
     it('should return the items sorted by each sort order in sequence', function () {
       expect(sortedItems).to.eql([
-        { name: 'c', value: 1 },
-        { name: 'a', value: 1 },
-        { name: 'b', value: 2 }
+        {name: 'c', value: 1},
+        {name: 'a', value: 1},
+        {name: 'b', value: 2}
       ])
     })
   })

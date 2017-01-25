@@ -1,8 +1,8 @@
 import Ember from 'ember'
 const {assert} = Ember
+import computed, {readOnly} from 'ember-computed-decorators'
 import {Component} from 'ember-frost-core'
 import {PropTypes} from 'ember-prop-types'
-import computed, {readOnly} from 'ember-computed-decorators'
 import uuid from 'ember-simple-uuid'
 
 import layout from '../templates/components/frost-sort'

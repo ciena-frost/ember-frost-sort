@@ -3,7 +3,7 @@
  */
 
 import Ember from 'ember'
-const { A, assert, compare, get, isArray, isEmpty } = Ember
+const {A, assert, compare, get, isArray, isEmpty} = Ember
 
 /**
  * Sort any items that implement a compare function
