@@ -1,3 +1,10 @@
+# 7.2.0
+
+* **Added** `ember-disable-prototype-extensions` to ensure code doesn't rely on prototype extensions.
+* **Removed** lodash from dependencies.
+* **Updated** CI to test in Chrome as well as Firefox.
+
+
 # 7.1.0
 
 * **Added** additional builds to CI to make sure addon works with latest versions of Ember.
