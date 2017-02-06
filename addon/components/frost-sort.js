@@ -1,5 +1,5 @@
 import Ember from 'ember'
-const {assert} = Ember
+const {assert, get} = Ember
 import computed, {readOnly} from 'ember-computed-decorators'
 import {Component} from 'ember-frost-core'
 import {PropTypes} from 'ember-prop-types'
@@ -79,7 +79,7 @@ export default Component.extend({
       })
 
       const clonedSortOrder = this.get('sortOrder').slice()
-      clonedSortOrder.push(availableProperties.get('0.value'))
+      clonedSortOrder.push(get(availableProperties, '0.value'))
       this.onChange(clonedSortOrder)
     },
 
