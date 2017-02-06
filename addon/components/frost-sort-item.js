@@ -35,7 +35,7 @@ export default Component.extend({
   @computed('_sortOrderValues.@each', '_localProperty', 'sortingProperties')
   _availableProperties (_sortOrderValues, _localProperty, sortingProperties) {
     const remainingProperties = sortingProperties.filter(property => {
-      return !_sortOrderValues.includes(property.value)
+      return _sortOrderValues.indexOf(property.value) === -1
     })
 
     return [_localProperty].concat(remainingProperties)

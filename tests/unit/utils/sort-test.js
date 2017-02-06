@@ -50,11 +50,13 @@ describe('Unit / Utility / sort /', function () {
     })
 
     it('should return the items unsorted', function () {
-      expect(sortedItems).to.eql([
+      const actual = JSON.stringify(sortedItems)
+      const expected = JSON.stringify([
         {name: 'c', value: 1},
         {name: 'a', value: 1},
         {name: 'b', value: 2}
       ])
+      expect(actual).to.eql(expected)
     })
   })
 
@@ -66,11 +68,13 @@ describe('Unit / Utility / sort /', function () {
     })
 
     it('should return the items sorted', function () {
-      expect(sortedItems).to.eql([
+      const actual = JSON.stringify(sortedItems)
+      const expected = JSON.stringify([
         {name: 'a', value: 1},
         {name: 'b', value: 2},
         {name: 'c', value: 1}
       ])
+      expect(actual).to.eql(expected)
     })
   })
 
@@ -82,11 +86,13 @@ describe('Unit / Utility / sort /', function () {
     })
 
     it('should return the items sorted in descending order', function () {
-      expect(sortedItems).to.eql([
+      const actual = JSON.stringify(sortedItems)
+      const expected = JSON.stringify([
         {name: 'c', value: 1},
         {name: 'b', value: 2},
         {name: 'a', value: 1}
       ])
+      expect(actual).to.eql(expected)
     })
   })
 
@@ -98,11 +104,13 @@ describe('Unit / Utility / sort /', function () {
     })
 
     it('should return the items sorted by each sort order in sequence', function () {
-      expect(sortedItems).to.eql([
+      const actual = JSON.stringify(sortedItems)
+      const expected = JSON.stringify([
         {name: 'c', value: 1},
         {name: 'a', value: 1},
         {name: 'b', value: 2}
       ])
+      expect(actual).to.eql(expected)
     })
   })
 })
