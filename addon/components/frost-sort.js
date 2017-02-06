@@ -75,7 +75,7 @@ export default Component.extend({
       })
 
       const availableProperties = this.get('sortingProperties').filter(property => {
-        return !sortOrderValues.includes(property.value)
+        return sortOrderValues.indexOf(property.value) === -1
       })
 
       const clonedSortOrder = this.get('sortOrder').slice()
