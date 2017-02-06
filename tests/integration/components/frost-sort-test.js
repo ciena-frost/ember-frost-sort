@@ -325,7 +325,9 @@ describe(test.label, function () {
 
           const labels = []
           for (let index = 0; index < selectItems.length; index++) {
-            labels.push(selectItems.eq(index).text().trim())
+            labels.push(
+              selectItems.eq(index).find('.frost-select-list-item-text').data('text').trim()
+            )
           }
 
           expect(labels).to.eql(['Name', 'Height'])
@@ -444,7 +446,9 @@ describe(test.label, function () {
 
             const labels = []
             for (let index = 0; index < selectItems.length; index++) {
-              labels.push(selectItems.eq(index).text().trim())
+              labels.push(
+                selectItems.eq(index).find('.frost-select-list-item-text').data('text').trim()
+              )
             }
 
             expect(labels).to.eql(['Name'])
