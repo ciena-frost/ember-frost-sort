@@ -19,7 +19,8 @@
 - component `sortOrder` property also has the above format
 - component `maxActiveSortRules` renamed to `sortOrderMax`
 - component `properties` renamed to `sortingProperties`
-- added a default `sort` utility `import {sort} from 'ember-frost-sort'` that handles multiple sort orders for object properties that support `compare` (JS primitives at a minimum)
+- added a default `sort` utility `import {sort} from 'ember-frost-sort'` that handles multiple sort orders for object
+properties that support `compare` (JS primitives at a minimum)
 - spread support https://github.com/ciena-blueplanet/ember-spread
 - updated hooks that use hook qualifiers
   - `{hook}-title`
@@ -50,7 +51,7 @@
 
 
 # 5.0.2
-**Fixed** issue #41. 
+**Fixed** issue #41.
 **Cleaned** up coverage, demo and deprecation notices.
 
 
@@ -66,8 +67,8 @@
 
 
 # 4.0.0
-**update** node version and other deps. 
-**Add** rootURL. 
+**update** node version and other deps.
+**Add** rootURL.
 **update** blueprint
 
 
@@ -94,11 +95,12 @@
     - it would inject code that couldn't be covered.
 - Default PropTypes to both `item` and `sort`
 - Styling of button
-    - Transition rotate would happen on div, not the svg. Causing the padding along with the svg to rotate. Not too noticeable of difference, but went ahead and fixed anyways
+    - Transition rotate would happen on div, not the svg. Causing the padding along with the svg to rotate. Not too
+    noticeable of difference, but went ahead and fixed anyways
     - `:last-of-type` on frost-sort-item so extra line won't show up.
-- Fixed bug where if user edits url, more filters can be added pass the point. 
+- Fixed bug where if user edits url, more filters can be added pass the point.
     - Prevented add from adding in this situation.
-- Upped test coverage to 💯 
+- Upped test coverage to 💯
 
 # 2.5.0
 - Deprecated `sortParams` in favor of `sortOrder` and `sortableProperties` in favor of `properties`
@@ -123,7 +125,8 @@ https://github.com/ciena-frost/ember-frost-sort/issues/17
 # 2.3.2
 
 * **Updated** `ember-hook` dependency and blueprint to latest version
-* **Removed** unneeded configuration object for `ember-hook` since it will now work correctly in the development environment.
+* **Removed** unneeded configuration object for `ember-hook` since it will now work correctly in the development
+environment.
 
 <!-- Reviewable:start -->
 ---
