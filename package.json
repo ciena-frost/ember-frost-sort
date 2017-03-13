@@ -1,6 +1,6 @@
 {
   "name": "ember-frost-sort",
-  "version": "7.2.1",
+  "version": "7.2.0",
   "description": "A sorting component to sort collections",
   "frostGuideDirectory": "ui-components/content-views/sort",
   "directories": {
@@ -9,10 +9,11 @@
   },
   "scripts": {
     "build": "ember build",
+    "coverage": "COVERAGE=true ember test -r 'dot'",
     "lint": "lint-all-the-things",
     "start": "ember server",
     "test": "npm run lint && npm run test-addon",
-    "test-addon": "EMBER_TRY_SCENARIO=${EMBER_TRY_SCENARIO:=default} && ember try:one $EMBER_TRY_SCENARIO --- COVERAGE=true ember test"
+    "test-addon": "EMBER_TRY_SCENARIO=${EMBER_TRY_SCENARIO:=default} && ember try:one $EMBER_TRY_SCENARIO --- ember tva --push-var='false' COVERAGE=true --msg-on=$EMBER_TRY_SCENARIO"
   },
   "repository": "git@github.com:ciena-frost/ember-frost-sort.git",
   "engines": {
