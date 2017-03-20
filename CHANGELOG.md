@@ -1,3 +1,9 @@
+# 7.2.3 (2017-03-20)
+* **Fixed** #46 
+* **Fixed** #49 
+* **Modified** to align with UX specs
+
+
 # 7.2.2
 * **Updated** the travis.yml and package.json to run code coverage
 
