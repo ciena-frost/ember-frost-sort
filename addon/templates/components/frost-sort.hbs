@@ -19,6 +19,7 @@
 {{/each}}
 
 {{#unless _hideAdd}}
+  <span class={{concat css '-separator'}} />
   {{frost-button
     class=(concat css '-add')
     hook=(concat hookPrefix '-add')
