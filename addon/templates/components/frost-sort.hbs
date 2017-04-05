@@ -4,7 +4,7 @@
   Sort by:
 </div>
 
-{{#each sortOrder key='@id' as |sortOrderEntry index|}}
+{{#each sortOrder key="@index" as |sortOrderEntry index|}}
   {{frost-sort-item
     hideRemove=_hideRemove
     hook=(concat hookPrefix '-item')
