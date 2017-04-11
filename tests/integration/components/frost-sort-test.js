@@ -378,6 +378,17 @@ describe(test.label, function () {
           $hook('test-add').click()
         })
 
+        it('does not rerender an unchanged component', function (done) {
+          const oldId = $hook('test-item', {index: 0}).attr('id')
+          $hook('test-item-direction', {index: 0}).click()
+          return wait()
+            .then(() => {
+              const currentId = $hook('test-item', {index: 0}).attr('id')
+              expect(currentId).to.equal(oldId)
+              done()
+            })
+        })
+
         it('renders a new select order entry', function () {
           expect($hook('test-item-select')).to.have.length(4)
         })

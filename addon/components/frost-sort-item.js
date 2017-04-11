@@ -32,7 +32,7 @@ export default Component.extend({
 
   // == Computed properties ===================================================
 
-  @computed('_sortOrderValues.@each', '_localProperty', 'sortingProperties')
+  @computed('_sortOrderValues.[]', '_localProperty', 'sortingProperties')
   _availableProperties (_sortOrderValues, _localProperty, sortingProperties) {
     const remainingProperties = sortingProperties.filter(property => {
       return _sortOrderValues.indexOf(property.value) === -1
@@ -41,7 +41,7 @@ export default Component.extend({
     return [_localProperty].concat(remainingProperties)
   },
 
-  @computed('sortOrder.@each', 'index')
+  @computed('sortOrder.[]', 'index')
   _descending (sortOrder, index) {
     return sortOrder[index].startsWith('-')
   },
@@ -51,7 +51,7 @@ export default Component.extend({
     return _descending ? '-' : ''
   },
 
-  @computed('_sortOrderValues.@each', 'index', 'sortingProperties')
+  @computed('_sortOrderValues.[]', 'index', 'sortingProperties')
   _localProperty (_sortOrderValues, index, sortingProperties) {
     return sortingProperties.find(property => {
       return property.value === _sortOrderValues[index]
@@ -63,7 +63,7 @@ export default Component.extend({
     return _localProperty.value
   },
 
-  @computed('sortOrder.@each')
+  @computed('sortOrder.[]')
   _sortOrderValues (sortOrder) {
     return sortOrder.map(entry => {
       return entry.startsWith('-') ? entry.slice(1) : entry
