@@ -1,3 +1,7 @@
+# 7.2.5 (2017-04-21)
+* **Added** blueprint check
+
+
 # 7.2.4 (2017-04-11)
 - fix(flicker): Prevent rerendering when item hasnt changed 
 
