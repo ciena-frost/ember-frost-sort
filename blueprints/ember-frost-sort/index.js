@@ -3,7 +3,7 @@ const blueprintHelper = require('ember-frost-core/blueprint-helper')
 module.exports = {
   afterInstall: function (options) {
     const addonsToAdd = [
-      {name: 'ember-computed-decorators', target: '~0.2.2'},
+      {name: 'ember-computed-decorators', target: '~0.3.0'},
       {name: 'ember-frost-core', target: '^1.14.3'},
       {name: 'ember-elsewhere', target: '~0.4.1'},
       {name: 'ember-hook', target: '^1.3.5'},
