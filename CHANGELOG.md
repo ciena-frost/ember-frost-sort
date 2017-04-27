@@ -1,3 +1,7 @@
+# 7.2.6 (2017-04-27)
+
+* **Fixed** components to stop setting the `layout` property in `getDefaultProps()` as this method is not intended for setting Ember.Component class properties directly.
+
 # 7.2.5 (2017-04-21)
 * **Added** blueprint check
 
