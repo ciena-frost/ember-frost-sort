@@ -10,6 +10,8 @@ export default Component.extend({
 
   // == Properties ============================================================
 
+  layout,
+
   propTypes: {
     hideRemove: PropTypes.bool.isRequired,
     index: PropTypes.number.isRequired,
@@ -19,15 +21,6 @@ export default Component.extend({
       label: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired
     })).isRequired
-  },
-
-  getDefaultProps () {
-    return {
-      // Keywords
-      layout
-
-      // Options
-    }
   },
 
   // == Computed properties ===================================================

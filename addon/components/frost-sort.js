@@ -13,6 +13,8 @@ export default Component.extend({
 
   // == Properties ============================================================
 
+  layout,
+
   propTypes: {
     sortOrder: PropTypes.arrayOf(PropTypes.string).isRequired,
     sortOrderMax: PropTypes.number,
@@ -22,15 +24,6 @@ export default Component.extend({
     })).isRequired,
 
     onChange: PropTypes.func.isRequired
-  },
-
-  getDefaultProps () {
-    return {
-      // Keywords
-      layout
-
-      // Options
-    }
   },
 
   // == Compouted properties ==================================================
