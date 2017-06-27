@@ -1,6 +1,6 @@
 import {expect} from 'chai'
 import Ember from 'ember'
-const {$, run} = Ember
+const {$, Test, run} = Ember
 import {keyCodes} from 'ember-frost-core/utils'
 const {DOWN_ARROW, ENTER, SPACE} = keyCodes
 import {$hook} from 'ember-hook'
@@ -10,6 +10,14 @@ import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
 import {integration} from 'dummy/tests/helpers/ember-test-utils/setup-component-test'
+
+// Hack to fix test failing when using `throw` - @jerbrown 2017.06.27
+// Issue introduced by https://github.com/emberjs/ember.js/pull/14898
+Test.adapter = Test.MochaAdapter.extend({
+  exception (error) {
+    throw error
+  }
+}).create()
 
 const test = integration('frost-sort')
 
