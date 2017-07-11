@@ -21,9 +21,8 @@ cache:
 
 env:
   matrix:
-    - EMBER_TRY_SCENARIO=ember-2-8
-    - EMBER_TRY_SCENARIO=default
-    - EMBER_TRY_SCENARIO=ember-release
+    - EMBER_TRY_SCENARIO=ember-lts-2.8
+    - EMBER_TRY_SCENARIO=ember-default
   global:
     - CXX=g++-4.8
     - secure: PZ54LInpCANVhDnLUz9Dn5QujAFnt0UElvfC6ENqD+su8oXwTV0B8eu1cp5Ha3UizA1OxfPbogP71ebc+/3IJiCRr3rMmiRMmKXYkE7xl0epZi5FkSh2LKk6AjVruPCP7VL1u++ofsrMUXGsPcYxdeOWlha1AwiHOODjTvTYKFEX2FsNg9sM+wSw6Ez9dLHR0YcadAlMOSCByQ1impnPGiMsCq0MGJMqp5Hfmyrs1wEFBsvOqn85Cbz4jlgkxo5JQiuArTff38pgsx3IdM3yEAF9m/jCjcDz/OGnJpMLLjOZby1/AiZ9xZ6VaIxqzpVn7PJorMLLfLZU86mEA33QxZyz/m5EeY6Feo76g4jg/lAOv0oXMNbXkkU4NcSq/rBTuux7ocdEaacLtEOIQsbybzSd5kj84coSwO7R9o6+j7qbpVCTZ9RQcAw8RXiWaFTIFdW2LhvYvNUuiap7ZWNJITk/hXsx1iiJOIAnB9IufamE0gKXSuhGP1zcF6SvWg4nBVTrPuSo7cCYp6MzihWLkCYiBe1mAS7LNJsjI5usCaEzYp9TE2pW/OWUWv0zT8XPWxer78o6DRy1XK1nRMLiRuEqupYDcKXp3XW9xyNhs67//trla1iAPRxSd00AyiMcFsXflTCtT4n6/WMuOEo5iQfux4tUyEr31ny3e8PVteI=
@@ -32,6 +31,7 @@ matrix:
   fast_finish: true
   allow_failures:
   - env: EMBER_TRY_SCENARIO=ember-release
+  - node_js: 'stable'
 
 before_install:
 - npm config set spin false
@@ -63,7 +63,7 @@ deploy:
     secure: ilZNpKEEbu9XPBDXxOnIttbzMobIKQZyYnUOnj0r3HKhVviiH1qx8VSawUBEdDnbjd6ipzPKl6o9jcHLte+ucmv7BM2jlLv+mENjhLO6kjc9+6vGi86XGU80yN8vksI+xIdu1hC5anmfEqpuN3fAkvWKjJGYkMT9lvqkz+6emGNEIEwymGJ0woYgXrJnOJNVGCCqqSkKlOpezCHUzzjBZEYRxe2Q6vLZelNq9fgme/IuvBU6eqgbpPyj2X1njBOzBJ8oaOKrmV8vfFyD5jhqLxWOiJTV9Z/jOVCWQqnsjcED5QyWBM3/RTTtx5eZ2IkD5dI0eA68bJOGevqu/DtZaHn3rvXczfACagp95S1vIs2c1P08zSNNFBkPEo+wAd10Zn3ilLz/Vdty7ZohQyuB2FUmImlNnlxWR+LIa99Yk6PTMWKKP8YOrHNEVjsCQQtm+e8YVIUlV9Ga+qSnglRCLBQFmnRN4i49rq6xyJxSmaETGeUHV2lFQdscCYJnOUZUIBEVVZJ83/xQwNymZwG04aRSnCdW8tHK7c+f+c8ilcvMCqnhtcsUpM0YD77O0NQZU1mUIgLj9A/Nb/oZAWL5bWmImxSg8kQS2OnNFpo4ZMrNInHH6R9xJyn4jjU9CsVklaZIKu5oYw28t5ZwyxiJ2wI3QfL/c+a+KVgw4aQzsA8=
   on:
     all_branches: true
-    condition: "$EMBER_TRY_SCENARIO = 'default'"
+    condition: "$EMBER_TRY_SCENARIO = 'ember-default'"
     node: '6.9.1'
     tags: true
 
