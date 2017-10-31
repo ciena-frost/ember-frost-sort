@@ -2,8 +2,6 @@
   "name": "ember-frost-sort",
   "dependencies": {
     "ember-mocha-adapter": "~0.3.1",
-    "highlightjs": "^9.8.0",
-    "marked": "^0.3.6",
     "sinonjs": "1.17.1",
     "node-uuid": "1.4.7"
   }
