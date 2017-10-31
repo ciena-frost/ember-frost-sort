@@ -1,3 +1,11 @@
+# 7.2.10 (2017-10-31)
+* **Removed** unused `markdown-code-highlighting`
+* **Removed** unneeded bower testing dependencies
+* **Removed** unused `ember-cli-visual-acceptance` dependency
+* **Updated** testing dependencies
+* **Updated** to latest `ember-test-utils`
+
+
 # 7.2.9 (2017-08-10)
 * Update ember-cli 2.12.3 inter-dependencies
 
