@@ -1,47 +1,46 @@
- <div class="section">
-    <div class="example">
-      <div class="demo">
-        {{! BEGIN-SNIPPET sort-template }}
-        {{frost-sort
-          hook='demo'
-          sortOrder=sortOrder
-          sortOrderMax=2
-          sortingProperties=sortingProperties
-          onChange=(action 'sort')
-        }}
-        {{! END-SNIPPET }}
-        <div>
-          <div class='result'>
-            <span class='result-title'>
-              Result:
-            </span>
-            {{#each sortedItems as |sortedItem index|}}
-              {{#if (gt index 0)}}|{{/if}} {{sortedItem.name}} : {{sortedItem.value}}
-            {{/each}}
-          </div>
+<div class="section">
+  <div class="example">
+    <div class="demo">
+      {{! BEGIN-SNIPPET sort-template }}
+      {{frost-sort
+        hook='demo'
+        sortOrder=sortOrder
+        sortOrderMax=2
+        sortingProperties=sortingProperties
+        onChange=(action 'sort')
+      }}
+      {{! END-SNIPPET }}
+      <div>
+        <div class='result'>
+          <span class='result-title'>
+            Result:
+          </span>
+          {{#each sortedItems as |sortedItem index|}}
+            {{#if (gt index 0)}}|{{/if}} {{sortedItem.name}} : {{sortedItem.value}}
+          {{/each}}
         </div>
       </div>
-      <br>
-      <div class='snippets'>
-        <div>
-          <div>Model</div>
-          {{code-snippet name="model.js"}}
-        </div>
-        <div>
-          <div>Controller - properties</div>
-          {{code-snippet name="sort-order.js"}}
-          <div>Controller - action</div>
-          {{code-snippet name="sort-action.js"}}
-          <div>Controller - sort import</div>
-          {{code-snippet name="sort-import.js"}}
-          <div>Controller - computed sort</div>
-          {{code-snippet name="computed-sort.js"}}
-        </div>
-        <div>
-          <div>Template</div>
-          {{code-snippet name="sort-template.hbs"}}
-        </div>
-
+    </div>
+    <br>
+    <div class='snippets'>
+      <div>
+        <div>Model</div>
+        {{code-snippet name="model.js"}}
+      </div>
+      <div>
+        <div>Controller - properties</div>
+        {{code-snippet name="sort-order.js"}}
+        <div>Controller - action</div>
+        {{code-snippet name="sort-action.js"}}
+        <div>Controller - sort import</div>
+        {{code-snippet name="sort-import.js"}}
+        <div>Controller - computed sort</div>
+        {{code-snippet name="computed-sort.js"}}
+      </div>
+      <div>
+        <div>Template</div>
+        {{code-snippet name="sort-template.hbs"}}
       </div>
     </div>
   </div>
+</div>

@@ -5,11 +5,10 @@ import {keyCodes} from 'ember-frost-core/utils'
 const {DOWN_ARROW, ENTER, SPACE} = keyCodes
 import {$hook} from 'ember-hook'
 import wait from 'ember-test-helpers/wait'
+import {integration} from 'ember-test-utils/test-support/setup-component-test'
 import hbs from 'htmlbars-inline-precompile'
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
-
-import {integration} from 'dummy/tests/helpers/ember-test-utils/setup-component-test'
 
 // Hack to fix test failing when using `throw` - @jerbrown 2017.06.27
 // Issue introduced by https://github.com/emberjs/ember.js/pull/14898

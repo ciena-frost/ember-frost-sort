@@ -1,4 +1,4 @@
-import computed from 'ember-computed-decorators'
+import computed, {readOnly} from 'ember-computed-decorators'
 import {Component} from 'ember-frost-core'
 import {PropTypes} from 'ember-prop-types'
 
@@ -25,6 +25,7 @@ export default Component.extend({
 
   // == Computed properties ===================================================
 
+  @readOnly
   @computed('_sortOrderValues.[]', '_localProperty', 'sortingProperties')
   _availableProperties (_sortOrderValues, _localProperty, sortingProperties) {
     const remainingProperties = sortingProperties.filter(property => {
@@ -34,16 +35,19 @@ export default Component.extend({
     return [_localProperty].concat(remainingProperties)
   },
 
+  @readOnly
   @computed('sortOrder.[]', 'index')
   _descending (sortOrder, index) {
     return sortOrder[index].startsWith('-')
   },
 
+  @readOnly
   @computed('_descending')
   _directionChar (_descending) {
     return _descending ? '-' : ''
   },
 
+  @readOnly
   @computed('_sortOrderValues.[]', 'index', 'sortingProperties')
   _localProperty (_sortOrderValues, index, sortingProperties) {
     return sortingProperties.find(property => {
@@ -51,11 +55,13 @@ export default Component.extend({
     })
   },
 
+  @readOnly
   @computed('_localProperty')
   _localValue (_localProperty) {
     return _localProperty.value
   },
 
+  @readOnly
   @computed('sortOrder.[]')
   _sortOrderValues (sortOrder) {
     return sortOrder.map(entry => {
