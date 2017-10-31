@@ -5,11 +5,10 @@ import {keyCodes} from 'ember-frost-core/utils'
 const {DOWN_ARROW, ENTER, SPACE} = keyCodes
 import {$hook} from 'ember-hook'
 import wait from 'ember-test-helpers/wait'
+import {integration} from 'ember-test-utils/test-support/setup-component-test'
 import hbs from 'htmlbars-inline-precompile'
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
-
-import {integration} from 'dummy/tests/helpers/ember-test-utils/setup-component-test'
 
 // Hack to fix test failing when using `throw` - @jerbrown 2017.06.27
 // Issue introduced by https://github.com/emberjs/ember.js/pull/14898
@@ -38,7 +37,7 @@ describe(test.label, function () {
     sandbox.restore()
   })
 
-  it('throws an error when sortOrder is not provided', function () {
+  it('should throw an error when sortOrder is not provided', function () {
     expect(() => {
       this.render(hbs`
         {{frost-sort
@@ -49,7 +48,7 @@ describe(test.label, function () {
     }).to.throw()
   })
 
-  it('throws an error when sortingProperties is not provided', function () {
+  it('should throw an error when sortingProperties is not provided', function () {
     expect(() => {
       this.render(hbs`
         {{frost-sort
@@ -60,7 +59,7 @@ describe(test.label, function () {
     }).to.throw()
   })
 
-  it('throws an error when onChange is not provided', function () {
+  it('should throw an error when onChange is not provided', function () {
     expect(() => {
       this.render(hbs`
         {{frost-sort
@@ -162,23 +161,23 @@ describe(test.label, function () {
       `)
     })
 
-    it('renders one select', function () {
+    it('should render one select', function () {
       expect($hook('test-item-select', {index: 0})).to.have.length(1)
     })
 
-    it('selects the sortOrder property', function () {
+    it('should select the sortOrder property', function () {
       expect($hook('test-item-select', {index: 0}).text().trim()).to.equal('Name')
     })
 
-    it('renders the direction as ascending', function () {
+    it('should render the direction as ascending', function () {
       expect($hook('test-item-direction-icon', {index: 0}).attr('class')).to.not.include('descending')
     })
 
-    it('renders without a remove', function () {
+    it('should render without a remove', function () {
       expect($hook('test-item-remove', {index: 0})).to.have.length(0)
     })
 
-    it('renders without an add', function () {
+    it('should render without an add', function () {
       expect($hook('test-add')).to.have.length(0)
     })
   })
@@ -217,23 +216,23 @@ describe(test.label, function () {
         })
       })
 
-      it('renders one select', function () {
+      it('should render one select', function () {
         expect($hook('test-item-select', {index: 0})).to.have.length(1)
       })
 
-      it('selects the sort order property', function () {
+      it('should select the sort order property', function () {
         expect($hook('test-item-select', {index: 0}).text().trim()).to.equal('Name')
       })
 
-      it('renders the direction as ascending', function () {
+      it('should render the direction as ascending', function () {
         expect($hook('test-item-direction-icon', {index: 0}).attr('class')).to.not.include('descending')
       })
 
-      it('hides the sort entry remove', function () {
+      it('should hide the sort entry remove', function () {
         expect($hook('test-item-remove', {index: 0})).to.have.length(0)
       })
 
-      it('shows the add', function () {
+      it('should show the add', function () {
         expect($hook('test-add')).to.have.length(1)
       })
     })
@@ -245,7 +244,7 @@ describe(test.label, function () {
         })
       })
 
-      it('has expected hooks', function () {
+      it('should have expected hooks', function () {
         ;[
           $hook('test-title'),
           $hook('test-item', {index: 0}),
@@ -264,7 +263,7 @@ describe(test.label, function () {
         })
       })
 
-      it('has expected class names', function () {
+      it('should have expected class names', function () {
         ;[
           {hook: $hook('test-title'), classNames: ['frost-sort-title']},
           {hook: $hook('test-item', {index: 0}), classNames: ['frost-sort-item']},
@@ -288,29 +287,29 @@ describe(test.label, function () {
         })
       })
 
-      it('renders a select per sort order', function () {
+      it('should render a select per sort order', function () {
         expect($hook('test-item-select')).to.have.length(3)
       })
 
-      it('selects each sort order property in sequence', function () {
+      it('should select each sort order property in sequence', function () {
         expect($hook('test-item-select', {index: 0}).text().trim()).to.equal('Name')
         expect($hook('test-item-select', {index: 1}).text().trim()).to.equal('Gender')
         expect($hook('test-item-select', {index: 2}).text().trim()).to.equal('Age')
       })
 
-      it('renders sort order directions', function () {
+      it('should render sort order directions', function () {
         expect($hook('test-item-direction-icon', {index: 0}).attr('class')).to.not.include('descending')
         expect($hook('test-item-direction-icon', {index: 1}).attr('class')).to.include('descending')
         expect($hook('test-item-direction-icon', {index: 2}).attr('class')).to.not.include('descending')
       })
 
-      it('renders each sort order with a remove', function () {
+      it('should render each sort order with a remove', function () {
         expect($hook('test-item-remove', {index: 0})).to.have.length(1)
         expect($hook('test-item-remove', {index: 1})).to.have.length(1)
         expect($hook('test-item-remove', {index: 2})).to.have.length(1)
       })
 
-      it('renders with an add', function () {
+      it('should render with an add', function () {
         expect($hook('test-add')).to.have.length(1)
       })
 
@@ -327,7 +326,7 @@ describe(test.label, function () {
           return wait()
         })
 
-        it('contains the sort order property for that index and unselected sort order properties', function () {
+        it('should contain the sort order property for that index and unselected sort order properties', function () {
           const selectItems = $hook('test-item-select-item')
           expect(selectItems).to.have.length(2)
 
@@ -360,7 +359,7 @@ describe(test.label, function () {
             })
           })
 
-          it('fires an event with the updated sort order', function () {
+          it('should fire an event with the updated sort order', function () {
             expect(onChange.lastCall.args[0]).to.eql(['height', '-gender', 'age'])
           })
         })
@@ -371,7 +370,7 @@ describe(test.label, function () {
           $hook('test-item-direction', {index: 0}).click()
         })
 
-        it('fires an event with the updated sort order', function () {
+        it('should fire an event with the updated sort order', function () {
           expect(onChange.lastCall.args[0]).to.eql(['-name', '-gender', 'age'])
         })
       })
@@ -386,7 +385,7 @@ describe(test.label, function () {
           $hook('test-add').click()
         })
 
-        it('does not rerender an unchanged component', function (done) {
+        it('should not rerender an unchanged component', function (done) {
           const oldId = $hook('test-item', {index: 0}).attr('id')
           $hook('test-item-direction', {index: 0}).click()
           return wait()
@@ -397,27 +396,27 @@ describe(test.label, function () {
             })
         })
 
-        it('renders a new select order entry', function () {
+        it('should render a new select order entry', function () {
           expect($hook('test-item-select')).to.have.length(4)
         })
 
-        it('selects the next sort order property for the new sort order entry', function () {
+        it('should select the next sort order property for the new sort order entry', function () {
           expect($hook('test-item-select', {index: 3}).text().trim()).to.equal('Height')
         })
 
-        it('renders the new sort order entry as ascending', function () {
+        it('should render the new sort order entry as ascending', function () {
           expect($hook('test-item-direction-icon', {index: 3}).attr('class')).to.not.include('descending')
         })
 
-        it('renders the new sort order entry with a remove', function () {
+        it('should render the new sort order entry with a remove', function () {
           expect($hook('test-item-remove', {index: 3})).to.have.length(1)
         })
 
-        it('fires an event with the updated sort order', function () {
+        it('should fire an event with the updated sort order', function () {
           expect(this.get('sortOrder')).to.eql(['name', '-gender', 'age', 'height'])
         })
 
-        it('hides the add', function () {
+        it('should hide the add', function () {
           expect($hook('test-add')).to.have.length(0)
         })
 
@@ -426,23 +425,23 @@ describe(test.label, function () {
             $hook('test-item-remove', {index: 0}).click()
           })
 
-          it('shifts the remaining sort order entries', function () {
+          it('should shift the remaining sort order entries', function () {
             expect($hook('test-item-select', {index: 0}).text().trim()).to.equal('Gender')
             expect($hook('test-item-select', {index: 1}).text().trim()).to.equal('Age')
             expect($hook('test-item-select', {index: 2}).text().trim()).to.equal('Height')
           })
 
-          it('retains the remaining sort order directions', function () {
+          it('should retain the remaining sort order directions', function () {
             expect($hook('test-item-direction-icon', {index: 0}).attr('class')).to.include('descending')
             expect($hook('test-item-direction-icon', {index: 1}).attr('class')).to.not.include('descending')
             expect($hook('test-item-direction-icon', {index: 2}).attr('class')).to.not.include('descending')
           })
 
-          it('shows the add', function () {
+          it('should show the add', function () {
             expect($hook('test-add')).to.have.length(1)
           })
 
-          it('fires an event with the updated sort order', function () {
+          it('should fire an event with the updated sort order', function () {
             expect(this.get('sortOrder')).to.eql(['-gender', 'age', 'height'])
           })
         })
@@ -459,7 +458,7 @@ describe(test.label, function () {
             return wait()
           })
 
-          it('no longer contains the property used in the new sort order entry', function () {
+          it('should no longer contains the property used in the new sort order entry', function () {
             const selectItems = $hook('test-item-select-item')
             expect(selectItems).to.have.length(1)
 
@@ -506,7 +505,7 @@ describe(test.label, function () {
     })
 
     describe('and the number of sort order entries is below the maximum', function () {
-      it('shows the add button', function () {
+      it('should show the add button', function () {
         expect($hook('test-add')).to.have.length(1)
       })
     })
@@ -518,7 +517,7 @@ describe(test.label, function () {
         })
       })
 
-      it('hides the add button', function () {
+      it('should hide the add button', function () {
         expect($hook('test-add')).to.have.length(0)
       })
     })

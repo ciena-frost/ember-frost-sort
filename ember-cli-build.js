@@ -2,7 +2,7 @@
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon')
 
 module.exports = function (defaults) {
-  var app = new EmberAddon(defaults, {
+  let app = new EmberAddon(defaults, {
     babel: {
       optional: ['es7.decorators']
     },
@@ -12,8 +12,6 @@ module.exports = function (defaults) {
     snippetSearchPaths: ['addon', 'tests/dummy']
   })
 
-  app.import('bower_components/sinonjs/sinon.js')
-  app.import('bower_components/highlightjs/styles/github.css')
   /*
     This build file specifes the options for the dummy test app of this
     addon, located in `/tests/dummy`
