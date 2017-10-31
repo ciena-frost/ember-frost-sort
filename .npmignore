@@ -21,4 +21,3 @@ dependency-snapshot.json
 jsconfig.json
 testem.js
 .idea
-/visual-acceptance

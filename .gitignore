@@ -17,4 +17,3 @@ npm-debug.log*
 testem.log
 coverage.json
 /typings
-/visual-acceptance
