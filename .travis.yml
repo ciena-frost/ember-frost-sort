@@ -1,19 +1,12 @@
-sudo: required
+sudo: false
 dist: trusty
 language: node_js
 
 node_js:
 - '6.9.1'
-- 'stable'
 
 addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
-    - google-chrome
-    packages:
-    - google-chrome-stable
-    - g++-4.8
+  chrome: stable
   firefox: 'latest'
 
 cache:
@@ -21,17 +14,23 @@ cache:
   - node_modules
 
 env:
+  global:
+    # See https://git.io/vdao3 for details.
+    - JOBS=1
+    - secure: PZ54LInpCANVhDnLUz9Dn5QujAFnt0UElvfC6ENqD+su8oXwTV0B8eu1cp5Ha3UizA1OxfPbogP71ebc+/3IJiCRr3rMmiRMmKXYkE7xl0epZi5FkSh2LKk6AjVruPCP7VL1u++ofsrMUXGsPcYxdeOWlha1AwiHOODjTvTYKFEX2FsNg9sM+wSw6Ez9dLHR0YcadAlMOSCByQ1impnPGiMsCq0MGJMqp5Hfmyrs1wEFBsvOqn85Cbz4jlgkxo5JQiuArTff38pgsx3IdM3yEAF9m/jCjcDz/OGnJpMLLjOZby1/AiZ9xZ6VaIxqzpVn7PJorMLLfLZU86mEA33QxZyz/m5EeY6Feo76g4jg/lAOv0oXMNbXkkU4NcSq/rBTuux7ocdEaacLtEOIQsbybzSd5kj84coSwO7R9o6+j7qbpVCTZ9RQcAw8RXiWaFTIFdW2LhvYvNUuiap7ZWNJITk/hXsx1iiJOIAnB9IufamE0gKXSuhGP1zcF6SvWg4nBVTrPuSo7cCYp6MzihWLkCYiBe1mAS7LNJsjI5usCaEzYp9TE2pW/OWUWv0zT8XPWxer78o6DRy1XK1nRMLiRuEqupYDcKXp3XW9xyNhs67//trla1iAPRxSd00AyiMcFsXflTCtT4n6/WMuOEo5iQfux4tUyEr31ny3e8PVteI=
   matrix:
     - EMBER_TRY_SCENARIO=ember-lts-2.8
+    - EMBER_TRY_SCENARIO=ember-lts-2.12
+    - EMBER_TRY_SCENARIO=ember-release
+    - EMBER_TRY_SCENARIO=ember-beta
+    - EMBER_TRY_SCENARIO=ember-canary
     - EMBER_TRY_SCENARIO=ember-default
-  global:
-    - CXX=g++-4.8
-    - secure: PZ54LInpCANVhDnLUz9Dn5QujAFnt0UElvfC6ENqD+su8oXwTV0B8eu1cp5Ha3UizA1OxfPbogP71ebc+/3IJiCRr3rMmiRMmKXYkE7xl0epZi5FkSh2LKk6AjVruPCP7VL1u++ofsrMUXGsPcYxdeOWlha1AwiHOODjTvTYKFEX2FsNg9sM+wSw6Ez9dLHR0YcadAlMOSCByQ1impnPGiMsCq0MGJMqp5Hfmyrs1wEFBsvOqn85Cbz4jlgkxo5JQiuArTff38pgsx3IdM3yEAF9m/jCjcDz/OGnJpMLLjOZby1/AiZ9xZ6VaIxqzpVn7PJorMLLfLZU86mEA33QxZyz/m5EeY6Feo76g4jg/lAOv0oXMNbXkkU4NcSq/rBTuux7ocdEaacLtEOIQsbybzSd5kj84coSwO7R9o6+j7qbpVCTZ9RQcAw8RXiWaFTIFdW2LhvYvNUuiap7ZWNJITk/hXsx1iiJOIAnB9IufamE0gKXSuhGP1zcF6SvWg4nBVTrPuSo7cCYp6MzihWLkCYiBe1mAS7LNJsjI5usCaEzYp9TE2pW/OWUWv0zT8XPWxer78o6DRy1XK1nRMLiRuEqupYDcKXp3XW9xyNhs67//trla1iAPRxSd00AyiMcFsXflTCtT4n6/WMuOEo5iQfux4tUyEr31ny3e8PVteI=
 
 matrix:
   fast_finish: true
   allow_failures:
-  - node_js: 'stable'
+  - env: EMBER_TRY_SCENARIO=ember-beta
+  - env: EMBER_TRY_SCENARIO=ember-canary
 
 before_install:
 - npm config set spin false
