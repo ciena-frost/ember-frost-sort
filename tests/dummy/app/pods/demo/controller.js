@@ -1,7 +1,7 @@
 import Ember from 'ember'
 const {Controller, inject} = Ember
 // BEGIN-SNIPPET sort-import
-import computed, {readOnly} from 'ember-computed-decorators'
+import {computed, readOnly} from 'ember-decorators/object'
 // END-SNIPPET
 import {sort} from 'ember-frost-sort'
 

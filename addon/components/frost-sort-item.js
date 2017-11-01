@@ -1,4 +1,4 @@
-import computed, {readOnly} from 'ember-computed-decorators'
+import {computed, readOnly} from 'ember-decorators/object'
 import {Component} from 'ember-frost-core'
 import {PropTypes} from 'ember-prop-types'
 
