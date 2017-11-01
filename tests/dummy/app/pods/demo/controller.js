@@ -1,14 +1,14 @@
-import Ember from 'ember'
-const {Controller, inject} = Ember
+import Controller from '@ember/controller'
+import {inject as service} from '@ember/service'
 // BEGIN-SNIPPET sort-import
-import computed, {readOnly} from 'ember-computed-decorators'
+import {computed, readOnly} from 'ember-decorators/object'
 // END-SNIPPET
 import {sort} from 'ember-frost-sort'
 
 export default Controller.extend({
   // == Dependencies ==========================================================
 
-  notifications: inject.service('notification-messages'),
+  notifications: service('notification-messages'),
 
   // == Keyword Properties ====================================================
 

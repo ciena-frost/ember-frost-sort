@@ -1,6 +1,6 @@
-import Ember from 'ember'
-const {assert, get} = Ember
-import computed, {readOnly} from 'ember-computed-decorators'
+import {assert} from '@ember/debug'
+import {get} from '@ember/object'
+import {computed, readOnly} from 'ember-decorators/object'
 import {Component} from 'ember-frost-core'
 import {PropTypes} from 'ember-prop-types'
 import uuid from 'ember-simple-uuid'
