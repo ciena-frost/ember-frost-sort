@@ -2,8 +2,10 @@
  * Common sorting operations
  */
 
-import Ember from 'ember'
-const {A, assert, compare, get, isArray, isEmpty} = Ember
+import {A, isArray} from '@ember/array'
+import {assert} from '@ember/debug'
+import {get} from '@ember/object'
+import {compare, isEmpty} from '@ember/utils'
 
 /**
  * Sort any items that implement a compare function

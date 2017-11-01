@@ -1,5 +1,5 @@
-import Ember from 'ember'
-const {assert, get} = Ember
+import {assert} from '@ember/debug'
+import {get} from '@ember/object'
 import {computed, readOnly} from 'ember-decorators/object'
 import {Component} from 'ember-frost-core'
 import {PropTypes} from 'ember-prop-types'

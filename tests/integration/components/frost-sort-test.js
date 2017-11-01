@@ -1,12 +1,14 @@
+import {run} from '@ember/runloop'
 import {expect} from 'chai'
 import Ember from 'ember'
-const {$, Test, run} = Ember
+const {Test} = Ember
 import {keyCodes} from 'ember-frost-core/utils'
 const {DOWN_ARROW, ENTER, SPACE} = keyCodes
 import {$hook} from 'ember-hook'
 import wait from 'ember-test-helpers/wait'
 import {integration} from 'ember-test-utils/test-support/setup-component-test'
 import hbs from 'htmlbars-inline-precompile'
+import $ from 'jquery'
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
