@@ -1,9 +1,9 @@
 import Ember from 'ember'
 const {Controller, inject} = Ember
-// BEGIN-SNIPPET sort-import
 import computed, {readOnly} from 'ember-computed-decorators'
-// END-SNIPPET
+// BEGIN-SNIPPET sort-import
 import {sort} from 'ember-frost-sort'
+// END-SNIPPET
 
 export default Controller.extend({
   // == Dependencies ==========================================================
