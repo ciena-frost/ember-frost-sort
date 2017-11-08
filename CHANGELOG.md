@@ -1,3 +1,6 @@
+# 8.0.0 (2017-11-08)
+* Use the latest `ember-frost-core`, with a flexible minor version (`^3.0.1`)
+
 # 7.2.10 (2017-10-31)
 * **Removed** unused `markdown-code-highlighting`
 * **Removed** unneeded bower testing dependencies
