@@ -1,6 +1,0 @@
-{
-  "name": "ember-frost-sort",
-  "dependencies": {
-    "node-uuid": "1.4.7"
-  }
-}
