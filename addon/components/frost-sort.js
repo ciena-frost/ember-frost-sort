@@ -1,9 +1,8 @@
 import Ember from 'ember'
-const {assert, get} = Ember
+const {assert, get, guidFor} = Ember
 import computed, {readOnly} from 'ember-computed-decorators'
 import {Component} from 'ember-frost-core'
 import {PropTypes} from 'ember-prop-types'
-import uuid from 'ember-simple-uuid'
 
 import layout from '../templates/components/frost-sort'
 
@@ -44,7 +43,7 @@ export default Component.extend({
   @readOnly
   @computed
   _selectOutlet (sortId) {
-    return `frost-sort-${uuid()}`
+    return `frost-sort-${guidFor({})}`
   },
 
   // == Functions =============================================================
