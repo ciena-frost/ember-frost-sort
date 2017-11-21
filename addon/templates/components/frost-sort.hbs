@@ -3,30 +3,31 @@
 <div class='{{css}}-title' data-test={{hook (concat hookPrefix '-title')}}>
   Sort by:
 </div>
+<div class='{{css}}-sort-items-container'>
+  {{#each sortOrder key="@index" as |sortOrderEntry index|}}
+    {{frost-sort-item
+      hideRemove=_hideRemove
+      hook=(concat hookPrefix '-item')
+      hookQualifiers=(hash index=index)
+      index=index
+      selectOutlet=_selectOutlet
+      sortOrder=sortOrder
+      sortingProperties=sortingProperties
+      onChange=(action 'change')
+      onRemove=(action 'remove')
+    }}
+  {{/each}}
 
-{{#each sortOrder key="@index" as |sortOrderEntry index|}}
-  {{frost-sort-item
-    hideRemove=_hideRemove
-    hook=(concat hookPrefix '-item')
-    hookQualifiers=(hash index=index)
-    index=index
-    selectOutlet=_selectOutlet
-    sortOrder=sortOrder
-    sortingProperties=sortingProperties
-    onChange=(action 'change')
-    onRemove=(action 'remove')
-  }}
-{{/each}}
-
-{{#unless _hideAdd}}
-  <span class={{concat css '-separator'}} />
-  {{frost-button
-    class=(concat css '-add')
-    hook=(concat hookPrefix '-add')
-    icon='round-add'
-    priority='tertiary'
-    size='small'
-    text='Add'
-    onClick=(action 'add')
-  }}
-{{/unless}}
+  {{#unless _hideAdd}}
+    <span class={{concat css '-separator'}} />
+    {{frost-button
+      class=(concat css '-add')
+      hook=(concat hookPrefix '-add')
+      icon='round-add'
+      priority='tertiary'
+      size='small'
+      text='Add'
+      onClick=(action 'add')
+    }}
+  {{/unless}}
+</div>

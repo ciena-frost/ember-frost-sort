@@ -8,16 +8,24 @@ $separator: 1px solid $frost-color-grey-6;
   align-items: center;
   min-height: 50px;
 
+  &-sort-items-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
   &-title {
     color: $frost-color-grey-4;
     font-size: $frost-font-s;
+    white-space: nowrap;
   }
 
   &-item {
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 25px;
+    height: 100%;
     padding: 0 5px 0 15px;
     border-right: $separator;
 
