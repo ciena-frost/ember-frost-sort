@@ -1,3 +1,8 @@
+# 8.0.3 (2017-11-21)
+* Fixes https://github.com/ciena-frost/ember-frost-list/issues/161: Have frost-list flex-wrap sort if it overflows
+
+
+
 # 8.0.2 (2017-11-14)
 * Refactor to remove need for `ember-simple-uuid` dependency
 
