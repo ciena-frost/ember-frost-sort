@@ -28,11 +28,9 @@ export default Component.extend({
   @readOnly
   @computed('_sortOrderValues.[]', '_localProperty', 'sortingProperties')
   _availableProperties (_sortOrderValues, _localProperty, sortingProperties) {
-    const remainingProperties = sortingProperties.filter(property => {
-      return _sortOrderValues.indexOf(property.value) === -1
+    return sortingProperties.filter(property => {
+      return _sortOrderValues.indexOf(property.value) === -1 || property.value === _localProperty.value
     })
-
-    return [_localProperty].concat(remainingProperties)
   },
 
   @readOnly
