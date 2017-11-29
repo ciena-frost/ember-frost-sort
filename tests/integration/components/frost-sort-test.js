@@ -337,7 +337,7 @@ describe(test.label, function () {
             )
           }
 
-          expect(labels).to.eql(['Name', 'Height'])
+          expect(labels).to.eql(['Height', 'Name'])
         })
 
         describe('and a new sort order property is selected', function () {
@@ -360,7 +360,7 @@ describe(test.label, function () {
           })
 
           it('should fire an event with the updated sort order', function () {
-            expect(onChange.lastCall.args[0]).to.eql(['height', '-gender', 'age'])
+            expect(onChange.lastCall.args[0]).to.eql(['name', '-gender', 'age'])
           })
         })
       })
