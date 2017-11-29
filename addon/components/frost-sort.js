@@ -5,7 +5,6 @@ import {Component} from 'ember-frost-core'
 import {PropTypes} from 'ember-prop-types'
 
 import layout from '../templates/components/frost-sort'
-import sort from '../utils/sort'
 
 export default Component.extend({
 
@@ -47,12 +46,6 @@ export default Component.extend({
     return `frost-sort-${guidFor({})}`
   },
 
-  @readOnly
-  @computed('sortingProperties.[]')
-  _sortedSortingProperties (sortingProperties) {
-    return sort(sortingProperties, ['label'])
-  },
-
   // == Functions =============================================================
 
   // == Ember Lifecycle Hooks =================================================
@@ -73,7 +66,7 @@ export default Component.extend({
         return entry.startsWith('-') ? entry.slice(1) : entry
       })
 
-      const availableProperties = this.get('_sortedSortingProperties').filter(property => {
+      const availableProperties = this.get('sortingProperties').filter(property => {
         return sortOrderValues.indexOf(property.value) === -1
       })
 
