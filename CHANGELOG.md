@@ -1,3 +1,8 @@
+# 8.0.4 (2017-11-29)
+
+- Changed the position that the selected value appears in the list (now appears in its original position in the list rather than always at the top)
+
+
 # 8.0.3 (2017-11-21)
 * Fixes https://github.com/ciena-frost/ember-frost-list/issues/161: Have frost-list flex-wrap sort if it overflows
 
