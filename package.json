@@ -50,7 +50,6 @@
     "ember-export-application-global": "^1.1.1",
     "ember-frost-test": "^2.1.2",
     "ember-load-initializers": "^0.6.0",
-    "ember-prop-types": "^3.10.2",
     "ember-resolver": "^2.1.1",
     "ember-sinon": "^0.7.0",
     "ember-source": "~2.12.0",
@@ -74,7 +73,8 @@
     "ember-cli-sass": "5.6.0",
     "ember-computed-decorators": "~0.3.0",
     "ember-frost-core": "^4.0.1",
-    "ember-hook": "^1.4.2"
+    "ember-hook": "^1.4.2",
+    "ember-prop-types": "^5.0.2"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
