@@ -1,3 +1,15 @@
+# 9.0.0 (2017-12-08)
+* **Updated** to version 4 of `ember-frost-core` and move to dependency
+* **Updated** to version 5 of `ember-prop-types` and move to dependency
+* **Updated** `ember-computed-decorators` package to dependency
+* **Updated** `ember-hook` package to dependency
+* **Updated** to version 4 of `ember-cli-frost-blueprints`
+* **Removed** `ember-spread` package since it is not used here and is now provided by `ember-frost-core` via it's own dependencies.
+* **Removed** `ember-concurrency` package since it is not used here and is now provided by `ember-frost-core` via it's own dependencies.
+* **Removed** `ember-elsewhere` package since it is not used here and is now provided by `ember-frost-core` via it's own dependencies.
+* **Removed** `ember-truth-helpers` since it is not used in this add-on.
+* **Removed** blueprints file since it is no longer needed
+
 # 8.0.4 (2017-11-29)
 
 - Changed the position that the selected value appears in the list (now appears in its original position in the list rather than always at the top)
