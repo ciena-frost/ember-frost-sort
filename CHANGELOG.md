@@ -1,3 +1,6 @@
+# 9.0.1 (2017-12-12)
+* Change semver range of ember-export-application-global to align with other repos
+
 # 9.0.0 (2017-12-08)
 * **Updated** to version 4 of `ember-frost-core` and move to dependency
 * **Updated** to version 5 of `ember-prop-types` and move to dependency
