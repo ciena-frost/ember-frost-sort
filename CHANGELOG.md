@@ -1,3 +1,8 @@
+# 9.0.3 (2017-12-13)
+
+* Updated icon size to match UX specs
+
+
 # 9.0.2 (2017-12-13)
 * Change semver range of `ember-resolver` to align with other repos
 
