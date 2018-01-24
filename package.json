@@ -65,7 +65,7 @@
     "name": "frost-sort"
   },
   "dependencies": {
-    "ember-cli-babel": "^5.1.10",
+    "ember-cli-babel": "^5.1.7",
     "ember-cli-htmlbars": "^1.1.1",
     "ember-cli-sass": "7.1.1",
     "ember-computed-decorators": "0.3.0",
