@@ -71,7 +71,7 @@
     "ember-computed-decorators": "0.3.0",
     "ember-frost-core": "^5.1.1",
     "ember-hook": "1.4.2",
-    "ember-prop-types": "^5.0.2"
+    "ember-prop-types": "^6.0.1"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
