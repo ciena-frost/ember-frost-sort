@@ -1,3 +1,23 @@
+# 10.0.0 (2018-01-25)
+* **Added** ignoring of `package-lock` until we are ready to move to node 8
+* **Removed** `.remarkrc` file since it is now provided by `ember-test-utils`
+* **Removed** useLintTree ember-cli-mocha configuration from `ember-cli-build.js`
+* **Updated** `ember-frost-test` to `^4.0.0`
+* **Updated** `ember-test-utils` to `^8.1.0`
+* **Added** `ember-browserify` @ `^1.2.0`
+* **Updated** `ember-cli-code-coverage` to `0.3.12`
+* **Updated** `ember-cli-frost-blueprints` to `^5.0.1`
+* **Updated** `ember-cli-htmlbars-inline-precompile` to `0.3.12`
+* **Updated** `ember-cli-notifications` to `^4.2.1`
+* **Updated** pin `ember-code-snippet` to `1.7.0`
+* **Updated** `ember-cli-babel` to `^5.1.7` to stay correct with what Ember CLI 2.12.3 sets in the blueprints
+* **Updated** `ember-cli-sass` to `7.1.1`
+* **Updated** `ember-computed-decorators` to `0.3.0`
+* **Updated** `ember-frost-core` to `^5.1.1`
+* **Updated** `ember-hook` to `1.4.2` and removed dual entries under both devDependencies and dependencies. Kept dependency entry.
+* **Updated** `ember-prop-types` to `^6.0.1`
+* **Updated** move code coverage config file to tests/dummy/config/ and add json-summary reporter
+
 # 9.0.3 (2017-12-13)
 
 * Updated icon size to match UX specs
