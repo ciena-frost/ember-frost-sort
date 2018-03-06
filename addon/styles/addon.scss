@@ -37,11 +37,14 @@ $separator: 1px solid $frost-color-grey-6;
       }
     }
 
+    .frost-button {
+      padding: 0 5px;
+    }
+
     & .frost-sort-item-remove {
       &.frost-button {
-        padding: 0 5px;
-
         .frost-icon {
+          height: 18px;
           fill: $frost-color-grey-5;
         }
       }
