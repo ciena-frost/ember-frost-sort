@@ -29,11 +29,15 @@ $separator: 1px solid $frost-color-grey-6;
     padding: 0 5px 0 15px;
     border-right: $separator;
 
-    & .frost-icon-frost-sort-direction {
-      transition: transform .2s ease;
+    & .frost-sort-item-direction {
+      .frost-icon-frost-sort-direction {
+        transition: transform .2s ease;
+      }
 
       &.descending {
-        transform: rotate(180deg);
+        .frost-icon-frost-sort-direction {
+          transform: rotate(180deg);
+        }
       }
     }
 
