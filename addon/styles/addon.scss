@@ -38,8 +38,23 @@ $separator: 1px solid $frost-color-grey-6;
     }
 
     & .frost-sort-item-remove {
-      .frost-icon {
-        fill: $frost-color-grey-5;
+      &.frost-button {
+        padding: 0 5px;
+
+        .frost-icon {
+          fill: $frost-color-grey-5;
+        }
+      }
+    }
+
+    &-select {
+      min-width: 150px;
+      height: 30px;
+      font-size: $frost-font-s;
+
+      svg {
+        width: 15px;
+        height: 15px;
       }
     }
 
