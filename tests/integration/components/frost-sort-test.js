@@ -170,7 +170,7 @@ describe(test.label, function () {
     })
 
     it('should render the direction as ascending', function () {
-      expect($hook('test-item-direction', {index: 0}).attr('class')).to.not.include('descending')
+      expect($hook('test-item-direction-icon', {index: 0}).attr('class')).to.not.include('descending')
     })
 
     it('should render without a remove', function () {
@@ -225,7 +225,7 @@ describe(test.label, function () {
       })
 
       it('should render the direction as ascending', function () {
-        expect($hook('test-item-direction', {index: 0}).attr('class')).to.not.include('descending')
+        expect($hook('test-item-direction-icon', {index: 0}).attr('class')).to.not.include('descending')
       })
 
       it('should hide the sort entry remove', function () {
@@ -271,11 +271,10 @@ describe(test.label, function () {
           {hook: $hook('test-item-direction', {index: 0}), classNames: ['frost-sort-item-direction']},
           {hook: $hook('test-item-remove', {index: 0}), classNames: ['frost-sort-item-remove']},
           {
-            hook: $($hook('test-item-direction-icon')[1]),
-            classNames: ['frost-icon-frost-sort-direction'],
+            hook: $hook('test-item-direction-icon', {index: 1}),
+            classNames: ['frost-icon-frost-sort-direction', 'descending'],
             isSVG: true
           },
-          {hook: $hook('test-item-direction', {index: 1}), classNames: ['frost-sort-item-direction', 'descending']},
           {hook: $hook('test-add'), classNames: ['frost-sort-add']}
         ].forEach(({hook, classNames, isSVG}) => {
           classNames.forEach(className => {
@@ -299,9 +298,9 @@ describe(test.label, function () {
       })
 
       it('should render sort order directions', function () {
-        expect($hook('test-item-direction', {index: 0}).attr('class')).to.not.include('descending')
-        expect($hook('test-item-direction', {index: 1}).attr('class')).to.include('descending')
-        expect($hook('test-item-direction', {index: 2}).attr('class')).to.not.include('descending')
+        expect($hook('test-item-direction-icon', {index: 0}).attr('class')).to.not.include('descending')
+        expect($hook('test-item-direction-icon', {index: 1}).attr('class')).to.include('descending')
+        expect($hook('test-item-direction-icon', {index: 2}).attr('class')).to.not.include('descending')
       })
 
       it('should render each sort order with a remove', function () {
@@ -406,7 +405,7 @@ describe(test.label, function () {
         })
 
         it('should render the new sort order entry as ascending', function () {
-          expect($hook('test-item-direction', {index: 3}).attr('class')).to.not.include('descending')
+          expect($hook('test-item-direction-icon', {index: 3}).attr('class')).to.not.include('descending')
         })
 
         it('should render the new sort order entry with a remove', function () {
@@ -433,9 +432,9 @@ describe(test.label, function () {
           })
 
           it('should retain the remaining sort order directions', function () {
-            expect($hook('test-item-direction', {index: 0}).attr('class')).to.include('descending')
-            expect($hook('test-item-direction', {index: 1}).attr('class')).to.not.include('descending')
-            expect($hook('test-item-direction', {index: 2}).attr('class')).to.not.include('descending')
+            expect($hook('test-item-direction-icon', {index: 0}).attr('class')).to.include('descending')
+            expect($hook('test-item-direction-icon', {index: 1}).attr('class')).to.not.include('descending')
+            expect($hook('test-item-direction-icon', {index: 2}).attr('class')).to.not.include('descending')
           })
 
           it('should show the add', function () {

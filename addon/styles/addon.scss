@@ -29,15 +29,11 @@ $separator: 1px solid $frost-color-grey-6;
     padding: 0 5px 0 15px;
     border-right: $separator;
 
-    & .frost-sort-item-direction {
-      .frost-icon-frost-sort-direction {
-        transition: transform .2s ease;
-      }
+    & .frost-icon-frost-sort-direction {
+      transition: transform .2s ease;
 
       &.descending {
-        .frost-icon-frost-sort-direction {
-          transform: rotate(180deg);
-        }
+        transform: rotate(180deg);
       }
     }
 
@@ -48,6 +44,7 @@ $separator: 1px solid $frost-color-grey-6;
     & .frost-sort-item-remove {
       &.frost-button {
         .frost-icon {
+          width: 18px;
           height: 18px;
           fill: $frost-color-grey-5;
         }
