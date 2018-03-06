@@ -26,13 +26,18 @@
 {{/frost-button}}
 
 {{#unless hideRemove}}
-  {{frost-button
+  {{#frost-button
     class=(concat css '-remove')
     hook=(concat hookPrefix '-remove')
     hookQualifiers=hookQualifiers
-    icon='round-close'
     priority='tertiary'
     size='small'
     onClick=(action 'remove')
   }}
+    {{frost-icon
+      hook=(concat hookPrefix '-remove-icon')
+      hookQualifiers=hookQualifiers
+      icon='round-close'
+    }}
+  {{/frost-button}}
 {{/unless}}
