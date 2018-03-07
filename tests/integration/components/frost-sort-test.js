@@ -271,7 +271,7 @@ describe(test.label, function () {
           {hook: $hook('test-item-direction', {index: 0}), classNames: ['frost-sort-item-direction']},
           {hook: $hook('test-item-remove', {index: 0}), classNames: ['frost-sort-item-remove']},
           {
-            hook: $($hook('test-item-direction-icon')[1]),
+            hook: $hook('test-item-direction-icon', {index: 1}),
             classNames: ['frost-icon-frost-sort-direction'],
             isSVG: true
           },
