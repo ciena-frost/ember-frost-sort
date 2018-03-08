@@ -85,6 +85,7 @@ sortedItems (model, sortOrder) {
 - `{hook}-item` & `{ index: ___ }`
 - `{hook}-item-select` & `{ index: ___ }`
 - `{hook}-item-direction` & `{ index: ___ }`
+- `{hook}-item-direction-icon` & `{ index: ___ }`
 - `{hook}-item-remove` & `{ index: ___ }`
 - `{hook}-add`
 
@@ -92,7 +93,7 @@ sortedItems (model, sortOrder) {
 - `frost-sort-title`
 - `frost-sort-item`
 - `frost-sort-item-select`
-- `frost-sort-item-direction`
+- `frost-sort-item-direction` & `descending`
 - `frost-sort-item-remove`
-- `frost-icon-frost-sort-direction` & `descending`
+- `frost-icon-frost-sort-direction`
 - `frost-sort-add`

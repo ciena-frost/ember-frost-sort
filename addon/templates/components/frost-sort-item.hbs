@@ -8,31 +8,25 @@
   onChange=(action 'changeProperty')
 }}
 
-{{#frost-button
-  class=(concat css '-direction')
+{{frost-button
+  class=(concat css '-direction' (if _descending ' descending'))
   hook=(concat hookPrefix '-direction')
   hookQualifiers=hookQualifiers
-  size='medium'
+  size='small'
   priority='tertiary'
+  icon='direction'
+  pack='frost-sort'
   onClick=(action 'changeDirection')
 }}
-  {{frost-icon
-    class=(if _descending 'descending')
-    hook=(concat hookPrefix '-direction-icon')
-    hookQualifiers=hookQualifiers
-    icon='direction'
-    pack='frost-sort'
-  }}
-{{/frost-button}}
 
 {{#unless hideRemove}}
   {{frost-button
     class=(concat css '-remove')
     hook=(concat hookPrefix '-remove')
     hookQualifiers=hookQualifiers
-    icon='round-close'
     priority='tertiary'
-    size='medium'
+    size='small'
+    icon='round-close'
     onClick=(action 'remove')
   }}
 {{/unless}}

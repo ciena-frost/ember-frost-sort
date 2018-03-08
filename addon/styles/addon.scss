@@ -29,17 +29,39 @@ $separator: 1px solid $frost-color-grey-6;
     padding: 0 5px 0 15px;
     border-right: $separator;
 
-    & .frost-icon-frost-sort-direction {
-      transition: transform .2s ease;
+    & .frost-sort-item-direction {
+      .frost-icon-frost-sort-direction {
+        transition: transform .2s ease;
+      }
 
       &.descending {
-        transform: rotate(180deg);
+        .frost-icon-frost-sort-direction {
+          transform: rotate(180deg);
+        }
       }
     }
 
+    .frost-button {
+      padding: 0 5px;
+    }
+
     & .frost-sort-item-remove {
-      .frost-icon {
-        fill: $frost-color-grey-5;
+      &.frost-button {
+        .frost-icon {
+          height: 18px;
+          fill: $frost-color-grey-5;
+        }
+      }
+    }
+
+    &-select {
+      min-width: 150px;
+      height: 30px;
+      font-size: $frost-font-s;
+
+      svg {
+        width: 15px;
+        height: 15px;
       }
     }
 
