@@ -1,3 +1,8 @@
+# 11.0.0 (2018-03-08)
+* Update frost-sort to match new ux specs
+
+
+
 # 10.0.0 (2018-01-25)
 * **Added** ignoring of `package-lock` until we are ready to move to node 8
 * **Removed** `.remarkrc` file since it is now provided by `ember-test-utils`

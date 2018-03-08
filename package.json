@@ -1,6 +1,6 @@
 {
   "name": "ember-frost-sort",
-  "version": "10.0.0",
+  "version": "11.0.0",
   "description": "A sorting component to sort collections",
   "frostGuideDirectory": "ui-components/content-views/sort",
   "directories": {
