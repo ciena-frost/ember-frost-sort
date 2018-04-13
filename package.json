@@ -64,15 +64,13 @@
     "frost",
     "sort"
   ],
-  "ember-frost-icon-pack": {
-    "name": "frost-sort"
-  },
   "dependencies": {
     "ember-cli-babel": "^5.1.7",
     "ember-cli-htmlbars": "^1.1.1",
     "ember-cli-sass": "7.1.1",
+    "ember-cli-svgstore": "github:ciena-blueplanet/ember-cli-svgstore#977df1cf58ae43b1d98a591573c3e06947744321",
     "ember-computed-decorators": "0.3.0",
-    "ember-frost-core": "^7.0.0",
+    "ember-frost-core": "^8.0.0",
     "ember-hook": "1.4.2",
     "ember-prop-types": "^7.0.2"
   },
