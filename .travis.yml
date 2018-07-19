@@ -1,10 +1,8 @@
 sudo: required
 dist: trusty
 language: node_js
-
 node_js:
-- '8.6.0'
-
+- 8.6.0
 addons:
   apt:
     sources:
@@ -13,60 +11,49 @@ addons:
     packages:
     - google-chrome-stable
     - g++-4.8
-  firefox: 'latest'
-
+  firefox: latest
 cache:
   directories:
   - node_modules
-
 env:
   matrix:
-    - EMBER_TRY_SCENARIO=ember-lts-2.8
-    - EMBER_TRY_SCENARIO=ember-default
+  - EMBER_TRY_SCENARIO=ember-lts-2.8
+  - EMBER_TRY_SCENARIO=ember-default
   global:
-    - CXX=g++-4.8
-    - secure: PZ54LInpCANVhDnLUz9Dn5QujAFnt0UElvfC6ENqD+su8oXwTV0B8eu1cp5Ha3UizA1OxfPbogP71ebc+/3IJiCRr3rMmiRMmKXYkE7xl0epZi5FkSh2LKk6AjVruPCP7VL1u++ofsrMUXGsPcYxdeOWlha1AwiHOODjTvTYKFEX2FsNg9sM+wSw6Ez9dLHR0YcadAlMOSCByQ1impnPGiMsCq0MGJMqp5Hfmyrs1wEFBsvOqn85Cbz4jlgkxo5JQiuArTff38pgsx3IdM3yEAF9m/jCjcDz/OGnJpMLLjOZby1/AiZ9xZ6VaIxqzpVn7PJorMLLfLZU86mEA33QxZyz/m5EeY6Feo76g4jg/lAOv0oXMNbXkkU4NcSq/rBTuux7ocdEaacLtEOIQsbybzSd5kj84coSwO7R9o6+j7qbpVCTZ9RQcAw8RXiWaFTIFdW2LhvYvNUuiap7ZWNJITk/hXsx1iiJOIAnB9IufamE0gKXSuhGP1zcF6SvWg4nBVTrPuSo7cCYp6MzihWLkCYiBe1mAS7LNJsjI5usCaEzYp9TE2pW/OWUWv0zT8XPWxer78o6DRy1XK1nRMLiRuEqupYDcKXp3XW9xyNhs67//trla1iAPRxSd00AyiMcFsXflTCtT4n6/WMuOEo5iQfux4tUyEr31ny3e8PVteI=
-
+  - CXX=g++-4.8
+  - secure: PZ54LInpCANVhDnLUz9Dn5QujAFnt0UElvfC6ENqD+su8oXwTV0B8eu1cp5Ha3UizA1OxfPbogP71ebc+/3IJiCRr3rMmiRMmKXYkE7xl0epZi5FkSh2LKk6AjVruPCP7VL1u++ofsrMUXGsPcYxdeOWlha1AwiHOODjTvTYKFEX2FsNg9sM+wSw6Ez9dLHR0YcadAlMOSCByQ1impnPGiMsCq0MGJMqp5Hfmyrs1wEFBsvOqn85Cbz4jlgkxo5JQiuArTff38pgsx3IdM3yEAF9m/jCjcDz/OGnJpMLLjOZby1/AiZ9xZ6VaIxqzpVn7PJorMLLfLZU86mEA33QxZyz/m5EeY6Feo76g4jg/lAOv0oXMNbXkkU4NcSq/rBTuux7ocdEaacLtEOIQsbybzSd5kj84coSwO7R9o6+j7qbpVCTZ9RQcAw8RXiWaFTIFdW2LhvYvNUuiap7ZWNJITk/hXsx1iiJOIAnB9IufamE0gKXSuhGP1zcF6SvWg4nBVTrPuSo7cCYp6MzihWLkCYiBe1mAS7LNJsjI5usCaEzYp9TE2pW/OWUWv0zT8XPWxer78o6DRy1XK1nRMLiRuEqupYDcKXp3XW9xyNhs67//trla1iAPRxSd00AyiMcFsXflTCtT4n6/WMuOEo5iQfux4tUyEr31ny3e8PVteI=
 matrix:
   fast_finish: true
-
 before_install:
 - npm config set spin false
 - npm install -g coveralls pr-bumper@^3.7.0 ciena-devops@^1.0.0
-- $(npm root -g)/pr-bumper/.travis/maybe-check-scope.sh
-
+- "$(npm root -g)/pr-bumper/.travis/maybe-check-scope.sh"
 install:
-- $(npm root -g)/pr-bumper/.travis/maybe-install.sh
-
+- "$(npm root -g)/pr-bumper/.travis/maybe-install.sh"
 before_script:
-- "export DISPLAY=:99.0"
-- "sh -e /etc/init.d/xvfb start"
-- sleep 3 # give xvfb some time to start
-
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sleep 3
 script:
-- $(npm root -g)/pr-bumper/.travis/maybe-test.sh
-- $(npm root -g)/pr-bumper/.travis/maybe-test.sh coverage
-- .travis/maybe-bump-version.sh
-
+- "$(npm root -g)/pr-bumper/.travis/maybe-test.sh"
+- "$(npm root -g)/pr-bumper/.travis/maybe-test.sh coverage"
+- ".travis/maybe-bump-version.sh"
 after_success:
-- .travis/maybe-publish-coverage.sh
-- .travis/maybe-publish-gh-pages.sh
-
+- ".travis/maybe-publish-coverage.sh"
+- ".travis/maybe-publish-gh-pages.sh"
 deploy:
   provider: npm
   email: npm.ciena@gmail.com
   skip_cleanup: true
   api_key:
-    secure: ilZNpKEEbu9XPBDXxOnIttbzMobIKQZyYnUOnj0r3HKhVviiH1qx8VSawUBEdDnbjd6ipzPKl6o9jcHLte+ucmv7BM2jlLv+mENjhLO6kjc9+6vGi86XGU80yN8vksI+xIdu1hC5anmfEqpuN3fAkvWKjJGYkMT9lvqkz+6emGNEIEwymGJ0woYgXrJnOJNVGCCqqSkKlOpezCHUzzjBZEYRxe2Q6vLZelNq9fgme/IuvBU6eqgbpPyj2X1njBOzBJ8oaOKrmV8vfFyD5jhqLxWOiJTV9Z/jOVCWQqnsjcED5QyWBM3/RTTtx5eZ2IkD5dI0eA68bJOGevqu/DtZaHn3rvXczfACagp95S1vIs2c1P08zSNNFBkPEo+wAd10Zn3ilLz/Vdty7ZohQyuB2FUmImlNnlxWR+LIa99Yk6PTMWKKP8YOrHNEVjsCQQtm+e8YVIUlV9Ga+qSnglRCLBQFmnRN4i49rq6xyJxSmaETGeUHV2lFQdscCYJnOUZUIBEVVZJ83/xQwNymZwG04aRSnCdW8tHK7c+f+c8ilcvMCqnhtcsUpM0YD77O0NQZU1mUIgLj9A/Nb/oZAWL5bWmImxSg8kQS2OnNFpo4ZMrNInHH6R9xJyn4jjU9CsVklaZIKu5oYw28t5ZwyxiJ2wI3QfL/c+a+KVgw4aQzsA8=
+    secure: GNsFg8hZhErX9qvg/j/GQjUwi16b6fdjobXPs+F0TGfA3eV+aRJ2GEPFaR0pxuW7wzGPSWwW1SUNuOUDYn2JYFNH4Sgz1qeNZOphuFUdg+Mr1L8/JLz1/RWMttqEqMqwxm1jyUq+Vb9n0jDiMcWTktxc361PJj4//Km9eHNbfVXkVpUPTFi+zRYyW6tf84QDNDyDlS2racN+5RYBqe5uw9ZcKhqE68qhrBjfd1aov0d6sh/hli1qSLrfjyNJUT0aivgekmGuY+64I88KcYA30P2++yNf76+DwM6IX/ggbJljqSnFAICBiYWQlAxhNIMzoCmOdVtdBZarCuMxK00j9Ld2bNVqT8snEAvCw0XYS6qIcqaKsgY1rwu13dnvLeBT3iZa6oQhGbMcj0Imsj4cqjORY8lnNZ7BYHWrba5tILjjzuk8ye6HbDIYzOgxmpHn8Nl1MR5jkkjYKElbUiDfaHUG5Ebuac35e6fDMnOtnYtr8yjwUOg4OMsRScBv3TDZwZETfI1+fiOCsoqYcgP3UY3Li5mAnST9wJ4t6OrQkJKiSH29E7y9HmG/0DIJo1AevMDHeR5AZz42IVtsl/fxXat+CNAyyNAmgIVOelkf+iDho9XqpL+kmjLlrLMyEv+y3EVopXviKeSV4zGOiPhPSXkUEayLs+dZYVrTa//1qhI=
   on:
     all_branches: true
     condition: "$EMBER_TRY_SCENARIO = 'ember-default'"
-    node: '8.6.0'
+    node: 8.6.0
     tags: true
-
 after_deploy:
-- $(npm root -g)/ciena-devops/scripts/slack/incoming-webhooks/send-message.sh
-
+- "$(npm root -g)/ciena-devops/scripts/slack/incoming-webhooks/send-message.sh"
 notifications:
   slack:
     secure: g+iamTJDTnP65VWtRtPV37p0nwfhWl1o2Qj/KXDv4g1MJb59b683Qsz7nFoI8Eqw+qOMMfo9kpPoJ7XyeGGosdXbR3ak9p8e6rYvMBgOG+FNQW9FXJ5ZNQbax244bqAW5Pa/Sdct0UYnb1OTu9kI36FintTmsF67Bw5TlSjW2Yx3vb3evlOnaVFG0tMtnKNvSHJG7GiA/LXJT+pHr44k79hZuHXeSInGjip4NaIuxu1tSwxjX6JL+4+sKPERs8AZvyStsV0BbWOvsYEqY4KRBbMGJWtt3ycbpnEVCiDLtb7FILTIJP4qA0AkGYLeLU3x/2/zkbLCg5qzqkE/uJKciBjXva9JMRVC3JVhW1q6QRNO43yqBuHsRG0oYo6Y39F/xT3Gvz/2LVZj8HWQhJ1RlE4aikql6sywd+P++9Q50WVD0a8KSws5jNFrXim3zuWXpXxdxb60cCBltKjxysQbEkn3rnYT36RI+cX0YoOAfttwtM/wBkVQ9uydMBJ1zVzx2I+V1JtyM703mVLX2bAIQPdBr6GGgwikQMu6eFH5+Oe47FuQKTcl7ZYk8L2z+SAOjvVabIK+yJ5edwN8NzRjnV8RJAI/n0Hvw+AOM/CT+tpy7bxgB2ITPEYFV9nGI1HJ+rAOBXOWb2+wE0/9r5a0sDzqm429G6aPy+pnljtdbUE=
