@@ -1,3 +1,8 @@
+# 13.0.2 (2018-07-20)
+
+* **Fixed** Travis API key.
+
+
 # 13.0.1 (2018-05-30)
 * **Updated** Pin `ember-cli-notifications` to version `4.2.1` to fix broken demo app
 
